@@ -4,10 +4,8 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Doordeck API Reference</title>
 
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
     <style>
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
@@ -88,10 +86,12 @@
   color: #90a959;
 }
     </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -102,8 +102,6 @@
       <img src="images/logo.png" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -112,8 +110,7 @@
       <div id="toc">
       </div>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='mailto:info@doordeck.com'>Contact Doordeck</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -121,59 +118,258 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>Welcome to the Doordeck API! You can use our API to access Doordeck API endpoints, which can get information on the state of locks, manage access and perform operations.</p>
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
+<p>This API documentation is generated using <a href="https://github.com/tripit/slate">Slate</a>, if you spot any errors please submit a pull request directly on <a href="https://github.com/doordeck/docs/">Github</a>.</p>
 
 <h1 id="authentication">Authentication</h1>
 
 <blockquote>
 <p>To authorize, use this code:</p>
 </blockquote>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+<pre class="highlight shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span>
+  -X POST
+  -H <span class="s1">'content-type: application/json'</span>
+  --data-binary <span class="s1">'{"email":"EMAIL","password":"PASSWORD"}'</span>
 </code></pre>
 
 <blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
+<p>Make sure to replace <code class="prettyprint">USERNAME</code> and <code class="prettyprint">PASSWORD</code> with your credentials.</p>
+
+<p>The above command returns JSON structured like this:</p>
 </blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"privateKey"</span><span class="p">:</span><span class="s2">"base 64 encoded private key"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"authToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for authentication"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"refreshToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for refreshing authentication credentials"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<p>Doordeck uses tokens to permit access to the API. Doordeck expects for the token to be included in all API requests to the server in a header that looks like the following:</p>
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
+<p><code class="prettyprint">Authorization: Bearer TOKEN</code></p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>TOKEN</code> with your authentication token (the <code>authToken</code> from the login response).
 </aside>
 
-<h1 id="kittens">Kittens</h1>
-
-<h2 id="get-all-kittens">Get All Kittens</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
+<p>Authentication tokens are JSON web tokens, they can be examined to determine their expiry date, the user&rsquo;s ID. JSON web tokens are split into three sections seperated by a <code class="prettyprint">.</code>, the header, payload and signature - each section can be base64 decoded to read further.</p>
+<pre class="highlight shell"><code><span class="nb">echo</span> <span class="s1">'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0NzMxNjMwNzUsImlhdCI6MTQ3MzA3NjY3NSwic3ViIjoiNWE1ZjZlODAtM2M1MS0xMWU2LTllNTctY2Y0MGJlMzAxM2ZiIiwic2Vzc2lvbiI6ImZiMmEwMDYwLTczNWYtMTFlNi1iNDg3LTZmMTZmZGE1MzkxNyIsInJlZnJlc2giOmZhbHNlLCJlbWFpbCI6Im1pY2hhZWxAZG9vcmRlY2suY29tIn0.REDCATED'</span> | cut -d. -f2 | base64 -D
 </code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"exp"</span><span class="p">:</span><span class="mi">1473163075</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"iat"</span><span class="p">:</span><span class="mi">1473076675</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sub"</span><span class="p">:</span><span class="s2">"5a5f6e80-3c51-11e6-9e57-cf40be3013fb"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"session"</span><span class="p">:</span><span class="s2">"fb2a0060-735f-11e6-b487-6f16fda53917"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"refresh"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="s2">"michael@doordeck.com"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h1 id="account">Account</h1>
+
+<h2 id="login">Login</h2>
+<pre class="highlight shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span>
+  -X POST
+  -H <span class="s1">'content-type: application/json'</span>
+  --data-binary <span class="s1">'{"email":"EMAIL","password":"PASSWORD"}'</span>
 </code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+
+<blockquote>
+<p>Make sure to replace <code class="prettyprint">USERNAME</code> and <code class="prettyprint">PASSWORD</code> with your credentials.</p>
+
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"privateKey"</span><span class="p">:</span><span class="s2">"base 64 encoded private key"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"authToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for authentication"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"refreshToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for refreshing authentication credentials"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint lets user&rsquo;s attempt to login.</p>
+
+<h3 id="http-requst">HTTP Requst</h3>
+
+<p><code class="prettyprint">POST https://api.doordeck.com/auth/login</code></p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>true</td>
+<td>User&rsquo;s email address</td>
+</tr>
+<tr>
+<td>password</td>
+<td>true</td>
+<td>User&rsquo;s password</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>privateKey</td>
+<td>PKCS8 encoded private key wrapped in base 64 encoding to be JSON friendly</td>
+</tr>
+<tr>
+<td>publicKey</td>
+<td>Base 64 encoded public key</td>
+</tr>
+<tr>
+<td>authToken</td>
+<td>JSON web token to be used for normal requests</td>
+</tr>
+<tr>
+<td>refreshToken</td>
+<td>JSON web token to be used for getting new authentication tokens</td>
+</tr>
+</tbody></table>
+
+<h2 id="registration">Registration</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/register"</span>
+  -X POST
+  -H <span class="s1">'content-type: application/json'</span>
+  --data-binary <span class="s1">'{"email":"EMAIL","password":"PASSWORD"}'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"privateKey"</span><span class="p">:</span><span class="s2">"base 64 encoded private key"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"authToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for authentication"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"refreshToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for refreshing authentication credentials"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint allows users to register for a Doordeck account.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api.doordeck.com/auth/register</code></p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>true</td>
+<td>Email address to register.</td>
+</tr>
+<tr>
+<td>password</td>
+<td>true</td>
+<td>Password for access to account.</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+A validation email will be disptahced to the user&rsquo;s email address upon successful registration.
+</aside>
+
+<h2 id="refresh-token">Refresh Token</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"https://api.doordeck.com/token/refresh"</span>
+  -H <span class="s2">"Authorization: Bearer REFRESH_TOKEN"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"authToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for authentication"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"refreshToken"</span><span class="p">:</span><span class="s2">"(Optional) JSON Web Token for refreshing authentication credentials"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint refreshes a users&rsquo; authentication token using their refresh token. Refresh tokens cannot be used for standard requests and have a very long life compared with an authentication token.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.doordeck.com/token/refresh</code></p>
+
+<aside class="notice">
+A refresh token should be used in place of an authentication token for this request.
+</aside>
+
+<aside class="notice">
+The <code>refreshToken</code> field is optionally returned, if a new refresh token should be stored, otherwise it will not be present.
+</aside>
+
+<h2 id="logout">Logout</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"https://api.doordeck.com/token/destroy"</span>
+  -H <span class="s2">"Authorization: Bearer REFRESH_TOKEN"</span>
+</code></pre>
+
+<p>This endpoint destroys a session associated with an authentication token and any associated refresh token.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api.doordeck.com/token/destroy</code></p>
+
+<h2 id="verify-email">Verify Email</h2>
+<pre class="highlight plaintext"><code>curl "https://api.doordeck.com/account/email/verify?code=CODE"
+  -X PUT
+</code></pre>
+
+<blockquote>
+<p>Replace <code class="prettyprint">CODE</code> with the verification code from the email.</p>
+</blockquote>
+
+<p>This endpoint is used to verify a user&rsquo;s email address.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT https://api.doordeck.com/account/email/verify</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>true</td>
+<td>Verification code from email.</td>
+</tr>
+</tbody></table>
+
+<h1 id="lock-operations">Lock Operations</h1>
+
+<h2 id="get-all-locks">Get all locks</h2>
+<pre class="highlight shell"><code>curl <span class="s1">'https://api.doordeck.com/device'</span>
+  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
 </code></pre>
 
 <blockquote>
@@ -181,107 +377,366 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"state"</span><span class="p">:</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"locked"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"connected"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"duration"</span><span class="p">:</span><span class="mf">5.000000000</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"unlockTime"</span><span class="p">:</span><span class="mf">5.000000000</span><span class="p">,</span><span class="nt">"unlockForever"</span><span class="p">:</span><span class="kc">false</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Office"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"state"</span><span class="p">:</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"locked"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"connected"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"duration"</span><span class="p">:</span><span class="mf">10.000000000</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"unlockTime"</span><span class="p">:</span><span class="mf">10.000000000</span><span class="p">,</span><span class="nt">"unlockForever"</span><span class="p">:</span><span class="kc">false</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves all kittens.</p>
+<p>This endpoint retrieves all locks a user has access to.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/api/kittens</code></p>
+<p><code class="prettyprint">GET https://api.doordeck.com/device</code></p>
 
-<h3 id="query-parameters">Query Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-<h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+<h2 id="get-a-single-lock">Get a single lock</h2>
+<pre class="highlight shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000'</span>
+  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
 </code></pre>
 
 <blockquote>
+<p>Replace <code class="prettyprint">00000000-0000-0000-0000-000000000000</code> with the lock&rsquo;s ID.</p>
+
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"state"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"locked"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"connected"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"duration"</span><span class="p">:</span><span class="mf">5.000000000</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"unlockTime"</span><span class="p">:</span><span class="mf">5.000000000</span><span class="p">,</span><span class="nt">"unlockForever"</span><span class="p">:</span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can&rsquo;t use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<p>This endpoint retrieves information about a specific lock, its usage is prefered over the list lock call for performance reasons.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">GET https://api.doordeck.com/device/LOCK_ID</code></p>
 
-<h3 id="url-parameters">URL Parameters</h3>
+<p>Replace <code class="prettyprint">LOCK_ID</code> with the appropiate lock ID.</p>
+
+<h2 id="get-lock-audit-trail"> Get lock audit trail</h2>
+<pre class="highlight shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/log'</span>
+  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre>
+
+<blockquote>
+<p>Replace <code class="prettyprint">00000000-0000-0000-0000-000000000000</code> with the lock&rsquo;s ID.</p>
+
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="mf">1473061669.000000000</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"DOOR_LOCK"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"user"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Door locked"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="mf">1473061664.000000000</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"DOOR_UNLOCK"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"user"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Door unlocked"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrievs all log events associated with a particular lock.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.doordeck.com/device/LOCK_ID/log</code></p>
+
+<p>Replace <code class="prettyprint">LOCK_ID</code> with the appropiate lock ID.</p>
+
+<h3 id="event-types">Event Types</h3>
+
+<p>The call returns an enum of event types:</p>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>DOOR_OPEN</td>
+<td>The lock&rsquo;s monitor shows the door is open</td>
+</tr>
+<tr>
+<td>DOOR_CLOSE</td>
+<td>The lock&rsquo;s monitor shows the door is closed</td>
+</tr>
+<tr>
+<td>DOOR_UNLOCK</td>
+<td>The lock has changed to the unlock stated</td>
+</tr>
+<tr>
+<td>DOOR_LOCK</td>
+<td>The lock has changed to the locked state</td>
+</tr>
+<tr>
+<td>OWNER_ASSIGNED</td>
+<td>The lock&rsquo;s owner has been updated</td>
+</tr>
+<tr>
+<td>DEVICE_CONNECTED</td>
+<td>Lock has connected to Doordeck platform</td>
+</tr>
+<tr>
+<td>DEVICE_DISCONNECTED</td>
+<td>Lock has disconected from Doordeck platform</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-lock-properties"> Update Lock Properties</h2>
+<pre class="highlight shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000'</span>
+  -X PUT
+  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
+  -H <span class="s1">'content-type: application/json'</span>
+  --data-binary <span class="s1">'{"name":"Home","unlockTime":5}'</span>
+</code></pre>
+
+<blockquote>
+<p>Replace <code class="prettyprint">00000000-0000-0000-0000-000000000000</code> with the lock&rsquo;s ID.</p>
+</blockquote>
+
+<p>This endpoint allows the name and unlock duration to be updated for an existing lock.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT https://api.doordeck.com/device/LOCK_ID</code></p>
+
+<p>Replace <code class="prettyprint">LOCK_ID</code> with the appropiate lock ID.</p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>true</td>
+<td>New name of the lock (visible to all users)</td>
+</tr>
+<tr>
+<td>unlockTime</td>
+<td>true</td>
+<td>Value in seconds of how long the lock should remain open, setting this to <code class="prettyprint">0</code> means the lock must be manually locked every use</td>
+</tr>
+</tbody></table>
+
+<h2 id="pair-with-new-lock"> Pair with new lock</h2>
+<pre class="highlight shell"><code>curl <span class="s1">'https://api.doordeck.com/device'</span>
+  -X POST
+  -H <span class="s1">'Authorization: Bearer TOKEN'</span>
+  -H <span class="s1">'content-type: application/json'</span>
+  --data-binary <span class="s1">'{"key":"KEY","name":"My lock","unlockTime":20}'</span>
+</code></pre>
+
+<blockquote>
+<p>Replace <code class="prettyprint">KEY</code> with the lock&rsquo;s registration key</p>
+</blockquote>
+
+<p>This endpoint pairs a new, previously unowned lock with a user.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api.doordeck.com/device</code></p>
+
+<aside class="success">
+Upon successful registration of a lock, a HTTP 202 is returned along with the location further details can be found about the lock. The lock ID can be extracted from this URL
+</aside>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>key</td>
+<td>true</td>
+<td>Lock&rsquo;s registration key</td>
+</tr>
+<tr>
+<td>name</td>
+<td>true</td>
+<td>Alias of the lock (visible to all users)</td>
+</tr>
+<tr>
+<td>unlockTime</td>
+<td>true</td>
+<td>Value in seconds of how long the lock should remain open, setting this to <code class="prettyprint">0</code> means the lock must be manually locked every use</td>
+</tr>
+</tbody></table>
+
+<h2 id="lock-or-unlock"> Lock or unlock</h2>
+<pre class="highlight shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span> <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  --data-binary <span class="s1">'{"email":"USERNAME","password":"PASSWORD"}'</span> <span class="se">\</span>
+  | jq -r .privateKey <span class="se">\</span>
+  | base64 -D <span class="se">\</span>
+  | openssl pkcs8 -nocrypt -inform DER -outform PEM -out privatekey.pem
+
+<span class="nv">HEADER</span><span class="o">=</span><span class="s1">'{"alg":"RS256","typ":"JWT"}'</span>
+<span class="nv">BODY</span><span class="o">=</span><span class="s1">'{"iss":"USER_ID","sub":"00000000-0000-0000-0000-000000000000","nbf":1473083829,"iat":1473083829,"exp":1473083889,"operation":{"type":"MUTATE_LOCK","locked":false,"duration":5}}'</span>
+<span class="nv">HASH</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$HEADER</span>.<span class="nv">$BODY</span> | openssl dgst -sha256<span class="sb">`</span>
+<span class="nv">SIGNATURE</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$HASH</span> | openssl rsautl -sign -inkey privatekey.pem -keyform PEM<span class="sb">`</span>
+<span class="nv">JWT</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER</span> | base64<span class="sb">`</span>.<span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$BODY</span> | base64<span class="sb">`</span>.<span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$SIGNATURE</span> | base64<span class="sb">`</span>
+
+curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/execute'</span>
+  -X POST
+  -H <span class="s1">'authorization: Bearer TOKEN'</span>
+  -H <span class="s1">'content-type: application/json;charset=UTF-8'</span>
+  --data-binary <span class="s2">"</span><span class="nv">$JWT</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<p>Replace <code class="prettyprint">00000000-0000-0000-0000-000000000000</code> with the lock&rsquo;s ID, <code class="prettyprint">USERNAME</code> and <code class="prettyprint">PASSWORD</code> with the appropiate credentials.</p>
+</blockquote>
+
+<p>This endpoint allows operations to be performed on a lock, typically this is lock and unlock. Requests to this endpoint must be signed and formed as a JSON web token.</p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<p>The header is formed of the following fields.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>alg</td>
+<td>true</td>
+<td><code class="prettyprint">RS256</code>, RSA signed with a 256 bit SHA hash</td>
+</tr>
+<tr>
+<td>typ</td>
+<td>true</td>
+<td><code class="prettyprint">JWT</code>, JSON web token</td>
+</tr>
+</tbody></table>
+
+<p>The body is formed of the following fields.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>iss</td>
+<td>true</td>
+<td>Issuer, this should be the user&rsquo;s ID</td>
+</tr>
+<tr>
+<td>sub</td>
+<td>true</td>
+<td>Subject, this should be the lock&rsquo;s ID</td>
+</tr>
+<tr>
+<td>nbf</td>
+<td>true</td>
+<td>Not before, a Unix timestamp indicating the earliest date the request is valid from</td>
+</tr>
+<tr>
+<td>iat</td>
+<td>true</td>
+<td>Issued at, the current Unix timestamp</td>
+</tr>
+<tr>
+<td>exp</td>
+<td>true</td>
+<td>Expires, a Unix timestamp indicating when the request should expire, most requests should only be valid for a few seconds, a minute at most</td>
+</tr>
+<tr>
+<td>operation</td>
+<td>true</td>
+<td>A JSON object containing the instructions of the lock</td>
+</tr>
+</tbody></table>
+
+<p>The operation object definition is as follows</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>true</td>
+<td>Can be <code class="prettyprint">MUTATE_LOCK</code>, <code class="prettyprint">ADD_USER</code>, <code class="prettyprint">REMOVE_USER</code></td>
+</tr>
+<tr>
+<td>locked</td>
+<td>true (if type is <code class="prettyprint">MUTATE_LOCK</code>)</td>
+<td>Boolean indicating if the lock should be locked or unlocked</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>false (only if type is <code class="prettyprint">MUTATE_LOCK</code> and <code class="prettyprint">locked</code> is true)</td>
+<td>Number of seconds the lock should be unlocked for</td>
+</tr>
+<tr>
+<td>user</td>
+<td>true (if type is <code class="prettyprint">ADD_USER</code>)</td>
+<td>ID of user to add</td>
+</tr>
+<tr>
+<td>publicKey</td>
+<td>true (if type is <code class="prettyprint">ADD_USER</code>)</td>
+<td>Public key of user to add</td>
+</tr>
+<tr>
+<td>users</td>
+<td>true (if type is <code class="prettyprint">REMOVE_USER</code>)</td>
+<td>List of user IDs to remove</td>
 </tr>
 </tbody></table>
 
           <h1 id="errors">Errors</h1>
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
-
-<p>The Kittn API uses the following error codes:</p>
+<p>The Doordeck API uses the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -299,15 +754,15 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+<td>Forbidden &ndash; You don&rsquo;t have permission</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
+<td>Not Found &ndash; The specified resource could not be found</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
+<td>Method Not Allowed &ndash; You tried to access a resource with an invalid method</td>
 </tr>
 <tr>
 <td>406</td>
@@ -315,15 +770,11 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 <tr>
 <td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&rsquo;m a teapot</td>
+<td>Gone &ndash; The resource requested has been removed from our servers</td>
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
+<td>Too Many Requests &ndash; You&rsquo;re requesting too many resources! Slow down!</td>
 </tr>
 <tr>
 <td>500</td>
@@ -339,8 +790,6 @@ Remember — a happy kitten is an authenticated kitten!
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
           </div>
       </div>
     </div>
