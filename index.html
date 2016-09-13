@@ -629,6 +629,12 @@ curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-0
 
 <p>This endpoint allows operations to be performed on a lock, typically this is lock and unlock. Requests to this endpoint must be signed and formed as a JSON web token.</p>
 
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api.doordeck.com/device/LOCK_ID/execute</code></p>
+
+<p>Replace <code class="prettyprint">LOCK_ID</code> with the appropiate lock ID.</p>
+
 <h3 id="request-parameters">Request Parameters</h3>
 
 <p>The header is formed of the following fields.</p>
@@ -684,7 +690,12 @@ curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-0
 <tr>
 <td>exp</td>
 <td>true</td>
-<td>Expires, a Unix timestamp indicating when the request should expire, most requests should only be valid for a few seconds, a minute at most</td>
+<td>Expires, a Unix timestamp indicating when the request should expire, requests to change the lock status should be valid for up to one minute, other requests can have a much longer expiry time</td>
+</tr>
+<tr>
+<td>jti</td>
+<td>false (but highly recommended)</td>
+<td>User generated, unique ID used for tracking the request status and preventing replay attacks. UUIDs are recommended here.</td>
 </tr>
 <tr>
 <td>operation</td>
