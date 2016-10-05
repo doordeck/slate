@@ -612,9 +612,10 @@ Upon successful registration of a lock, a HTTP 202 is returned along with the lo
 
 <span class="nv">HEADER</span><span class="o">=</span><span class="s1">'{"alg":"RS256","typ":"JWT"}'</span>
 <span class="nv">BODY</span><span class="o">=</span><span class="s1">'{"iss":"USER_ID","sub":"00000000-0000-0000-0000-000000000000","nbf":1473083829,"iat":1473083829,"exp":1473083889,"operation":{"type":"MUTATE_LOCK","locked":false,"duration":5}}'</span>
-<span class="nv">HASH</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$HEADER</span>.<span class="nv">$BODY</span> | openssl dgst -sha256<span class="sb">`</span>
-<span class="nv">SIGNATURE</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$HASH</span> | openssl rsautl -sign -inkey privatekey.pem -keyform PEM<span class="sb">`</span>
-<span class="nv">JWT</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER</span> | base64<span class="sb">`</span>.<span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$BODY</span> | base64<span class="sb">`</span>.<span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$SIGNATURE</span> | base64<span class="sb">`</span>
+<span class="nv">HEADER_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER</span> | base64 | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
+<span class="nv">BODY_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$BODY</span> | base64  | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
+<span class="nv">SIGNATURE_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER_B64</span>.<span class="nv">$BODY_B64</span> | openssl sha -sha256 -sign privatekey.pem | base64 | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
+<span class="nv">JWT</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER_B64</span>.<span class="nv">$BODY_B64</span>.<span class="nv">$SIGNATURE_B64</span><span class="sb">`</span>
 
 curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/execute'</span>
   -X POST
@@ -624,7 +625,7 @@ curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-0
 </code></pre>
 
 <blockquote>
-<p>Replace <code class="prettyprint">00000000-0000-0000-0000-000000000000</code> with the lock&rsquo;s ID, <code class="prettyprint">USERNAME</code> and <code class="prettyprint">PASSWORD</code> with the appropiate credentials.</p>
+<p>Replace <code class="prettyprint">00000000-0000-0000-0000-000000000000</code> with the lock&rsquo;s ID, <code class="prettyprint">USER_ID</code> with the user&rsquo;s ID (obtained from decoding their auth token), <code class="prettyprint">USERNAME</code> and <code class="prettyprint">PASSWORD</code> with the appropriate credentials.</p>
 </blockquote>
 
 <p>This endpoint allows operations to be performed on a lock, typically this is lock and unlock. Requests to this endpoint must be signed and formed as a JSON web token.</p>
