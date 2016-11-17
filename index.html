@@ -154,7 +154,7 @@
 You must replace <code>TOKEN</code> with your authentication token (the <code>authToken</code> from the login response).
 </aside>
 
-<p>Authentication tokens are JSON web tokens, they can be examined to determine their expiry date, the user&rsquo;s ID. JSON web tokens are split into three sections seperated by a <code class="prettyprint">.</code>, the header, payload and signature - each section can be base64 decoded to read further.</p>
+<p>Authentication tokens are JSON web tokens, they can be examined to determine their expiry date, the user&rsquo;s ID. JSON web tokens are split into three sections separated by a <code class="prettyprint">.</code>, the header, payload and signature - each section can be base64 decoded to read further.</p>
 <pre class="highlight shell"><code><span class="nb">echo</span> <span class="s1">'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0NzMxNjMwNzUsImlhdCI6MTQ3MzA3NjY3NSwic3ViIjoiNWE1ZjZlODAtM2M1MS0xMWU2LTllNTctY2Y0MGJlMzAxM2ZiIiwic2Vzc2lvbiI6ImZiMmEwMDYwLTczNWYtMTFlNi1iNDg3LTZmMTZmZGE1MzkxNyIsInJlZnJlc2giOmZhbHNlLCJlbWFpbCI6Im1pY2hhZWxAZG9vcmRlY2suY29tIn0.REDCATED'</span> | cut -d. -f2 | base64 -D
 </code></pre>
 
@@ -195,7 +195,7 @@ You must replace <code>TOKEN</code> with your authentication token (the <code>au
 
 <p>This endpoint lets user&rsquo;s attempt to login.</p>
 
-<h3 id="http-requst">HTTP Requst</h3>
+<h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">POST https://api.doordeck.com/auth/token</code></p>
 
@@ -436,7 +436,7 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 
 <p><code class="prettyprint">GET https://api.doordeck.com/device/LOCK_ID</code></p>
 
-<p>Replace <code class="prettyprint">LOCK_ID</code> with the appropiate lock ID.</p>
+<p>Replace <code class="prettyprint">LOCK_ID</code> with the appropriate lock ID.</p>
 
 <h2 id="get-lock-audit-trail"> Get lock audit trail</h2>
 <pre class="highlight shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/log'</span>
@@ -464,13 +464,13 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrievs all log events associated with a particular lock.</p>
+<p>This endpoint retrieves all log events associated with a particular lock.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">GET https://api.doordeck.com/device/LOCK_ID/log</code></p>
 
-<p>Replace <code class="prettyprint">LOCK_ID</code> with the appropiate lock ID.</p>
+<p>Replace <code class="prettyprint">LOCK_ID</code> with the appropriate lock ID.</p>
 
 <h3 id="event-types">Event Types</h3>
 
@@ -634,7 +634,11 @@ curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-0
 
 <p><code class="prettyprint">POST https://api.doordeck.com/device/LOCK_ID/execute</code></p>
 
-<p>Replace <code class="prettyprint">LOCK_ID</code> with the appropiate lock ID.</p>
+<p>Replace <code class="prettyprint">LOCK_ID</code> with the appropriate lock ID.</p>
+
+<aside class="success">
+If a request expires within the next 60 seconds, a 200 is returned upon success, if a request expires in more than 60 seconds, a 202 is returned to indicate the request has been queued for the device.
+</aside>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -758,7 +762,7 @@ curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-0
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Bad Request &ndash; Your request sucks</td>
+<td>Bad Request &ndash; Your request is wrong</td>
 </tr>
 <tr>
 <td>401</td>
@@ -781,6 +785,10 @@ curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-0
 <td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
 </tr>
 <tr>
+<td>409</td>
+<td>Conflict - The JWT ID has already been used</td>
+</tr>
+<tr>
 <td>410</td>
 <td>Gone &ndash; The resource requested has been removed from our servers</td>
 </tr>
@@ -794,7 +802,11 @@ curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-0
 </tr>
 <tr>
 <td>503</td>
-<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
+<td>Service Unavailable &ndash; The Doordeck device is offline. Please try again later.</td>
+</tr>
+<tr>
+<td>504</td>
+<td>Gateway Timeout - The Doordeck device didn&rsquo;t response in a timely manner</td>
 </tr>
 </tbody></table>
 
