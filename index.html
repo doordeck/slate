@@ -365,6 +365,45 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 </tr>
 </tbody></table>
 
+<h2 id="change-password">Change Password</h2>
+<pre class="highlight plaintext"><code>curl "https://api.doordeck.com/account/password"
+  -H "Authorization: Bearer TOKEN"
+  -X POST
+  -H 'content-type: application/json'
+  --data-binary '{"oldPassword":"OLD_PASSWORD","newPassword":"newPassword"}'
+</code></pre>
+
+<blockquote>
+<p>Replace <code class="prettyprint">OLD_PASSWORD</code> with the users&rsquo; current password and <code class="prettyprint">NEW_PASSWORD</code> with their desired password.</p>
+</blockquote>
+
+<p>This endpoint is used to allow a user to change their password.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api.doordeck.com/account/password</code></p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>oldPassword</td>
+<td>true</td>
+<td>User&rsquo;s old password.</td>
+</tr>
+<tr>
+<td>newPassword</td>
+<td>true</td>
+<td>User&rsquo;s desired new password.</td>
+</tr>
+</tbody></table>
+
 <h1 id="lock-operations">Lock Operations</h1>
 
 <h2 id="get-all-locks">Get all locks</h2>
@@ -430,7 +469,7 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves information about a specific lock, its usage is prefered over the list lock call for performance reasons.</p>
+<p>This endpoint retrieves information about a specific lock, its usage is preferred over the list lock call for performance reasons.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -721,32 +760,327 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <tr>
 <td>type</td>
 <td>true</td>
-<td>Can be <code class="prettyprint">MUTATE_LOCK</code>, <code class="prettyprint">ADD_USER</code>, <code class="prettyprint">REMOVE_USER</code></td>
+<td>Must be <code class="prettyprint">MUTATE_LOCK</code></td>
 </tr>
 <tr>
 <td>locked</td>
-<td>true (if type is <code class="prettyprint">MUTATE_LOCK</code>)</td>
+<td>true</td>
 <td>Boolean indicating if the lock should be locked or unlocked</td>
 </tr>
 <tr>
 <td>duration</td>
-<td>false (only if type is <code class="prettyprint">MUTATE_LOCK</code> and <code class="prettyprint">locked</code> is true)</td>
+<td>false</td>
 <td>Number of seconds the lock should be unlocked for</td>
+</tr>
+</tbody></table>
+
+<h2 id="share-a-lock"> Share A Lock</h2>
+<pre class="highlight shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span> <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  --data-binary <span class="s1">'{"email":"USERNAME","password":"PASSWORD"}'</span> <span class="se">\</span>
+  | jq -r .privateKey <span class="se">\</span>
+  | base64 -D <span class="se">\</span>
+  | openssl pkcs8 -nocrypt -inform DER -outform PEM -out privatekey.pem
+
+<span class="nv">HEADER</span><span class="o">=</span><span class="s1">'{"alg":"RS256","typ":"JWT"}'</span>
+<span class="nv">BODY</span><span class="o">=</span><span class="s1">'{"iss":"USER_ID","sub":"00000000-0000-0000-0000-000000000000","nbf":1473083829,"iat":1473083829,"exp":1473083889,"operation":{"type":"ADD_USER","publicKey":PUBLIC_KEY,"user":"11111111-1111-1111-1111-111111111111"}}'</span>
+<span class="nv">HEADER_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER</span> | base64 | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
+<span class="nv">BODY_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$BODY</span> | base64  | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
+<span class="nv">SIGNATURE_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER_B64</span>.<span class="nv">$BODY_B64</span> | openssl sha -sha256 -sign privatekey.pem | base64 | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
+<span class="nv">JWT</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER_B64</span>.<span class="nv">$BODY_B64</span>.<span class="nv">$SIGNATURE_B64</span><span class="sb">`</span>
+
+curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/execute'</span>
+  -X POST
+  -H <span class="s1">'authorization: Bearer TOKEN'</span>
+  -H <span class="s1">'content-type: application/json;charset=UTF-8'</span>
+  --data-binary <span class="s2">"</span><span class="nv">$JWT</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<ul>
+<li>Replace <code class="prettyprint">00000000-0000-0000-0000-000000000000</code> with the lock&rsquo;s ID</li>
+<li>Replace <code class="prettyprint">USER_ID</code> with the user&rsquo;s ID (obtained from decoding their auth token)</li>
+<li>Replace <code class="prettyprint">PUBLIC_KEY</code> with the invitee&rsquo;s public key </li>
+<li>Replace <code class="prettyprint">11111111-1111-1111-1111-111111111111</code> with the invitee&rsquo;s user ID,</li>
+<li>Replace <code class="prettyprint">USERNAME</code> and <code class="prettyprint">PASSWORD</code> with the appropriate credentials</li>
+</ul>
+</blockquote>
+
+<p>This endpoint allows operations to be performed on a lock, such as lock, unlock, add/remove user. Requests to this endpoint must be signed and formed as a JSON web token.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api.doordeck.com/device/LOCK_ID/execute</code></p>
+
+<p>Replace <code class="prettyprint">LOCK_ID</code> with the appropriate lock ID.</p>
+
+<aside class="success">
+If a request expires within the next 60 seconds, a 200 is returned upon success, if a request expires in more than 60 seconds, a 202 is returned to indicate the request has been queued for the device.
+</aside>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<p>The header is formed of the following fields.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>alg</td>
+<td>true</td>
+<td><code class="prettyprint">RS256</code>, RSA signed with a 256 bit SHA hash</td>
+</tr>
+<tr>
+<td>typ</td>
+<td>true</td>
+<td><code class="prettyprint">JWT</code>, JSON web token</td>
+</tr>
+</tbody></table>
+
+<p>The body is formed of the following fields.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>iss</td>
+<td>true</td>
+<td>Issuer, this should be the user&rsquo;s ID</td>
+</tr>
+<tr>
+<td>sub</td>
+<td>true</td>
+<td>Subject, this should be the lock&rsquo;s ID</td>
+</tr>
+<tr>
+<td>nbf</td>
+<td>true</td>
+<td>Not before, a Unix timestamp indicating the earliest date the request is valid from</td>
+</tr>
+<tr>
+<td>iat</td>
+<td>true</td>
+<td>Issued at, the current Unix timestamp</td>
+</tr>
+<tr>
+<td>exp</td>
+<td>true</td>
+<td>Expires, a Unix timestamp indicating when the request should expire, requests to change the lock status should be valid for up to one minute, other requests can have a much longer expiry time</td>
+</tr>
+<tr>
+<td>jti</td>
+<td>false (but highly recommended)</td>
+<td>User generated, unique ID used for tracking the request status and preventing replay attacks. UUIDs are recommended here.</td>
+</tr>
+<tr>
+<td>operation</td>
+<td>true</td>
+<td>A JSON object containing the instructions of the lock</td>
+</tr>
+</tbody></table>
+
+<p>The operation object definition is as follows</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>true</td>
+<td>Must be <code class="prettyprint">ADD_USER</code></td>
 </tr>
 <tr>
 <td>user</td>
-<td>true (if type is <code class="prettyprint">ADD_USER</code>)</td>
+<td>true</td>
 <td>ID of user to add</td>
 </tr>
 <tr>
 <td>publicKey</td>
-<td>true (if type is <code class="prettyprint">ADD_USER</code>)</td>
+<td>true</td>
 <td>Public key of user to add</td>
+</tr>
+</tbody></table>
+
+<h2 id="revoke-access-to-a-lock"> Revoke Access To A Lock</h2>
+<pre class="highlight shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span> <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  --data-binary <span class="s1">'{"email":"USERNAME","password":"PASSWORD"}'</span> <span class="se">\</span>
+  | jq -r .privateKey <span class="se">\</span>
+  | base64 -D <span class="se">\</span>
+  | openssl pkcs8 -nocrypt -inform DER -outform PEM -out privatekey.pem
+
+<span class="nv">HEADER</span><span class="o">=</span><span class="s1">'{"alg":"RS256","typ":"JWT"}'</span>
+<span class="nv">BODY</span><span class="o">=</span><span class="s1">'{"iss":"USER_ID","sub":"00000000-0000-0000-0000-000000000000","nbf":1473083829,"iat":1473083829,"exp":1473083889,"operation":{"type":"REMOVE_USER","users":["11111111-1111-1111-1111-111111111111"]}}'</span>
+<span class="nv">HEADER_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER</span> | base64 | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
+<span class="nv">BODY_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$BODY</span> | base64  | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
+<span class="nv">SIGNATURE_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER_B64</span>.<span class="nv">$BODY_B64</span> | openssl sha -sha256 -sign privatekey.pem | base64 | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
+<span class="nv">JWT</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER_B64</span>.<span class="nv">$BODY_B64</span>.<span class="nv">$SIGNATURE_B64</span><span class="sb">`</span>
+
+curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/execute'</span>
+  -X POST
+  -H <span class="s1">'authorization: Bearer TOKEN'</span>
+  -H <span class="s1">'content-type: application/json;charset=UTF-8'</span>
+  --data-binary <span class="s2">"</span><span class="nv">$JWT</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<ul>
+<li>Replace <code class="prettyprint">00000000-0000-0000-0000-000000000000</code> with the lock&rsquo;s ID</li>
+<li>Replace <code class="prettyprint">USER_ID</code> with the user&rsquo;s ID (obtained from decoding their auth token)</li>
+<li>Replace <code class="prettyprint">11111111-1111-1111-1111-111111111111</code> with the revoked user&rsquo;s ID,</li>
+<li>Replace <code class="prettyprint">USERNAME</code> and <code class="prettyprint">PASSWORD</code> with the appropriate credentials</li>
+</ul>
+</blockquote>
+
+<p>This endpoint allows multiple operations to be performed on locks. Requests to this endpoint must be signed and formed as a JSON web token. 
+This section explains how to revoke access to a lock, this can also be used to delete a lock from the current users account.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api.doordeck.com/device/LOCK_ID/execute</code></p>
+
+<p>Replace <code class="prettyprint">LOCK_ID</code> with the appropriate lock ID.</p>
+
+<aside class="success">
+If a request expires within the next 60 seconds, a 200 is returned upon success, if a request expires in more than 60 seconds, a 202 is returned to indicate the request has been queued for the device.
+</aside>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<p>The header is formed of the following fields.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>alg</td>
+<td>true</td>
+<td><code class="prettyprint">RS256</code>, RSA signed with a 256 bit SHA hash</td>
+</tr>
+<tr>
+<td>typ</td>
+<td>true</td>
+<td><code class="prettyprint">JWT</code>, JSON web token</td>
+</tr>
+</tbody></table>
+
+<p>The body is formed of the following fields.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>iss</td>
+<td>true</td>
+<td>Issuer, this should be the user&rsquo;s ID</td>
+</tr>
+<tr>
+<td>sub</td>
+<td>true</td>
+<td>Subject, this should be the lock&rsquo;s ID</td>
+</tr>
+<tr>
+<td>nbf</td>
+<td>true</td>
+<td>Not before, a Unix timestamp indicating the earliest date the request is valid from</td>
+</tr>
+<tr>
+<td>iat</td>
+<td>true</td>
+<td>Issued at, the current Unix timestamp</td>
+</tr>
+<tr>
+<td>exp</td>
+<td>true</td>
+<td>Expires, a Unix timestamp indicating when the request should expire, requests to change the lock status should be valid for up to one minute, other requests can have a much longer expiry time</td>
+</tr>
+<tr>
+<td>jti</td>
+<td>false (but highly recommended)</td>
+<td>User generated, unique ID used for tracking the request status and preventing replay attacks. UUIDs are recommended here.</td>
+</tr>
+<tr>
+<td>operation</td>
+<td>true</td>
+<td>A JSON object containing the instructions of the lock</td>
+</tr>
+</tbody></table>
+
+<p>The operation object definition is as follows</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>true</td>
+<td>Must be <code class="prettyprint">REMOVE_USER</code></td>
 </tr>
 <tr>
 <td>users</td>
-<td>true (if type is <code class="prettyprint">REMOVE_USER</code>)</td>
+<td>true</td>
 <td>List of user IDs to remove</td>
+</tr>
+</tbody></table>
+
+<h2 id="monitor-real-time-lock-state">Monitor Real-time Lock State</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"https://api.doordeck.com/device/events?device=00000000-0000-0000-0000-000000000000"</span>
+  -H <span class="s2">"Authorization: Bearer REFRESH_TOKEN"</span>
+</code></pre>
+
+<blockquote>
+<p>Replace <code class="prettyprint">00000000-0000-0000-0000-000000000000</code> with the lock&rsquo;s ID</p>
+</blockquote>
+
+<p>This is a <a href="https://en.wikipedia.org/wiki/Server-sent_events">Server-Sent Events</a> endpoint that takes multiple devices and returns a stream of events.</p>
+
+<aside class="notice">
+This endpoint is experimental and may change without notice.
+</aside>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.doordeck.com/device/events?device=00000000-0000-0000-0000-000000000000</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>device</td>
+<td>true</td>
+<td>Device ID to monitor, multiple can specified as seperate query parameters</td>
 </tr>
 </tbody></table>
 
