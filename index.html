@@ -99,7 +99,7 @@
       </span>
     </a>
     <div class="tocify-wrapper">
-      <img src="images/logo.png" alt="Logo" />
+      <img src="images/logo.svg" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
         </div>
@@ -138,10 +138,10 @@
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"privateKey"</span><span class="p">:</span><span class="s2">"base 64 encoded private key"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"authToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for authentication"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"refreshToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for refreshing authentication credentials"</span><span class="w">
+  </span><span class="s2">"privateKey"</span><span class="p">:</span><span class="s2">"base 64 encoded private key"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"authToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for authentication"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"refreshToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for refreshing authentication credentials"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Doordeck uses tokens to permit access to the API. Doordeck expects for the token to be included in all API requests to the server in a header that looks like the following:</p>
@@ -159,12 +159,12 @@ You must replace <code>TOKEN</code> with your authentication token (the <code>au
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"exp"</span><span class="p">:</span><span class="mi">1473163075</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"iat"</span><span class="p">:</span><span class="mi">1473076675</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"sub"</span><span class="p">:</span><span class="s2">"5a5f6e80-3c51-11e6-9e57-cf40be3013fb"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"session"</span><span class="p">:</span><span class="s2">"fb2a0060-735f-11e6-b487-6f16fda53917"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"refresh"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"email"</span><span class="p">:</span><span class="s2">"michael@doordeck.com"</span><span class="w">
+  </span><span class="s2">"exp"</span><span class="p">:</span><span class="mi">1473163075</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"iat"</span><span class="p">:</span><span class="mi">1473076675</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sub"</span><span class="p">:</span><span class="s2">"5a5f6e80-3c51-11e6-9e57-cf40be3013fb"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"session"</span><span class="p">:</span><span class="s2">"fb2a0060-735f-11e6-b487-6f16fda53917"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"refresh"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"michael@doordeck.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h1 id="account">Account</h1>
@@ -181,10 +181,10 @@ You must replace <code>TOKEN</code> with your authentication token (the <code>au
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"privateKey"</span><span class="p">:</span><span class="s2">"base 64 encoded private key"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"authToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for authentication"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"refreshToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for refreshing authentication credentials"</span><span class="w">
+  </span><span class="s2">"privateKey"</span><span class="p">:</span><span class="s2">"base 64 encoded private key"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"authToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for authentication"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"refreshToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for refreshing authentication credentials"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint lets user&rsquo;s attempt to login.</p>
@@ -250,10 +250,10 @@ You must replace <code>TOKEN</code> with your authentication token (the <code>au
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"privateKey"</span><span class="p">:</span><span class="s2">"base 64 encoded private key"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"authToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for authentication"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"refreshToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for refreshing authentication credentials"</span><span class="w">
+  </span><span class="s2">"privateKey"</span><span class="p">:</span><span class="s2">"base 64 encoded private key"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"authToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for authentication"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"refreshToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for refreshing authentication credentials"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint allows users to register for a Doordeck account.</p>
@@ -295,8 +295,8 @@ A validation email will be disptahced to the user&rsquo;s email address upon suc
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"authToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for authentication"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"refreshToken"</span><span class="p">:</span><span class="s2">"(Optional) JSON Web Token for refreshing authentication credentials"</span><span class="w">
+    </span><span class="s2">"authToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for authentication"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"refreshToken"</span><span class="p">:</span><span class="s2">"(Optional) JSON Web Token for refreshing authentication credentials"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint refreshes a users&rsquo; authentication token using their refresh token. Refresh tokens cannot be used for standard requests and have a very long life compared with an authentication token.</p>
@@ -402,26 +402,26 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"state"</span><span class="p">:</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"locked"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"connected"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"duration"</span><span class="p">:</span><span class="mf">5.000000000</span><span class="w">
+        </span><span class="s2">"locked"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"connected"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"duration"</span><span class="p">:</span><span class="mf">5.000000000</span><span class="w">
       </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"unlockTime"</span><span class="p">:</span><span class="mf">5.000000000</span><span class="p">,</span><span class="nt">"unlockForever"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+    </span><span class="s2">"unlockTime"</span><span class="p">:</span><span class="mf">5.000000000</span><span class="p">,</span><span class="s2">"unlockForever"</span><span class="p">:</span><span class="kc">false</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Office"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"state"</span><span class="p">:</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Office"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"locked"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"connected"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"duration"</span><span class="p">:</span><span class="mf">10.000000000</span><span class="w">
+        </span><span class="s2">"locked"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"connected"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"duration"</span><span class="p">:</span><span class="mf">10.000000000</span><span class="w">
       </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"unlockTime"</span><span class="p">:</span><span class="mf">10.000000000</span><span class="p">,</span><span class="nt">"unlockForever"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+    </span><span class="s2">"unlockTime"</span><span class="p">:</span><span class="mf">10.000000000</span><span class="p">,</span><span class="s2">"unlockForever"</span><span class="p">:</span><span class="kc">false</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -441,15 +441,15 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"state"</span><span class="p">:</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"state"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"locked"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"connected"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"duration"</span><span class="p">:</span><span class="mf">5.000000000</span><span class="w">
+      </span><span class="s2">"locked"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"connected"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"duration"</span><span class="p">:</span><span class="mf">5.000000000</span><span class="w">
     </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"unlockTime"</span><span class="p">:</span><span class="mf">5.000000000</span><span class="p">,</span><span class="nt">"unlockForever"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+  </span><span class="s2">"unlockTime"</span><span class="p">:</span><span class="mf">5.000000000</span><span class="p">,</span><span class="s2">"unlockForever"</span><span class="p">:</span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves information about a specific lock, its usage is preferred over the list lock call for performance reasons.</p>
@@ -471,16 +471,16 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="mf">1473061669.000000000</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"DOOR_LOCK"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"user"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Door locked"</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mf">1473061669.000000000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"DOOR_LOCK"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"Door locked"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="mf">1473061664.000000000</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"DOOR_UNLOCK"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"user"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Door unlocked"</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mf">1473061664.000000000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"DOOR_UNLOCK"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"Door unlocked"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -531,6 +531,36 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 <td>Lock has disconected from Doordeck platform</td>
 </tr>
 </tbody></table>
+
+<h2 id="get-users-for-a-lock"> Get users for a lock</h2>
+<pre class="highlight shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/users'</span>
+  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre>
+<blockquote>
+<p>Replace <code class="prettyprint">00000000-0000-0000-0000-000000000000</code> with the lock&rsquo;s ID.</p>
+
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"developer@doordeck.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"billing@doordeck.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Billing"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all users associated with a particular lock.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.doordeck.com/device/LOCK_ID/users</code></p>
+
+<p>Replace <code class="prettyprint">LOCK_ID</code> with the appropriate lock ID.</p>
 
 <h2 id="update-lock-properties"> Update Lock Properties</h2>
 <pre class="highlight shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000'</span>
@@ -768,10 +798,16 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.doordeck.com/share/invite/USER_EMAIL</code></p>
+
+<p>Replace <code class="prettyprint">USER_EMAIL</code> with the user&rsquo;s email</p>
+
 <h2 id="share-a-lock"> Share A Lock</h2>
 <pre class="highlight shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
