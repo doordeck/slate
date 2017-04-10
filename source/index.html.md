@@ -156,7 +156,7 @@ A validation email will be disptahced to the user's email address upon successfu
 ## Refresh Token
 
 ```shell
-curl "https://api.doordeck.com/token/refresh"
+curl "https://api.doordeck.com/auth/token/refresh"
   -H "Authorization: Bearer REFRESH_TOKEN"
 ```
 
@@ -173,7 +173,7 @@ This endpoint refreshes a users' authentication token using their refresh token.
 
 ### HTTP Request
 
-`GET https://api.doordeck.com/token/refresh`
+`GET https://api.doordeck.com/auth/token/refresh`
 
 <aside class="notice">
 A refresh token should be used in place of an authentication token for this request.
