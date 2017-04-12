@@ -187,7 +187,7 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 
 ```shell
 curl "https://api.doordeck.com/token/destroy"
-  -H "Authorization: Bearer REFRESH_TOKEN"
+  -H "Authorization: Bearer TOKEN"
 ```
 
 This endpoint destroys a session associated with an authentication token and any associated refresh token.
