@@ -197,7 +197,7 @@ This endpoint destroys a session associated with an authentication token and any
 
 ## Verify Email
 
-```
+```shell
 curl "https://api.doordeck.com/account/email/verify?code=CODE"
   -X PUT
 ```
@@ -218,7 +218,7 @@ code | true | Verification code from email.
 
 ## Change Password
 
-```
+```shell
 curl "https://api.doordeck.com/account/password"
   -H "Authorization: Bearer TOKEN"
   -X POST
