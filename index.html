@@ -231,7 +231,7 @@
 
 <p>This API documentation is generated using <a href="https://github.com/tripit/slate">Slate</a>, if you spot any errors please submit a pull request directly on <a href="https://github.com/doordeck/docs/">Github</a>.</p>
 
-<h1 id="authentication">Authentication</h1>
+          <h1 id="authentication">Authentication</h1>
 
 <blockquote>
 <p>To authorize, use this code:</p>
@@ -390,6 +390,11 @@ You must replace <code>TOKEN</code> with your authentication token (the <code>au
 <td>true</td>
 <td>Password for access to account.</td>
 </tr>
+<tr>
+<td>displayName</td>
+<td>false</td>
+<td>User&rsquo;s display name (e.g. their fullname)</td>
+</tr>
 </tbody></table>
 
 <aside class="success">
@@ -500,7 +505,7 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 </tr>
 </tbody></table>
 
-<h1 id="lock-operations">Lock Operations</h1>
+          <h1 id="lock-operations">Lock Operations</h1>
 
 <h2 id="get-all-locks">Get all locks</h2>
 <pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device'</span>
@@ -513,24 +518,58 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastOperation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494786493</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"colour"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#57355D"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMIN"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> 
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"txBeaconRssi"</span><span class="p">:</span><span class="w"> </span><span class="mi">-45</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rxBeaconRssi"</span><span class="p">:</span><span class="w"> </span><span class="mi">-80</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"unlockTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"proximityUnlock"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"permittedAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"defaultName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"usageRequirements"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="s2">"delay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
     </span><span class="s2">"state"</span><span class="p">:</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"locked"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"connected"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"duration"</span><span class="p">:</span><span class="mf">5.000000000</span><span class="w">
+        </span><span class="s2">"duration"</span><span class="p">:</span><span class="mi">10</span><span class="w">
       </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"unlockTime"</span><span class="p">:</span><span class="mf">5.000000000</span><span class="p">,</span><span class="s2">"unlockForever"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+    </span><span class="s2">"favourite"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"unlockTime"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"unlockForever"</span><span class="p">:</span><span class="kc">false</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Office"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastOperation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494786333</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"colour"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#FFAACC"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USER"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> 
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"txBeaconRssi"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rxBeaconRssi"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"unlockTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"proximityUnlock"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"permittedAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"33.44.55.66"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"defaultName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Super office"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"usageRequirements"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="s2">"delay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
     </span><span class="s2">"state"</span><span class="p">:</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"locked"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"connected"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"duration"</span><span class="p">:</span><span class="mf">10.000000000</span><span class="w">
+        </span><span class="s2">"connected"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"duration"</span><span class="p">:</span><span class="mi">5</span><span class="w">
       </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"unlockTime"</span><span class="p">:</span><span class="mf">10.000000000</span><span class="p">,</span><span class="s2">"unlockForever"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+    </span><span class="s2">"favourite"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"unlockTime"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"unlockForever"</span><span class="p">:</span><span class="kc">false</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -550,15 +589,29 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"state"</span><span class="p">:</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"locked"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"connected"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"duration"</span><span class="p">:</span><span class="mf">5.000000000</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"unlockTime"</span><span class="p">:</span><span class="mf">5.000000000</span><span class="p">,</span><span class="s2">"unlockForever"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastOperation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494786493</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"colour"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#57355D"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMIN"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"txBeaconRssi"</span><span class="p">:</span><span class="w"> </span><span class="mi">-45</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"rxBeaconRssi"</span><span class="p">:</span><span class="w"> </span><span class="mi">-80</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"unlockTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"proximityUnlock"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"permittedAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"defaultName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"usageRequirements"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"delay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"connected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"favourite"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"unlockTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"unlockForever"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves information about a specific lock, its usage is preferred over the list lock call for performance reasons.</p>
@@ -569,7 +622,7 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 
 <p>Replace <code class="prettyprint">LOCK_ID</code> with the appropriate lock ID.</p>
 
-<h2 id="get-lock-audit-trail"> Get lock audit trail</h2>
+<h2 id="get-lock-audit-trail-v1"> Get lock audit trail (v1)</h2>
 <pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/log'</span>
   -H <span class="s2">"Authorization: Bearer TOKEN"</span>
 </code></pre>
@@ -641,6 +694,109 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 </tr>
 </tbody></table>
 
+<h2 id="get-lock-audit-trail-v2"> Get lock audit trail (v2)</h2>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/log'</span>
+  -H <span class="s2">"Accept: application/vnd.doordeck.api-v2+json"</span>
+  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre>
+<blockquote>
+<p>Replace <code class="prettyprint">00000000-0000-0000-0000-000000000000</code> with the lock&rsquo;s ID.</p>
+
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494267549</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOOR_LOCK"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Door locked"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494267539</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOOR_UNLOCK"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Door unlocked"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494267534</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOOR_UNLOCK"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info@doordeck.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doordeck User"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Door unlocked"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all log events associated with a particular lock, it includes additional details over v1.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.doordeck.com/device/LOCK_ID/log</code></p>
+
+<p>Replace <code class="prettyprint">LOCK_ID</code> with the appropriate lock ID.</p>
+
+<p>This call must be made with the <code class="prettyprint">Accept</code> header set to <code class="prettyprint">application/vnd.doordeck.api-v2+json</code></p>
+
+<h3 id="event-types">Event Types</h3>
+
+<p>The call returns an enum of event types:</p>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>DOOR_OPEN</td>
+<td>The lock&rsquo;s monitor shows the door is open</td>
+</tr>
+<tr>
+<td>DOOR_CLOSE</td>
+<td>The lock&rsquo;s monitor shows the door is closed</td>
+</tr>
+<tr>
+<td>DOOR_UNLOCK</td>
+<td>The lock has changed to the unlock stated</td>
+</tr>
+<tr>
+<td>DOOR_LOCK</td>
+<td>The lock has changed to the locked state</td>
+</tr>
+<tr>
+<td>OWNER_ASSIGNED</td>
+<td>The lock&rsquo;s owner has been updated</td>
+</tr>
+<tr>
+<td>DEVICE_CONNECTED</td>
+<td>Lock has connected to Doordeck platform</td>
+</tr>
+<tr>
+<td>DEVICE_DISCONNECTED</td>
+<td>Lock has disconected from Doordeck platform</td>
+</tr>
+<tr>
+<td>LOCK_SHARED</td>
+<td>The lock&rsquo;s access has been shared to a new user</td>
+</tr>
+<tr>
+<td>LOCK_REVOKED</td>
+<td>Access to the lock has been revoked for the specified user</td>
+</tr>
+<tr>
+<td>USER_PROMOTED</td>
+<td>A user was promoted to an administrator</td>
+</tr>
+<tr>
+<td>USER_DEMOTED</td>
+<td>An administrator was demoted to a user</td>
+</tr>
+</tbody></table>
+
 <h2 id="get-users-for-a-lock"> Get users for a lock</h2>
 <pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/users'</span>
   -H <span class="s2">"Authorization: Bearer TOKEN"</span>
@@ -653,13 +809,19 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"developer@doordeck.com"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"developer@doordeck.com.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base 64 encoded public key"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Developer"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orphan"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USER"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"billing@doordeck.com"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Billing"</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"administrator@doordeck.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base 64 encoded public key"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Administrator"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orphan"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMIN"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -676,19 +838,19 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
   -X PUT
   -H <span class="s2">"Authorization: Bearer TOKEN"</span>
   -H <span class="s1">'content-type: application/json'</span>
-  --data-binary <span class="s1">'{"name":"Home","unlockTime":5}'</span>
+  --data-binary <span class="s1">'{"name":"Home","favourite":false,"colour":"#ffggaa"}'</span>
 </code></pre>
 <blockquote>
 <p>Replace <code class="prettyprint">00000000-0000-0000-0000-000000000000</code> with the lock&rsquo;s ID.</p>
 </blockquote>
 
-<p>This endpoint allows the name and unlock duration to be updated for an existing lock.</p>
+<p>This endpoint allows the name, favourite flag and colour to be updated for an existing lock.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">PUT https://api.doordeck.com/device/LOCK_ID</code></p>
 
-<p>Replace <code class="prettyprint">LOCK_ID</code> with the appropiate lock ID.</p>
+<p>Replace <code class="prettyprint">LOCK_ID</code> with the appropriate lock ID.</p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -716,7 +878,7 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
   -X POST
   -H <span class="s1">'Authorization: Bearer TOKEN'</span>
   -H <span class="s1">'content-type: application/json'</span>
-  --data-binary <span class="s1">'{"key":"KEY","name":"My lock","unlockTime":20}'</span>
+  --data-binary <span class="s1">'{"key":"KEY","name":"My lock"}'</span>
 </code></pre>
 <blockquote>
 <p>Replace <code class="prettyprint">KEY</code> with the lock&rsquo;s registration key</p>
@@ -749,12 +911,7 @@ Upon successful registration of a lock, a HTTP 202 is returned along with the lo
 <tr>
 <td>name</td>
 <td>true</td>
-<td>Alias of the lock (visible to all users)</td>
-</tr>
-<tr>
-<td>unlockTime</td>
-<td>true</td>
-<td>Value in seconds of how long the lock should remain open, setting this to <code class="prettyprint">0</code> means the lock must be manually locked every use</td>
+<td>Alias of the lock (default for all users)</td>
 </tr>
 </tbody></table>
 
@@ -927,7 +1084,7 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
   | openssl pkcs8 -nocrypt -inform DER -outform PEM -out privatekey.pem
 
 <span class="nv">HEADER</span><span class="o">=</span><span class="s1">'{"alg":"RS256","typ":"JWT"}'</span>
-<span class="nv">BODY</span><span class="o">=</span><span class="s1">'{"iss":"USER_ID","sub":"00000000-0000-0000-0000-000000000000","nbf":1473083829,"iat":1473083829,"exp":1473083889,"operation":{"type":"ADD_USER","publicKey":PUBLIC_KEY,"user":"11111111-1111-1111-1111-111111111111"}}'</span>
+<span class="nv">BODY</span><span class="o">=</span><span class="s1">'{"iss":"USER_ID","sub":"00000000-0000-0000-0000-000000000000","nbf":1473083829,"iat":1473083829,"exp":1473083889,"operation":{"type":"ADD_USER","publicKey":PUBLIC_KEY,"user":"11111111-1111-1111-1111-111111111111","role":"USER"}}'</span>
 <span class="nv">HEADER_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER</span> | base64 | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
 <span class="nv">BODY_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$BODY</span> | base64  | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
 <span class="nv">SIGNATURE_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER_B64</span>.<span class="nv">$BODY_B64</span> | openssl sha -sha256 -sign privatekey.pem | base64 | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
@@ -1053,6 +1210,11 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <td>publicKey</td>
 <td>true</td>
 <td>Public key of user to add</td>
+</tr>
+<tr>
+<td>role</td>
+<td>false</td>
+<td>Should be either ADMIN or USER</td>
 </tr>
 </tbody></table>
 
