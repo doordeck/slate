@@ -341,7 +341,7 @@ curl 'https://api.doordeck.com/auth/token/' \
   -H 'content-type: application/json' \
   --data-binary '{"email":"USERNAME","password":"PASSWORD"}' \
   | jq -r .privateKey \
-  | base64 -D \
+  | base64 --decode \
   | openssl pkcs8 -nocrypt -inform DER -outform PEM -out privatekey.pem
 
 HEADER='{"alg":"RS256","typ":"JWT"}'
@@ -437,7 +437,7 @@ curl 'https://api.doordeck.com/auth/token/' \
   -H 'content-type: application/json' \
   --data-binary '{"email":"USERNAME","password":"PASSWORD"}' \
   | jq -r .privateKey \
-  | base64 -D \
+  | base64 --decode \
   | openssl pkcs8 -nocrypt -inform DER -outform PEM -out privatekey.pem
 
 HEADER='{"alg":"RS256","typ":"JWT"}'
@@ -510,7 +510,7 @@ curl 'https://api.doordeck.com/auth/token/' \
   -H 'content-type: application/json' \
   --data-binary '{"email":"USERNAME","password":"PASSWORD"}' \
   | jq -r .privateKey \
-  | base64 -D \
+  | base64 --decode \
   | openssl pkcs8 -nocrypt -inform DER -outform PEM -out privatekey.pem
 
 HEADER='{"alg":"RS256","typ":"JWT"}'
