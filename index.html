@@ -921,7 +921,7 @@ Upon successful registration of a lock, a HTTP 202 is returned along with the lo
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   --data-binary <span class="s1">'{"email":"USERNAME","password":"PASSWORD"}'</span> <span class="se">\</span>
   | jq -r .privateKey <span class="se">\</span>
-  | base64 -D <span class="se">\</span>
+  | base64 --decode <span class="se">\</span>
   | openssl pkcs8 -nocrypt -inform DER -outform PEM -out privatekey.pem
 
 <span class="nv">HEADER</span><span class="o">=</span><span class="s1">'{"alg":"RS256","typ":"JWT"}'</span>
@@ -1080,7 +1080,7 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   --data-binary <span class="s1">'{"email":"USERNAME","password":"PASSWORD"}'</span> <span class="se">\</span>
   | jq -r .privateKey <span class="se">\</span>
-  | base64 -D <span class="se">\</span>
+  | base64 --decode <span class="se">\</span>
   | openssl pkcs8 -nocrypt -inform DER -outform PEM -out privatekey.pem
 
 <span class="nv">HEADER</span><span class="o">=</span><span class="s1">'{"alg":"RS256","typ":"JWT"}'</span>
@@ -1224,7 +1224,7 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   --data-binary <span class="s1">'{"email":"USERNAME","password":"PASSWORD"}'</span> <span class="se">\</span>
   | jq -r .privateKey <span class="se">\</span>
-  | base64 -D <span class="se">\</span>
+  | base64 --decode <span class="se">\</span>
   | openssl pkcs8 -nocrypt -inform DER -outform PEM -out privatekey.pem
 
 <span class="nv">HEADER</span><span class="o">=</span><span class="s1">'{"alg":"RS256","typ":"JWT"}'</span>
