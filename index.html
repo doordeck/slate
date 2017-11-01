@@ -472,7 +472,7 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
   -H <span class="s2">"Authorization: Bearer TOKEN"</span>
   -X POST
   -H <span class="s1">'content-type: application/json'</span>
-  --data-binary <span class="s1">'{"oldPassword":"OLD_PASSWORD","newPassword":"newPassword"}'</span>
+  --data-binary <span class="s1">'{"oldPassword":"OLD_PASSWORD","newPassword":"NEW_PASSWORD"}'</span>
 </code></pre>
 <blockquote>
 <p>Replace <code class="prettyprint">OLD_PASSWORD</code> with the users&rsquo; current password and <code class="prettyprint">NEW_PASSWORD</code> with their desired password.</p>
@@ -505,9 +505,62 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 </tr>
 </tbody></table>
 
+<h2 id="get-user-details">Get User Details</h2>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/account"</span>
+  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User's public key"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User's email address"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User's display name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"emailVerified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint returns information about the currently logged in user</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.doordeck.com/account</code></p>
+
+<h2 id="update-user-details">Update User Details</h2>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/account"</span>
+  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
+  -X POST
+  -H <span class="s1">'content-type: application/json'</span>
+  --data-binary <span class="s1">'{"displayName":"NEW_DISPLAY_NAME"}'</span>
+</code></pre>
+<blockquote>
+<p>Replace <code class="prettyprint">NEW_DISPLAY_NAME</code> with the new display name to use</p>
+</blockquote>
+
+<p>This endpoint updates a user&rsquo;s details, currently this is limited to display name.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api.doordeck.com/account</code></p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>displayName</td>
+<td>true</td>
+<td>User&rsquo;s desired display name</td>
+</tr>
+</tbody></table>
+
           <h1 id="lock-operations">Lock Operations</h1>
 
-<h2 id="get-all-locks">Get all locks</h2>
+<h2 id="get-all-locks">Get All Locks</h2>
 <pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device'</span>
   -H <span class="s2">"Authorization: Bearer TOKEN"</span>
 </code></pre>
@@ -559,7 +612,16 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
         </span><span class="p">],</span><span class="w">
         </span><span class="s2">"defaultName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Super office"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"usageRequirements"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-        </span><span class="s2">"delay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="s2">"delay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"unlockBetweenWindow"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08:00"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14:35"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Europe/London"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"WEDNESDAY"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"exceptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
     </span><span class="s2">"state"</span><span class="p">:</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -569,7 +631,9 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
       </span><span class="p">},</span><span class="w">
     </span><span class="s2">"favourite"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"unlockTime"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"unlockForever"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+    </span><span class="s2">"unlockForever"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"start"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"end"</span><span class="p">:</span><span class="kc">null</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -579,7 +643,7 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 
 <p><code class="prettyprint">GET https://api.doordeck.com/device</code></p>
 
-<h2 id="get-a-single-lock">Get a single lock</h2>
+<h2 id="get-a-single-lock">Get A Single Lock</h2>
 <pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000'</span>
   -H <span class="s2">"Authorization: Bearer TOKEN"</span>
 </code></pre>
@@ -602,7 +666,16 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
     </span><span class="s2">"permittedAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
     </span><span class="s2">"defaultName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"usageRequirements"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-    </span><span class="s2">"delay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="s2">"delay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"unlockBetweenWindow"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14:35"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Europe/London"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"WEDNESDAY"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"exceptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -611,7 +684,9 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"favourite"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"unlockTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"unlockForever"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="s2">"unlockForever"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"start"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"end"</span><span class="p">:</span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves information about a specific lock, its usage is preferred over the list lock call for performance reasons.</p>
@@ -622,7 +697,7 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 
 <p>Replace <code class="prettyprint">LOCK_ID</code> with the appropriate lock ID.</p>
 
-<h2 id="get-lock-audit-trail-v1"> Get lock audit trail (v1)</h2>
+<h2 id="get-lock-audit-trail-v1">Get Lock Audit Trail (v1)</h2>
 <pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/log'</span>
   -H <span class="s2">"Authorization: Bearer TOKEN"</span>
 </code></pre>
@@ -694,7 +769,7 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 </tr>
 </tbody></table>
 
-<h2 id="get-lock-audit-trail-v2"> Get lock audit trail (v2)</h2>
+<h2 id="get-lock-audit-trail-v2">Get Lock Audit Trail (v2)</h2>
 <pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/log'</span>
   -H <span class="s2">"Accept: application/vnd.doordeck.api-v2+json"</span>
   -H <span class="s2">"Authorization: Bearer TOKEN"</span>
@@ -797,7 +872,50 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 </tr>
 </tbody></table>
 
-<h2 id="get-users-for-a-lock"> Get users for a lock</h2>
+<h2 id="get-audit-for-a-user">Get Audit For A User</h2>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/user/00000000-0000-0000-0000-000000000000/log'</span>
+  -H <span class="s2">"Accept: application/vnd.doordeck.api-v2+json"</span>
+  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre>
+<blockquote>
+<p>Replace <code class="prettyprint">00000000-0000-0000-0000-000000000000</code> with the user&rsquo;s ID.</p>
+
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509481411</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOCK_SHARED"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000002"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000003"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info@doordeck.com"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"rejected"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509035275</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOOR_UNLOCK"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000002"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"rejected"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all log events associated with a particular user, it uses the same events as listed in the v2 audit trail endpoint.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.doordeck.com/user/LOCK_ID/log</code></p>
+
+<p>Replace <code class="prettyprint">LOCK_ID</code> with the appropriate lock ID.</p>
+
+<h2 id="get-users-for-a-lock">Get Users For A Lock</h2>
 <pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/users'</span>
   -H <span class="s2">"Authorization: Bearer TOKEN"</span>
 </code></pre>
@@ -833,7 +951,7 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 
 <p>Replace <code class="prettyprint">LOCK_ID</code> with the appropriate lock ID.</p>
 
-<h2 id="update-lock-properties"> Update Lock Properties</h2>
+<h2 id="update-lock-properties">Update Lock Properties</h2>
 <pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000'</span>
   -X PUT
   -H <span class="s2">"Authorization: Bearer TOKEN"</span>
@@ -863,17 +981,68 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 </thead><tbody>
 <tr>
 <td>name</td>
-<td>true</td>
-<td>New name of the lock (visible to all users)</td>
+<td>false</td>
+<td>Update the user&rsquo;s alias for the lock</td>
 </tr>
 <tr>
-<td>unlockTime</td>
-<td>true</td>
-<td>Value in seconds of how long the lock should remain open, setting this to <code class="prettyprint">0</code> means the lock must be manually locked every use</td>
+<td>favourite</td>
+<td>false</td>
+<td>Flag the lock as a favourite</td>
+</tr>
+<tr>
+<td>colour</td>
+<td>false</td>
+<td>Update the colour of the lock</td>
+</tr>
+<tr>
+<td>settings</td>
+<td>false</td>
+<td>Update global settings for the lock</td>
 </tr>
 </tbody></table>
 
-<h2 id="pair-with-new-lock"> Pair with new lock</h2>
+<p>The settings object is formed of the following fields</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>txBeaconRssi</td>
+<td>false</td>
+<td>Update the iBeacon sensitivity (Deprecated)</td>
+</tr>
+<tr>
+<td>rxBeaconRssi</td>
+<td>false</td>
+<td>Update the iBeacon sensitivity (Deprecated)</td>
+</tr>
+<tr>
+<td>proximityUnlock</td>
+<td>false</td>
+<td>Control if the lock can be unlocked via a touch action (Deprecated)</td>
+</tr>
+<tr>
+<td>defaultName</td>
+<td>false</td>
+<td>Set the default name for all users who have not set a custom alias</td>
+</tr>
+<tr>
+<td>permittedAddress</td>
+<td>false</td>
+<td>A complete list of permitted IP addresses for performing actions on the door (public IP addresses)</td>
+</tr>
+<tr>
+<td>delay</td>
+<td>false</td>
+<td>A time in milliseconds to delay the UI countdown action, for slow locks (Deprecated)</td>
+</tr>
+</tbody></table>
+
+<h2 id="pair-with-new-lock">Pair With New Lock</h2>
 <pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device'</span>
   -X POST
   -H <span class="s1">'Authorization: Bearer TOKEN'</span>
@@ -915,7 +1084,7 @@ Upon successful registration of a lock, a HTTP 202 is returned along with the lo
 </tr>
 </tbody></table>
 
-<h2 id="lock-or-unlock"> Lock or unlock</h2>
+<h2 id="lock-or-unlock">Lock Or Unlock</h2>
 <pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -1074,7 +1243,7 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 
 <p>Replace <code class="prettyprint">USER_EMAIL</code> with the user&rsquo;s email</p>
 
-<h2 id="share-a-lock"> Share A Lock</h2>
+<h2 id="share-a-lock">Share A Lock</h2>
 <pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -1084,7 +1253,7 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
   | openssl pkcs8 -nocrypt -inform DER -outform PEM -out privatekey.pem
 
 <span class="nv">HEADER</span><span class="o">=</span><span class="s1">'{"alg":"RS256","typ":"JWT"}'</span>
-<span class="nv">BODY</span><span class="o">=</span><span class="s1">'{"iss":"USER_ID","sub":"00000000-0000-0000-0000-000000000000","nbf":1473083829,"iat":1473083829,"exp":1473083889,"operation":{"type":"ADD_USER","publicKey":PUBLIC_KEY,"user":"11111111-1111-1111-1111-111111111111","role":"USER"}}'</span>
+<span class="nv">BODY</span><span class="o">=</span><span class="s1">'{"iss":"USER_ID","sub":"00000000-0000-0000-0000-000000000000","nbf":1473083829,"iat":1473083829,"exp":1473083889,"operation":{"type":"ADD_USER","publicKey":PUBLIC_KEY,"user":"11111111-1111-1111-1111-111111111111","role":"USER","start":START_TIME,"end":END_TIME}}'</span>
 <span class="nv">HEADER_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER</span> | base64 | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
 <span class="nv">BODY_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$BODY</span> | base64  | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
 <span class="nv">SIGNATURE_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER_B64</span>.<span class="nv">$BODY_B64</span> | openssl sha -sha256 -sign privatekey.pem | base64 | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
@@ -1103,6 +1272,7 @@ curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-0
 <li>Replace <code class="prettyprint">PUBLIC_KEY</code> with the invitee&rsquo;s public key </li>
 <li>Replace <code class="prettyprint">11111111-1111-1111-1111-111111111111</code> with the invitee&rsquo;s user ID,</li>
 <li>Replace <code class="prettyprint">USERNAME</code> and <code class="prettyprint">PASSWORD</code> with the appropriate credentials</li>
+<li>Replace <code class="prettyprint">START_TIME</code> and <code class="prettyprint">END_TIME</code> with Unix timestamps of when the user should be activate from and until, use null for indefinite </li>
 </ul>
 </blockquote>
 
@@ -1216,9 +1386,19 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <td>false</td>
 <td>Should be either ADMIN or USER</td>
 </tr>
+<tr>
+<td>start</td>
+<td>false</td>
+<td>Unix timestamp of when the user should be active from, null or unset to start immediately</td>
+</tr>
+<tr>
+<td>end</td>
+<td>false</td>
+<td>Unix timestamp of when the user should expire, null or unset for never expires</td>
+</tr>
 </tbody></table>
 
-<h2 id="revoke-access-to-a-lock"> Revoke Access To A Lock</h2>
+<h2 id="revoke-access-to-a-lock">Revoke Access To A Lock</h2>
 <pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
