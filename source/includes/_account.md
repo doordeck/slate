@@ -203,7 +203,7 @@ curl "https://api.doordeck.com/account/password"
   -H "Authorization: Bearer TOKEN"
   -X POST
   -H 'content-type: application/json'
-  --data-binary '{"oldPassword":"OLD_PASSWORD","newPassword":"newPassword"}'
+  --data-binary '{"oldPassword":"OLD_PASSWORD","newPassword":"NEW_PASSWORD"}'
 ```
 
 > Replace `OLD_PASSWORD` with the users' current password and `NEW_PASSWORD` with their desired password.
@@ -219,3 +219,49 @@ Parameter | Required | Description
 --------- | ------- | -----------
 oldPassword | true | User's old password.
 newPassword | true | User's desired new password.
+
+## Get User Details
+
+```shell
+curl "https://api.doordeck.com/account"
+  -H "Authorization: Bearer TOKEN"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+  {
+    "publicKey": "User's public key",
+    "email": "User's email address",
+    "displayName": "User's display name",
+    "emailVerified": true or false
+  }
+```
+
+This endpoint returns information about the currently logged in user
+
+### HTTP Request
+`GET https://api.doordeck.com/account`
+
+## Update User Details
+
+```shell
+curl "https://api.doordeck.com/account"
+  -H "Authorization: Bearer TOKEN"
+  -X POST
+  -H 'content-type: application/json'
+  --data-binary '{"displayName":"NEW_DISPLAY_NAME"}'
+```
+
+> Replace `NEW_DISPLAY_NAME` with the new display name to use
+
+This endpoint updates a user's details, currently this is limited to display name.
+
+### HTTP Request
+`POST https://api.doordeck.com/account`
+
+### Request Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+displayName | true | User's desired display name

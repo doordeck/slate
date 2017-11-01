@@ -1,6 +1,6 @@
 # Lock Operations
 
-## Get all locks
+## Get All Locks
 
 ```shell
 curl 'https://api.doordeck.com/device'
@@ -55,7 +55,16 @@ curl 'https://api.doordeck.com/device'
         ],
         "defaultName": "Super office",
         "usageRequirements": {},
-        "delay": 0
+        "delay": 0,
+        "unlockBetweenWindow": {
+          "start": "08:00",
+          "end": "14:35",
+          "timezone": "Europe/London",
+          "days": [
+            "WEDNESDAY"
+          ],
+          "exceptions": []
+        }
       },
     "state":
       {
@@ -65,7 +74,9 @@ curl 'https://api.doordeck.com/device'
       },
     "favourite": true,
     "unlockTime":5,
-    "unlockForever":false
+    "unlockForever":false,
+    "start":null,
+    "end":null
   }
 ]
 ```
@@ -76,7 +87,7 @@ This endpoint retrieves all locks a user has access to.
 
 `GET https://api.doordeck.com/device`
 
-## Get a single lock
+## Get A Single Lock
 
 ```shell
 curl 'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000'
@@ -102,7 +113,16 @@ curl 'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000'
     "permittedAddresses": [],
     "defaultName": "Home",
     "usageRequirements": {},
-    "delay": 0
+    "delay": 0,
+    "unlockBetweenWindow": {
+      "start": "08:00",
+      "end": "14:35",
+      "timezone": "Europe/London",
+      "days": [
+        "WEDNESDAY"
+      ],
+      "exceptions": []
+    }
   },
   "state": {
     "locked": true,
@@ -111,7 +131,9 @@ curl 'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000'
   },
   "favourite": true,
   "unlockTime": 10,
-  "unlockForever": false
+  "unlockForever": false,
+  "start":null,
+  "end":null
 }
 ```
 
@@ -123,7 +145,7 @@ This endpoint retrieves information about a specific lock, its usage is preferre
 
 Replace `LOCK_ID` with the appropriate lock ID.
 
-## Get lock audit trail (v1)
+## Get Lock Audit Trail (v1)
 
 ```shell
 curl 'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/log'
@@ -171,7 +193,7 @@ OWNER_ASSIGNED | The lock's owner has been updated
 DEVICE_CONNECTED | Lock has connected to Doordeck platform
 DEVICE_DISCONNECTED | Lock has disconected from Doordeck platform
 
-## Get lock audit trail (v2)
+## Get Lock Audit Trail (v2)
 
 ```shell
 curl 'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/log'
@@ -238,7 +260,53 @@ LOCK_REVOKED | Access to the lock has been revoked for the specified user
 USER_PROMOTED | A user was promoted to an administrator
 USER_DEMOTED | An administrator was demoted to a user
 
-## Get users for a lock
+## Get Audit For A User 
+
+```shell
+curl 'https://api.doordeck.com/user/00000000-0000-0000-0000-000000000000/log'
+  -H "Accept: application/vnd.doordeck.api-v2+json"
+  -H "Authorization: Bearer TOKEN"
+```
+> Replace `00000000-0000-0000-0000-000000000000` with the user's ID.
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "deviceId": "00000000-0000-0000-0000-000000000001",
+    "timestamp": 1509481411,
+    "type": "LOCK_SHARED",
+    "issuer": {
+      "userId": "00000000-0000-0000-0000-000000000002"
+    },
+    "subject": {
+      "userId": "00000000-0000-0000-0000-000000000003",
+      "email": "info@doordeck.com"
+    },
+    "rejected": false
+  },
+  {
+    "deviceId": "00000000-0000-0000-0000-000000000001",
+    "timestamp": 1509035275,
+    "type": "DOOR_UNLOCK",
+    "issuer": {
+      "userId": "00000000-0000-0000-0000-000000000002"
+    },
+    "rejected": false
+  }
+]
+```
+
+This endpoint retrieves all log events associated with a particular user, it uses the same events as listed in the v2 audit trail endpoint.
+
+### HTTP Request
+
+`GET https://api.doordeck.com/user/LOCK_ID/log`
+
+Replace `LOCK_ID` with the appropriate lock ID.
+
+## Get Users For A Lock
 
 ```shell
 curl 'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/users'
@@ -277,7 +345,7 @@ This endpoint retrieves all users associated with a particular lock.
 
 Replace `LOCK_ID` with the appropriate lock ID.
 
-## Update Lock Properties
+## Update Lock Properties
 
 ```shell
 curl 'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000'
@@ -300,11 +368,24 @@ Replace `LOCK_ID` with the appropriate lock ID.
 ### Request Parameters
 
 Parameter | Required | Description
---------- | ------- | -----------
-name | true | New name of the lock (visible to all users)
-unlockTime | true | Value in seconds of how long the lock should remain open, setting this to `0` means the lock must be manually locked every use
+--------- | -------- | -----------
+name | false | Update the user's alias for the lock
+favourite | false | Flag the lock as a favourite
+colour | false | Update the colour of the lock
+settings | false | Update global settings for the lock
 
-## Pair with new lock
+The settings object is formed of the following fields
+
+Parameter | Required | Description
+--------- | -------- | -----------
+txBeaconRssi | false | Update the iBeacon sensitivity (Deprecated) 
+rxBeaconRssi | false | Update the iBeacon sensitivity (Deprecated) 
+proximityUnlock | false | Control if the lock can be unlocked via a touch action (Deprecated) 
+defaultName | false | Set the default name for all users who have not set a custom alias
+permittedAddress | false | A complete list of permitted IP addresses for performing actions on the door (public IP addresses)
+delay | false | A time in milliseconds to delay the UI countdown action, for slow locks (Deprecated) 
+
+## Pair With New Lock
 
 ```shell
 curl 'https://api.doordeck.com/device'
@@ -333,7 +414,7 @@ Parameter | Required | Description
 key  | true | Lock's registration key
 name | true | Alias of the lock (default for all users)
 
-## Lock or unlock
+## Lock Or Unlock
 
 ```shell
 curl 'https://api.doordeck.com/auth/token/' \
@@ -429,7 +510,7 @@ curl 'https://api.doordeck.com/share/invite/USER_EMAIL' \
 
 Replace `USER_EMAIL` with the user's email
 
-## Share A Lock
+## Share A Lock
 
 ```shell
 curl 'https://api.doordeck.com/auth/token/' \
@@ -441,7 +522,7 @@ curl 'https://api.doordeck.com/auth/token/' \
   | openssl pkcs8 -nocrypt -inform DER -outform PEM -out privatekey.pem
 
 HEADER='{"alg":"RS256","typ":"JWT"}'
-BODY='{"iss":"USER_ID","sub":"00000000-0000-0000-0000-000000000000","nbf":1473083829,"iat":1473083829,"exp":1473083889,"operation":{"type":"ADD_USER","publicKey":PUBLIC_KEY,"user":"11111111-1111-1111-1111-111111111111","role":"USER"}}'
+BODY='{"iss":"USER_ID","sub":"00000000-0000-0000-0000-000000000000","nbf":1473083829,"iat":1473083829,"exp":1473083889,"operation":{"type":"ADD_USER","publicKey":PUBLIC_KEY,"user":"11111111-1111-1111-1111-111111111111","role":"USER","start":START_TIME,"end":END_TIME}}'
 HEADER_B64=`echo -n $HEADER | base64 | sed 's/+/-/g;s/\//_/g;s/=//g'`
 BODY_B64=`echo -n $BODY | base64  | sed 's/+/-/g;s/\//_/g;s/=//g'`
 SIGNATURE_B64=`echo -n $HEADER_B64.$BODY_B64 | openssl sha -sha256 -sign privatekey.pem | base64 | sed 's/+/-/g;s/\//_/g;s/=//g'`
@@ -459,6 +540,7 @@ curl 'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/execu
 > - Replace `PUBLIC_KEY` with the invitee's public key 
 > - Replace `11111111-1111-1111-1111-111111111111` with the invitee's user ID,
 > - Replace `USERNAME` and `PASSWORD` with the appropriate credentials
+> - Replace `START_TIME` and `END_TIME` with Unix timestamps of when the user should be activate from and until, use null for indefinite 
 
 This endpoint allows operations to be performed on a lock, such as lock, unlock, add/remove user. Requests to this endpoint must be signed and formed as a JSON web token.
 
@@ -501,8 +583,10 @@ type | true | Must be `ADD_USER`
 user | true | ID of user to add
 publicKey | true | Public key of user to add
 role | false | Should be either ADMIN or USER
+start | false | Unix timestamp of when the user should be active from, null or unset to start immediately
+end | false | Unix timestamp of when the user should expire, null or unset for never expires
 
-## Revoke Access To A Lock 
+## Revoke Access To A Lock 
 
 ```shell
 curl 'https://api.doordeck.com/auth/token/' \
