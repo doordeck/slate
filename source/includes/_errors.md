@@ -10,9 +10,12 @@ Error Code | Meaning
 404 | Not Found -- The specified resource could not be found
 405 | Method Not Allowed -- You tried to access a resource with an invalid method
 406 | Not Acceptable -- You requested a format that isn't json
-409 | Conflict - The JWT ID has already been used
+409 | Conflict - The JWT ID has already been used or there is a database conflict
 410 | Gone -- The resource requested has been removed from our servers
 429 | Too Many Requests -- You're requesting too many resources! Slow down!
 500 | Internal Server Error -- We had a problem with our server. Try again later.
 503 | Service Unavailable -- The Doordeck device is offline. Please try again later.
-504 | Gateway Timeout - The Doordeck device didn't response in a timely manner
+504 | Gateway Timeout -- The Doordeck device didn't response in a timely manner
+<aside class="notice">
+This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
+</aside>
