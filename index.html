@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
   <head>
@@ -207,8 +208,8 @@
         <img src="images/navbar.png" alt="Navbar" />
       </span>
     </a>
-    <div class="tocify-wrapper">
-      <img src="images/logo.svg" alt="Logo" />
+    <div class="toc-wrapper">
+      <img src="images/logo.svg" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
         </div>
@@ -216,23 +217,103 @@
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
         <ul class="search-results"></ul>
-      <div id="toc">
+      <div id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#account" class="toc-h1 toc-link" data-title="account">Account</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#login" class="toc-h2 toc-link" data-title="login">Login</a>
+                  </li>
+                  <li>
+                    <a href="#registration" class="toc-h2 toc-link" data-title="registration">Registration</a>
+                  </li>
+                  <li>
+                    <a href="#refresh-token" class="toc-h2 toc-link" data-title="refresh-token">Refresh Token</a>
+                  </li>
+                  <li>
+                    <a href="#logout" class="toc-h2 toc-link" data-title="logout">Logout</a>
+                  </li>
+                  <li>
+                    <a href="#verify-email" class="toc-h2 toc-link" data-title="verify-email">Verify Email</a>
+                  </li>
+                  <li>
+                    <a href="#change-password" class="toc-h2 toc-link" data-title="change-password">Change Password</a>
+                  </li>
+                  <li>
+                    <a href="#get-user-details" class="toc-h2 toc-link" data-title="get-user-details">Get User Details</a>
+                  </li>
+                  <li>
+                    <a href="#update-user-details" class="toc-h2 toc-link" data-title="update-user-details">Update User Details</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#lock-operations" class="toc-h1 toc-link" data-title="lock-operations">Lock Operations</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-locks" class="toc-h2 toc-link" data-title="get-all-locks">Get All Locks</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-single-lock" class="toc-h2 toc-link" data-title="get-a-single-lock">Get A Single Lock</a>
+                  </li>
+                  <li>
+                    <a href="#get-lock-audit-trail-v1" class="toc-h2 toc-link" data-title="get-lock-audit-trail-v1">Get Lock Audit Trail (v1)</a>
+                  </li>
+                  <li>
+                    <a href="#get-lock-audit-trail-v2" class="toc-h2 toc-link" data-title="get-lock-audit-trail-v2">Get Lock Audit Trail (v2)</a>
+                  </li>
+                  <li>
+                    <a href="#get-audit-for-a-user" class="toc-h2 toc-link" data-title="get-audit-for-a-user">Get Audit For A User</a>
+                  </li>
+                  <li>
+                    <a href="#get-users-for-a-lock" class="toc-h2 toc-link" data-title="get-users-for-a-lock">Get Users For A Lock</a>
+                  </li>
+                  <li>
+                    <a href="#update-lock-properties" class="toc-h2 toc-link" data-title="update-lock-properties">Update Lock Properties</a>
+                  </li>
+                  <li>
+                    <a href="#pair-with-new-lock" class="toc-h2 toc-link" data-title="pair-with-new-lock">Pair With New Lock</a>
+                  </li>
+                  <li>
+                    <a href="#lock-or-unlock" class="toc-h2 toc-link" data-title="lock-or-unlock">Lock Or Unlock</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-user-s-public-key" class="toc-h2 toc-link" data-title="get-a-user-s-public-key">Get A User’s Public Key</a>
+                  </li>
+                  <li>
+                    <a href="#share-a-lock" class="toc-h2 toc-link" data-title="share-a-lock">Share A Lock</a>
+                  </li>
+                  <li>
+                    <a href="#revoke-access-to-a-lock" class="toc-h2 toc-link" data-title="revoke-access-to-a-lock">Revoke Access To A Lock</a>
+                  </li>
+                  <li>
+                    <a href="#monitor-real-time-lock-state" class="toc-h2 toc-link" data-title="monitor-real-time-lock-state">Monitor Real-time Lock State</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="errors">Errors</a>
+          </li>
       </div>
         <ul class="toc-footer">
             <li><a href='mailto:info@doordeck.com'>Contact Doordeck</a></li>
+            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="introduction">Introduction</h1>
-
+        <h1 id='introduction'>Introduction</h1>
 <p>Welcome to the Doordeck API! You can use our API to access Doordeck API endpoints, which can get information on the state of locks, manage access and perform operations.</p>
 
-<p>This API documentation is generated using <a href="https://github.com/tripit/slate">Slate</a>, if you spot any errors please submit a pull request directly on <a href="https://github.com/doordeck/docs/">Github</a>.</p>
-
-          <h1 id="authentication">Authentication</h1>
-
+<p>This API documentation is generated using <a href="https://github.com/lord/slate">Slate</a>, if you spot any errors please submit a pull request directly on <a href="https://github.com/doordeck/docs/">Github</a>.</p>
+<h1 id='authentication'>Authentication</h1>
 <blockquote>
 <p>To authorize, use this code:</p>
 </blockquote>
@@ -242,7 +323,7 @@
   --data-binary <span class="s1">'{"email":"EMAIL","password":"PASSWORD"}'</span>
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code class="prettyprint">USERNAME</code> and <code class="prettyprint">PASSWORD</code> with your credentials.</p>
+<p>Make sure to replace <code>USERNAME</code> and <code>PASSWORD</code> with your credentials.</p>
 
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
@@ -255,13 +336,13 @@
 </span></code></pre>
 <p>Doordeck uses tokens to permit access to the API. Doordeck expects for the token to be included in all API requests to the server in a header that looks like the following:</p>
 
-<p><code class="prettyprint">Authorization: Bearer TOKEN</code></p>
+<p><code>Authorization: Bearer TOKEN</code></p>
 
 <aside class="notice">
 You must replace <code>TOKEN</code> with your authentication token (the <code>authToken</code> from the login response).
 </aside>
 
-<p>Authentication tokens are JSON web tokens, they can be examined to determine their expiry date, the user&rsquo;s ID. JSON web tokens are split into three sections separated by a <code class="prettyprint">.</code>, the header, payload and signature - each section can be base64 decoded to read further.</p>
+<p>Authentication tokens are JSON web tokens, they can be examined to determine their expiry date, the user&#39;s ID. JSON web tokens are split into three sections separated by a <code>.</code>, the header, payload and signature - each section can be base64 decoded to read further.</p>
 <pre class="highlight shell tab-shell"><code><span class="nb">echo</span> <span class="s1">'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0NzMxNjMwNzUsImlhdCI6MTQ3MzA3NjY3NSwic3ViIjoiNWE1ZjZlODAtM2M1MS0xMWU2LTllNTctY2Y0MGJlMzAxM2ZiIiwic2Vzc2lvbiI6ImZiMmEwMDYwLTczNWYtMTFlNi1iNDg3LTZmMTZmZGE1MzkxNyIsInJlZnJlc2giOmZhbHNlLCJlbWFpbCI6Im1pY2hhZWxAZG9vcmRlY2suY29tIn0.REDCATED'</span> | cut -d. -f2 | base64 -D
 </code></pre>
 <blockquote>
@@ -275,17 +356,13 @@ You must replace <code>TOKEN</code> with your authentication token (the <code>au
   </span><span class="s2">"refresh"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"michael@doordeck.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h1 id="account">Account</h1>
-
-<h2 id="login">Login</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span>
+</span></code></pre><h1 id='account'>Account</h1><h2 id='login'>Login</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span>
   -X POST
   -H <span class="s1">'content-type: application/json'</span>
   --data-binary <span class="s1">'{"email":"EMAIL","password":"PASSWORD"}'</span>
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code class="prettyprint">USERNAME</code> and <code class="prettyprint">PASSWORD</code> with your credentials.</p>
+<p>Make sure to replace <code>USERNAME</code> and <code>PASSWORD</code> with your credentials.</p>
 
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
@@ -296,14 +373,10 @@ You must replace <code>TOKEN</code> with your authentication token (the <code>au
   </span><span class="s2">"refreshToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for refreshing authentication credentials"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint lets user&rsquo;s attempt to login.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST https://api.doordeck.com/auth/token</code></p>
-
-<h3 id="request-parameters">Request Parameters</h3>
-
+<p>This endpoint lets user&#39;s attempt to login.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://api.doordeck.com/auth/token</code></p>
+<h3 id='request-parameters'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -314,17 +387,15 @@ You must replace <code>TOKEN</code> with your authentication token (the <code>au
 <tr>
 <td>email</td>
 <td>true</td>
-<td>User&rsquo;s email address</td>
+<td>User&#39;s email address</td>
 </tr>
 <tr>
 <td>password</td>
 <td>true</td>
-<td>User&rsquo;s password</td>
+<td>User&#39;s password</td>
 </tr>
 </tbody></table>
-
-<h3 id="response">Response</h3>
-
+<h3 id='response'>Response</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -348,9 +419,7 @@ You must replace <code>TOKEN</code> with your authentication token (the <code>au
 <td>JSON web token to be used for getting new authentication tokens</td>
 </tr>
 </tbody></table>
-
-<h2 id="registration">Registration</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/register"</span>
+<h2 id='registration'>Registration</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/register"</span>
   -X POST
   -H <span class="s1">'content-type: application/json'</span>
   --data-binary <span class="s1">'{"email":"EMAIL","password":"PASSWORD"}'</span>
@@ -366,13 +435,9 @@ You must replace <code>TOKEN</code> with your authentication token (the <code>au
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint allows users to register for a Doordeck account.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST https://api.doordeck.com/auth/register</code></p>
-
-<h3 id="request-parameters">Request Parameters</h3>
-
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://api.doordeck.com/auth/register</code></p>
+<h3 id='request-parameters-2'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -393,16 +458,14 @@ You must replace <code>TOKEN</code> with your authentication token (the <code>au
 <tr>
 <td>displayName</td>
 <td>false</td>
-<td>User&rsquo;s display name (e.g. their fullname)</td>
+<td>User&#39;s display name (e.g. their fullname)</td>
 </tr>
 </tbody></table>
 
 <aside class="success">
-A validation email will be disptahced to the user&rsquo;s email address upon successful registration.
+A validation email will be disptahced to the user's email address upon successful registration.
 </aside>
-
-<h2 id="refresh-token">Refresh Token</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/token/refresh"</span>
+<h2 id='refresh-token'>Refresh Token</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/token/refresh"</span>
   -H <span class="s2">"Authorization: Bearer REFRESH_TOKEN"</span>
 </code></pre>
 <blockquote>
@@ -413,11 +476,9 @@ A validation email will be disptahced to the user&rsquo;s email address upon suc
     </span><span class="s2">"refreshToken"</span><span class="p">:</span><span class="s2">"(Optional) JSON Web Token for refreshing authentication credentials"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint refreshes a users&rsquo; authentication token using their refresh token. Refresh tokens cannot be used for standard requests and have a very long life compared with an authentication token.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET https://api.doordeck.com/auth/token/refresh</code></p>
+<p>This endpoint refreshes a users&#39; authentication token using their refresh token. Refresh tokens cannot be used for standard requests and have a very long life compared with an authentication token.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://api.doordeck.com/auth/token/refresh</code></p>
 
 <aside class="notice">
 A refresh token should be used in place of an authentication token for this request.
@@ -426,33 +487,23 @@ A refresh token should be used in place of an authentication token for this requ
 <aside class="notice">
 The <code>refreshToken</code> field is optionally returned, if a new refresh token should be stored, otherwise it will not be present.
 </aside>
-
-<h2 id="logout">Logout</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/token/destroy"</span>
+<h2 id='logout'>Logout</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/token/destroy"</span>
   -H <span class="s2">"Authorization: Bearer TOKEN"</span>
 </code></pre>
 <p>This endpoint destroys a session associated with an authentication token and any associated refresh token.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST https://api.doordeck.com/token/destroy</code></p>
-
-<h2 id="verify-email">Verify Email</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/account/email/verify?code=CODE"</span>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST https://api.doordeck.com/token/destroy</code></p>
+<h2 id='verify-email'>Verify Email</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/account/email/verify?code=CODE"</span>
   -X PUT
 </code></pre>
 <blockquote>
-<p>Replace <code class="prettyprint">CODE</code> with the verification code from the email.</p>
+<p>Replace <code>CODE</code> with the verification code from the email.</p>
 </blockquote>
 
-<p>This endpoint is used to verify a user&rsquo;s email address.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">PUT https://api.doordeck.com/account/email/verify</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
-
+<p>This endpoint is used to verify a user&#39;s email address.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>PUT https://api.doordeck.com/account/email/verify</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -466,26 +517,20 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 <td>Verification code from email.</td>
 </tr>
 </tbody></table>
-
-<h2 id="change-password">Change Password</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/account/password"</span>
+<h2 id='change-password'>Change Password</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/account/password"</span>
   -H <span class="s2">"Authorization: Bearer TOKEN"</span>
   -X POST
   -H <span class="s1">'content-type: application/json'</span>
   --data-binary <span class="s1">'{"oldPassword":"OLD_PASSWORD","newPassword":"NEW_PASSWORD"}'</span>
 </code></pre>
 <blockquote>
-<p>Replace <code class="prettyprint">OLD_PASSWORD</code> with the users&rsquo; current password and <code class="prettyprint">NEW_PASSWORD</code> with their desired password.</p>
+<p>Replace <code>OLD_PASSWORD</code> with the users&#39; current password and <code>NEW_PASSWORD</code> with their desired password.</p>
 </blockquote>
 
 <p>This endpoint is used to allow a user to change their password.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST https://api.doordeck.com/account/password</code></p>
-
-<h3 id="request-parameters">Request Parameters</h3>
-
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>POST https://api.doordeck.com/account/password</code></p>
+<h3 id='request-parameters-3'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -496,17 +541,15 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 <tr>
 <td>oldPassword</td>
 <td>true</td>
-<td>User&rsquo;s old password.</td>
+<td>User&#39;s old password.</td>
 </tr>
 <tr>
 <td>newPassword</td>
 <td>true</td>
-<td>User&rsquo;s desired new password.</td>
+<td>User&#39;s desired new password.</td>
 </tr>
 </tbody></table>
-
-<h2 id="get-user-details">Get User Details</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/account"</span>
+<h2 id='get-user-details'>Get User Details</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/account"</span>
   -H <span class="s2">"Authorization: Bearer TOKEN"</span>
 </code></pre>
 <blockquote>
@@ -520,30 +563,22 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
   </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint returns information about the currently logged in user</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET https://api.doordeck.com/account</code></p>
-
-<h2 id="update-user-details">Update User Details</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/account"</span>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET https://api.doordeck.com/account</code></p>
+<h2 id='update-user-details'>Update User Details</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/account"</span>
   -H <span class="s2">"Authorization: Bearer TOKEN"</span>
   -X POST
   -H <span class="s1">'content-type: application/json'</span>
   --data-binary <span class="s1">'{"displayName":"NEW_DISPLAY_NAME"}'</span>
 </code></pre>
 <blockquote>
-<p>Replace <code class="prettyprint">NEW_DISPLAY_NAME</code> with the new display name to use</p>
+<p>Replace <code>NEW_DISPLAY_NAME</code> with the new display name to use</p>
 </blockquote>
 
-<p>This endpoint updates a user&rsquo;s details, currently this is limited to display name.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST https://api.doordeck.com/account</code></p>
-
-<h3 id="request-parameters">Request Parameters</h3>
-
+<p>This endpoint updates a user&#39;s details, currently this is limited to display name.</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>POST https://api.doordeck.com/account</code></p>
+<h3 id='request-parameters-4'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -554,14 +589,10 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 <tr>
 <td>displayName</td>
 <td>true</td>
-<td>User&rsquo;s desired display name</td>
+<td>User&#39;s desired display name</td>
 </tr>
 </tbody></table>
-
-          <h1 id="lock-operations">Lock Operations</h1>
-
-<h2 id="get-all-locks">Get All Locks</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device'</span>
+<h1 id='lock-operations'>Lock Operations</h1><h2 id='get-all-locks'>Get All Locks</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device'</span>
   -H <span class="s2">"Authorization: Bearer TOKEN"</span>
 </code></pre>
 <blockquote>
@@ -638,17 +669,13 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all locks a user has access to.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET https://api.doordeck.com/device</code></p>
-
-<h2 id="get-a-single-lock">Get A Single Lock</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000'</span>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://api.doordeck.com/device</code></p>
+<h2 id='get-a-single-lock'>Get A Single Lock</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000'</span>
   -H <span class="s2">"Authorization: Bearer TOKEN"</span>
 </code></pre>
 <blockquote>
-<p>Replace <code class="prettyprint">00000000-0000-0000-0000-000000000000</code> with the lock&rsquo;s ID.</p>
+<p>Replace <code>00000000-0000-0000-0000-000000000000</code> with the lock&#39;s ID.</p>
 
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
@@ -690,19 +717,15 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves information about a specific lock, its usage is preferred over the list lock call for performance reasons.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://api.doordeck.com/device/LOCK_ID</code></p>
 
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET https://api.doordeck.com/device/LOCK_ID</code></p>
-
-<p>Replace <code class="prettyprint">LOCK_ID</code> with the appropriate lock ID.</p>
-
-<h2 id="get-lock-audit-trail-v1">Get Lock Audit Trail (v1)</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/log'</span>
+<p>Replace <code>LOCK_ID</code> with the appropriate lock ID.</p>
+<h2 id='get-lock-audit-trail-v1'>Get Lock Audit Trail (v1)</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/log'</span>
   -H <span class="s2">"Authorization: Bearer TOKEN"</span>
 </code></pre>
 <blockquote>
-<p>Replace <code class="prettyprint">00000000-0000-0000-0000-000000000000</code> with the lock&rsquo;s ID.</p>
+<p>Replace <code>00000000-0000-0000-0000-000000000000</code> with the lock&#39;s ID.</p>
 
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
@@ -722,15 +745,11 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all log events associated with a particular lock.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://api.doordeck.com/device/LOCK_ID/log</code></p>
 
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET https://api.doordeck.com/device/LOCK_ID/log</code></p>
-
-<p>Replace <code class="prettyprint">LOCK_ID</code> with the appropriate lock ID.</p>
-
-<h3 id="event-types">Event Types</h3>
-
+<p>Replace <code>LOCK_ID</code> with the appropriate lock ID.</p>
+<h3 id='event-types'>Event Types</h3>
 <p>The call returns an enum of event types:</p>
 
 <table><thead>
@@ -741,11 +760,11 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 </thead><tbody>
 <tr>
 <td>DOOR_OPEN</td>
-<td>The lock&rsquo;s monitor shows the door is open</td>
+<td>The lock&#39;s monitor shows the door is open</td>
 </tr>
 <tr>
 <td>DOOR_CLOSE</td>
-<td>The lock&rsquo;s monitor shows the door is closed</td>
+<td>The lock&#39;s monitor shows the door is closed</td>
 </tr>
 <tr>
 <td>DOOR_UNLOCK</td>
@@ -757,7 +776,7 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 </tr>
 <tr>
 <td>OWNER_ASSIGNED</td>
-<td>The lock&rsquo;s owner has been updated</td>
+<td>The lock&#39;s owner has been updated</td>
 </tr>
 <tr>
 <td>DEVICE_CONNECTED</td>
@@ -768,14 +787,12 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 <td>Lock has disconected from Doordeck platform</td>
 </tr>
 </tbody></table>
-
-<h2 id="get-lock-audit-trail-v2">Get Lock Audit Trail (v2)</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/log'</span>
+<h2 id='get-lock-audit-trail-v2'>Get Lock Audit Trail (v2)</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/log'</span>
   -H <span class="s2">"Accept: application/vnd.doordeck.api-v2+json"</span>
   -H <span class="s2">"Authorization: Bearer TOKEN"</span>
 </code></pre>
 <blockquote>
-<p>Replace <code class="prettyprint">00000000-0000-0000-0000-000000000000</code> with the lock&rsquo;s ID.</p>
+<p>Replace <code>00000000-0000-0000-0000-000000000000</code> with the lock&#39;s ID.</p>
 
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
@@ -807,17 +824,13 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all log events associated with a particular lock, it includes additional details over v1.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://api.doordeck.com/device/LOCK_ID/log</code></p>
 
-<h3 id="http-request">HTTP Request</h3>
+<p>Replace <code>LOCK_ID</code> with the appropriate lock ID.</p>
 
-<p><code class="prettyprint">GET https://api.doordeck.com/device/LOCK_ID/log</code></p>
-
-<p>Replace <code class="prettyprint">LOCK_ID</code> with the appropriate lock ID.</p>
-
-<p>This call must be made with the <code class="prettyprint">Accept</code> header set to <code class="prettyprint">application/vnd.doordeck.api-v2+json</code></p>
-
-<h3 id="event-types">Event Types</h3>
-
+<p>This call must be made with the <code>Accept</code> header set to <code>application/vnd.doordeck.api-v2+json</code></p>
+<h3 id='event-types-2'>Event Types</h3>
 <p>The call returns an enum of event types:</p>
 
 <table><thead>
@@ -828,11 +841,11 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 </thead><tbody>
 <tr>
 <td>DOOR_OPEN</td>
-<td>The lock&rsquo;s monitor shows the door is open</td>
+<td>The lock&#39;s monitor shows the door is open</td>
 </tr>
 <tr>
 <td>DOOR_CLOSE</td>
-<td>The lock&rsquo;s monitor shows the door is closed</td>
+<td>The lock&#39;s monitor shows the door is closed</td>
 </tr>
 <tr>
 <td>DOOR_UNLOCK</td>
@@ -844,7 +857,7 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 </tr>
 <tr>
 <td>OWNER_ASSIGNED</td>
-<td>The lock&rsquo;s owner has been updated</td>
+<td>The lock&#39;s owner has been updated</td>
 </tr>
 <tr>
 <td>DEVICE_CONNECTED</td>
@@ -856,7 +869,7 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 </tr>
 <tr>
 <td>LOCK_SHARED</td>
-<td>The lock&rsquo;s access has been shared to a new user</td>
+<td>The lock&#39;s access has been shared to a new user</td>
 </tr>
 <tr>
 <td>LOCK_REVOKED</td>
@@ -871,14 +884,12 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 <td>An administrator was demoted to a user</td>
 </tr>
 </tbody></table>
-
-<h2 id="get-audit-for-a-user">Get Audit For A User</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/user/00000000-0000-0000-0000-000000000000/log'</span>
+<h2 id='get-audit-for-a-user'>Get Audit For A User</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/user/00000000-0000-0000-0000-000000000000/log'</span>
   -H <span class="s2">"Accept: application/vnd.doordeck.api-v2+json"</span>
   -H <span class="s2">"Authorization: Bearer TOKEN"</span>
 </code></pre>
 <blockquote>
-<p>Replace <code class="prettyprint">00000000-0000-0000-0000-000000000000</code> with the user&rsquo;s ID.</p>
+<p>Replace <code>00000000-0000-0000-0000-000000000000</code> with the user&#39;s ID.</p>
 
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
@@ -908,19 +919,15 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all log events associated with a particular user, it uses the same events as listed in the v2 audit trail endpoint.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET https://api.doordeck.com/user/LOCK_ID/log</code></p>
 
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET https://api.doordeck.com/user/LOCK_ID/log</code></p>
-
-<p>Replace <code class="prettyprint">LOCK_ID</code> with the appropriate lock ID.</p>
-
-<h2 id="get-users-for-a-lock">Get Users For A Lock</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/users'</span>
+<p>Replace <code>LOCK_ID</code> with the appropriate lock ID.</p>
+<h2 id='get-users-for-a-lock'>Get Users For A Lock</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/users'</span>
   -H <span class="s2">"Authorization: Bearer TOKEN"</span>
 </code></pre>
 <blockquote>
-<p>Replace <code class="prettyprint">00000000-0000-0000-0000-000000000000</code> with the lock&rsquo;s ID.</p>
+<p>Replace <code>00000000-0000-0000-0000-000000000000</code> with the lock&#39;s ID.</p>
 
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
@@ -944,34 +951,26 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all users associated with a particular lock.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET https://api.doordeck.com/device/LOCK_ID/users</code></p>
 
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET https://api.doordeck.com/device/LOCK_ID/users</code></p>
-
-<p>Replace <code class="prettyprint">LOCK_ID</code> with the appropriate lock ID.</p>
-
-<h2 id="update-lock-properties">Update Lock Properties</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000'</span>
+<p>Replace <code>LOCK_ID</code> with the appropriate lock ID.</p>
+<h2 id='update-lock-properties'>Update Lock Properties</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000'</span>
   -X PUT
   -H <span class="s2">"Authorization: Bearer TOKEN"</span>
   -H <span class="s1">'content-type: application/json'</span>
   --data-binary <span class="s1">'{"name":"Home","favourite":false,"colour":"#ffggaa"}'</span>
 </code></pre>
 <blockquote>
-<p>Replace <code class="prettyprint">00000000-0000-0000-0000-000000000000</code> with the lock&rsquo;s ID.</p>
+<p>Replace <code>00000000-0000-0000-0000-000000000000</code> with the lock&#39;s ID.</p>
 </blockquote>
 
 <p>This endpoint allows the name, favourite flag and colour to be updated for an existing lock.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>PUT https://api.doordeck.com/device/LOCK_ID</code></p>
 
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">PUT https://api.doordeck.com/device/LOCK_ID</code></p>
-
-<p>Replace <code class="prettyprint">LOCK_ID</code> with the appropriate lock ID.</p>
-
-<h3 id="request-parameters">Request Parameters</h3>
-
+<p>Replace <code>LOCK_ID</code> with the appropriate lock ID.</p>
+<h3 id='request-parameters'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -982,7 +981,7 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 <tr>
 <td>name</td>
 <td>false</td>
-<td>Update the user&rsquo;s alias for the lock</td>
+<td>Update the user&#39;s alias for the lock</td>
 </tr>
 <tr>
 <td>favourite</td>
@@ -1041,30 +1040,24 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 <td>A time in milliseconds to delay the UI countdown action, for slow locks (Deprecated)</td>
 </tr>
 </tbody></table>
-
-<h2 id="pair-with-new-lock">Pair With New Lock</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device'</span>
+<h2 id='pair-with-new-lock'>Pair With New Lock</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device'</span>
   -X POST
   -H <span class="s1">'Authorization: Bearer TOKEN'</span>
   -H <span class="s1">'content-type: application/json'</span>
   --data-binary <span class="s1">'{"key":"KEY","name":"My lock"}'</span>
 </code></pre>
 <blockquote>
-<p>Replace <code class="prettyprint">KEY</code> with the lock&rsquo;s registration key</p>
+<p>Replace <code>KEY</code> with the lock&#39;s registration key</p>
 </blockquote>
 
 <p>This endpoint pairs a new, previously unowned lock with a user.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST https://api.doordeck.com/device</code></p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>POST https://api.doordeck.com/device</code></p>
 
 <aside class="success">
 Upon successful registration of a lock, a HTTP 202 is returned along with the location further details can be found about the lock. The lock ID can be extracted from this URL
 </aside>
-
-<h3 id="request-parameters">Request Parameters</h3>
-
+<h3 id='request-parameters-2'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1075,7 +1068,7 @@ Upon successful registration of a lock, a HTTP 202 is returned along with the lo
 <tr>
 <td>key</td>
 <td>true</td>
-<td>Lock&rsquo;s registration key</td>
+<td>Lock&#39;s registration key</td>
 </tr>
 <tr>
 <td>name</td>
@@ -1083,9 +1076,7 @@ Upon successful registration of a lock, a HTTP 202 is returned along with the lo
 <td>Alias of the lock (default for all users)</td>
 </tr>
 </tbody></table>
-
-<h2 id="lock-or-unlock">Lock Or Unlock</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span> <span class="se">\</span>
+<h2 id='lock-or-unlock'>Lock Or Unlock</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   --data-binary <span class="s1">'{"email":"USERNAME","password":"PASSWORD"}'</span> <span class="se">\</span>
@@ -1107,23 +1098,19 @@ curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-0
   --data-binary <span class="s2">"</span><span class="nv">$JWT</span><span class="s2">"</span>
 </code></pre>
 <blockquote>
-<p>Replace <code class="prettyprint">00000000-0000-0000-0000-000000000000</code> with the lock&rsquo;s ID, <code class="prettyprint">USER_ID</code> with the user&rsquo;s ID (obtained from decoding their auth token), <code class="prettyprint">USERNAME</code> and <code class="prettyprint">PASSWORD</code> with the appropriate credentials.</p>
+<p>Replace <code>00000000-0000-0000-0000-000000000000</code> with the lock&#39;s ID, <code>USER_ID</code> with the user&#39;s ID (obtained from decoding their auth token), <code>USERNAME</code> and <code>PASSWORD</code> with the appropriate credentials.</p>
 </blockquote>
 
 <p>This endpoint allows operations to be performed on a lock, typically this is lock and unlock. Requests to this endpoint must be signed and formed as a JSON web token.</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>POST https://api.doordeck.com/device/LOCK_ID/execute</code></p>
 
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST https://api.doordeck.com/device/LOCK_ID/execute</code></p>
-
-<p>Replace <code class="prettyprint">LOCK_ID</code> with the appropriate lock ID.</p>
+<p>Replace <code>LOCK_ID</code> with the appropriate lock ID.</p>
 
 <aside class="success">
 If a request expires within the next 60 seconds, a 200 is returned upon success, if a request expires in more than 60 seconds, a 202 is returned to indicate the request has been queued for the device.
 </aside>
-
-<h3 id="request-parameters">Request Parameters</h3>
-
+<h3 id='request-parameters-3'>Request Parameters</h3>
 <p>The header is formed of the following fields.</p>
 
 <table><thead>
@@ -1136,12 +1123,12 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <tr>
 <td>alg</td>
 <td>true</td>
-<td><code class="prettyprint">RS256</code>, RSA signed with a 256 bit SHA hash</td>
+<td><code>RS256</code>, RSA signed with a 256 bit SHA hash</td>
 </tr>
 <tr>
 <td>typ</td>
 <td>true</td>
-<td><code class="prettyprint">JWT</code>, JSON web token</td>
+<td><code>JWT</code>, JSON web token</td>
 </tr>
 </tbody></table>
 
@@ -1157,12 +1144,12 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <tr>
 <td>iss</td>
 <td>true</td>
-<td>Issuer, this should be the user&rsquo;s ID</td>
+<td>Issuer, this should be the user&#39;s ID</td>
 </tr>
 <tr>
 <td>sub</td>
 <td>true</td>
-<td>Subject, this should be the lock&rsquo;s ID</td>
+<td>Subject, this should be the lock&#39;s ID</td>
 </tr>
 <tr>
 <td>nbf</td>
@@ -1203,7 +1190,7 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <tr>
 <td>type</td>
 <td>true</td>
-<td>Must be <code class="prettyprint">MUTATE_LOCK</code></td>
+<td>Must be <code>MUTATE_LOCK</code></td>
 </tr>
 <tr>
 <td>locked</td>
@@ -1216,10 +1203,8 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <td>Number of seconds the lock should be unlocked for</td>
 </tr>
 </tbody></table>
-
-<h2 id="get-a-user-s-public-key">Get A User’s Public Key</h2>
-
-<p>This endpoint allows the retrieval of a user&rsquo;s public key along with their ID.</p>
+<h2 id='get-a-user-s-public-key'>Get A User’s Public Key</h2>
+<p>This endpoint allows the retrieval of a user&#39;s public key along with their ID.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/share/invite/USER_EMAIL'</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer TOKEN'</span> <span class="se">\</span>
@@ -1227,7 +1212,7 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 </code></pre>
 <blockquote>
 <ul>
-<li>Replace <code class="prettyprint">USER_EMAIL</code> with the user&rsquo;s email</li>
+<li>Replace <code>USER_EMAIL</code> with the user&#39;s email</li>
 </ul>
 
 <p>The above command returns JSON structured like this:</p>
@@ -1236,15 +1221,11 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
   </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h3 id="http-request">HTTP Request</h3>
+</span></code></pre><h3 id='http-request-10'>HTTP Request</h3>
+<p><code>GET https://api.doordeck.com/share/invite/USER_EMAIL</code></p>
 
-<p><code class="prettyprint">GET https://api.doordeck.com/share/invite/USER_EMAIL</code></p>
-
-<p>Replace <code class="prettyprint">USER_EMAIL</code> with the user&rsquo;s email</p>
-
-<h2 id="share-a-lock">Share A Lock</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span> <span class="se">\</span>
+<p>Replace <code>USER_EMAIL</code> with the user&#39;s email</p>
+<h2 id='share-a-lock'>Share A Lock</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   --data-binary <span class="s1">'{"email":"USERNAME","password":"PASSWORD"}'</span> <span class="se">\</span>
@@ -1267,29 +1248,25 @@ curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-0
 </code></pre>
 <blockquote>
 <ul>
-<li>Replace <code class="prettyprint">00000000-0000-0000-0000-000000000000</code> with the lock&rsquo;s ID</li>
-<li>Replace <code class="prettyprint">USER_ID</code> with the user&rsquo;s ID (obtained from decoding their auth token)</li>
-<li>Replace <code class="prettyprint">PUBLIC_KEY</code> with the invitee&rsquo;s public key </li>
-<li>Replace <code class="prettyprint">11111111-1111-1111-1111-111111111111</code> with the invitee&rsquo;s user ID,</li>
-<li>Replace <code class="prettyprint">USERNAME</code> and <code class="prettyprint">PASSWORD</code> with the appropriate credentials</li>
-<li>Replace <code class="prettyprint">START_TIME</code> and <code class="prettyprint">END_TIME</code> with Unix timestamps of when the user should be activate from and until, use null for indefinite </li>
+<li>Replace <code>00000000-0000-0000-0000-000000000000</code> with the lock&#39;s ID</li>
+<li>Replace <code>USER_ID</code> with the user&#39;s ID (obtained from decoding their auth token)</li>
+<li>Replace <code>PUBLIC_KEY</code> with the invitee&#39;s public key </li>
+<li>Replace <code>11111111-1111-1111-1111-111111111111</code> with the invitee&#39;s user ID,</li>
+<li>Replace <code>USERNAME</code> and <code>PASSWORD</code> with the appropriate credentials</li>
+<li>Replace <code>START_TIME</code> and <code>END_TIME</code> with Unix timestamps of when the user should be activate from and until, use null for indefinite </li>
 </ul>
 </blockquote>
 
 <p>This endpoint allows operations to be performed on a lock, such as lock, unlock, add/remove user. Requests to this endpoint must be signed and formed as a JSON web token.</p>
+<h3 id='http-request-11'>HTTP Request</h3>
+<p><code>POST https://api.doordeck.com/device/LOCK_ID/execute</code></p>
 
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST https://api.doordeck.com/device/LOCK_ID/execute</code></p>
-
-<p>Replace <code class="prettyprint">LOCK_ID</code> with the appropriate lock ID.</p>
+<p>Replace <code>LOCK_ID</code> with the appropriate lock ID.</p>
 
 <aside class="success">
 If a request expires within the next 60 seconds, a 200 is returned upon success, if a request expires in more than 60 seconds, a 202 is returned to indicate the request has been queued for the device.
 </aside>
-
-<h3 id="request-parameters">Request Parameters</h3>
-
+<h3 id='request-parameters-4'>Request Parameters</h3>
 <p>The header is formed of the following fields.</p>
 
 <table><thead>
@@ -1302,12 +1279,12 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <tr>
 <td>alg</td>
 <td>true</td>
-<td><code class="prettyprint">RS256</code>, RSA signed with a 256 bit SHA hash</td>
+<td><code>RS256</code>, RSA signed with a 256 bit SHA hash</td>
 </tr>
 <tr>
 <td>typ</td>
 <td>true</td>
-<td><code class="prettyprint">JWT</code>, JSON web token</td>
+<td><code>JWT</code>, JSON web token</td>
 </tr>
 </tbody></table>
 
@@ -1323,12 +1300,12 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <tr>
 <td>iss</td>
 <td>true</td>
-<td>Issuer, this should be the user&rsquo;s ID</td>
+<td>Issuer, this should be the user&#39;s ID</td>
 </tr>
 <tr>
 <td>sub</td>
 <td>true</td>
-<td>Subject, this should be the lock&rsquo;s ID</td>
+<td>Subject, this should be the lock&#39;s ID</td>
 </tr>
 <tr>
 <td>nbf</td>
@@ -1369,7 +1346,7 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <tr>
 <td>type</td>
 <td>true</td>
-<td>Must be <code class="prettyprint">ADD_USER</code></td>
+<td>Must be <code>ADD_USER</code></td>
 </tr>
 <tr>
 <td>user</td>
@@ -1397,9 +1374,7 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <td>Unix timestamp of when the user should expire, null or unset for never expires</td>
 </tr>
 </tbody></table>
-
-<h2 id="revoke-access-to-a-lock">Revoke Access To A Lock</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span> <span class="se">\</span>
+<h2 id='revoke-access-to-a-lock'>Revoke Access To A Lock</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   --data-binary <span class="s1">'{"email":"USERNAME","password":"PASSWORD"}'</span> <span class="se">\</span>
@@ -1422,28 +1397,24 @@ curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-0
 </code></pre>
 <blockquote>
 <ul>
-<li>Replace <code class="prettyprint">00000000-0000-0000-0000-000000000000</code> with the lock&rsquo;s ID</li>
-<li>Replace <code class="prettyprint">USER_ID</code> with the user&rsquo;s ID (obtained from decoding their auth token)</li>
-<li>Replace <code class="prettyprint">11111111-1111-1111-1111-111111111111</code> with the revoked user&rsquo;s ID,</li>
-<li>Replace <code class="prettyprint">USERNAME</code> and <code class="prettyprint">PASSWORD</code> with the appropriate credentials</li>
+<li>Replace <code>00000000-0000-0000-0000-000000000000</code> with the lock&#39;s ID</li>
+<li>Replace <code>USER_ID</code> with the user&#39;s ID (obtained from decoding their auth token)</li>
+<li>Replace <code>11111111-1111-1111-1111-111111111111</code> with the revoked user&#39;s ID,</li>
+<li>Replace <code>USERNAME</code> and <code>PASSWORD</code> with the appropriate credentials</li>
 </ul>
 </blockquote>
 
 <p>This endpoint allows multiple operations to be performed on locks. Requests to this endpoint must be signed and formed as a JSON web token. 
 This section explains how to revoke access to a lock, this can also be used to delete a lock from the current users account.</p>
+<h3 id='http-request-12'>HTTP Request</h3>
+<p><code>POST https://api.doordeck.com/device/LOCK_ID/execute</code></p>
 
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST https://api.doordeck.com/device/LOCK_ID/execute</code></p>
-
-<p>Replace <code class="prettyprint">LOCK_ID</code> with the appropriate lock ID.</p>
+<p>Replace <code>LOCK_ID</code> with the appropriate lock ID.</p>
 
 <aside class="success">
 If a request expires within the next 60 seconds, a 200 is returned upon success, if a request expires in more than 60 seconds, a 202 is returned to indicate the request has been queued for the device.
 </aside>
-
-<h3 id="request-parameters">Request Parameters</h3>
-
+<h3 id='request-parameters-5'>Request Parameters</h3>
 <p>The header is formed of the following fields.</p>
 
 <table><thead>
@@ -1456,12 +1427,12 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <tr>
 <td>alg</td>
 <td>true</td>
-<td><code class="prettyprint">RS256</code>, RSA signed with a 256 bit SHA hash</td>
+<td><code>RS256</code>, RSA signed with a 256 bit SHA hash</td>
 </tr>
 <tr>
 <td>typ</td>
 <td>true</td>
-<td><code class="prettyprint">JWT</code>, JSON web token</td>
+<td><code>JWT</code>, JSON web token</td>
 </tr>
 </tbody></table>
 
@@ -1477,12 +1448,12 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <tr>
 <td>iss</td>
 <td>true</td>
-<td>Issuer, this should be the user&rsquo;s ID</td>
+<td>Issuer, this should be the user&#39;s ID</td>
 </tr>
 <tr>
 <td>sub</td>
 <td>true</td>
-<td>Subject, this should be the lock&rsquo;s ID</td>
+<td>Subject, this should be the lock&#39;s ID</td>
 </tr>
 <tr>
 <td>nbf</td>
@@ -1523,7 +1494,7 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <tr>
 <td>type</td>
 <td>true</td>
-<td>Must be <code class="prettyprint">REMOVE_USER</code></td>
+<td>Must be <code>REMOVE_USER</code></td>
 </tr>
 <tr>
 <td>users</td>
@@ -1531,13 +1502,11 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <td>List of user IDs to remove</td>
 </tr>
 </tbody></table>
-
-<h2 id="monitor-real-time-lock-state">Monitor Real-time Lock State</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/device/events?device=00000000-0000-0000-0000-000000000000"</span>
+<h2 id='monitor-real-time-lock-state'>Monitor Real-time Lock State</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/device/events?device=00000000-0000-0000-0000-000000000000"</span>
   -H <span class="s2">"Authorization: Bearer REFRESH_TOKEN"</span>
 </code></pre>
 <blockquote>
-<p>Replace <code class="prettyprint">00000000-0000-0000-0000-000000000000</code> with the lock&rsquo;s ID</p>
+<p>Replace <code>00000000-0000-0000-0000-000000000000</code> with the lock&#39;s ID</p>
 </blockquote>
 
 <p>This is a <a href="https://en.wikipedia.org/wiki/Server-sent_events">Server-Sent Events</a> endpoint that takes multiple devices and returns a stream of events.</p>
@@ -1545,13 +1514,9 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <aside class="notice">
 This endpoint is experimental and may change without notice.
 </aside>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET https://api.doordeck.com/device/events?device=00000000-0000-0000-0000-000000000000</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
-
+<h3 id='http-request-13'>HTTP Request</h3>
+<p><code>GET https://api.doordeck.com/device/events?device=00000000-0000-0000-0000-000000000000</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1565,9 +1530,7 @@ This endpoint is experimental and may change without notice.
 <td>Device ID to monitor, multiple can specified as seperate query parameters</td>
 </tr>
 </tbody></table>
-
-          <h1 id="errors">Errors</h1>
-
+<h1 id='errors'>Errors</h1>
 <p>The Doordeck API uses the following error codes:</p>
 
 <table><thead>
@@ -1578,53 +1541,57 @@ This endpoint is experimental and may change without notice.
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Bad Request &ndash; Your request is wrong</td>
+<td>Bad Request -- Your request is wrong</td>
 </tr>
 <tr>
 <td>401</td>
-<td>Unauthorized &ndash; Your API key is wrong</td>
+<td>Unauthorized -- Your API key is wrong</td>
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden &ndash; You don&rsquo;t have permission</td>
+<td>Forbidden -- You don&#39;t have permission</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found &ndash; The specified resource could not be found</td>
+<td>Not Found -- The specified resource could not be found</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a resource with an invalid method</td>
+<td>Method Not Allowed -- You tried to access a resource with an invalid method</td>
 </tr>
 <tr>
 <td>406</td>
-<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
+<td>Not Acceptable -- You requested a format that isn&#39;t json</td>
 </tr>
 <tr>
 <td>409</td>
-<td>Conflict - The JWT ID has already been used</td>
+<td>Conflict - The JWT ID has already been used or there is a database conflict</td>
 </tr>
 <tr>
 <td>410</td>
-<td>Gone &ndash; The resource requested has been removed from our servers</td>
+<td>Gone -- The resource requested has been removed from our servers</td>
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many resources! Slow down!</td>
+<td>Too Many Requests -- You&#39;re requesting too many resources! Slow down!</td>
 </tr>
 <tr>
 <td>500</td>
-<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
 </tr>
 <tr>
 <td>503</td>
-<td>Service Unavailable &ndash; The Doordeck device is offline. Please try again later.</td>
+<td>Service Unavailable -- The Doordeck device is offline. Please try again later.</td>
 </tr>
 <tr>
 <td>504</td>
-<td>Gateway Timeout - The Doordeck device didn&rsquo;t response in a timely manner</td>
+<td>Gateway Timeout -- The Doordeck device didn&#39;t response in a timely manner</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
+</aside>
 
       </div>
       <div class="dark-box">
