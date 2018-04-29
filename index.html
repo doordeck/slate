@@ -465,7 +465,7 @@ You must replace <code>TOKEN</code> with your authentication token (the <code>au
 <aside class="success">
 A validation email will be disptahced to the user's email address upon successful registration.
 </aside>
-<h2 id='refresh-token'>Refresh Token</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/token/refresh"</span>
+<h2 id='refresh-token'>Refresh Token</h2><pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.doordeck.com/auth/token/refresh"</span>
   -H <span class="s2">"Authorization: Bearer REFRESH_TOKEN"</span>
 </code></pre>
 <blockquote>
@@ -478,7 +478,7 @@ A validation email will be disptahced to the user's email address upon successfu
 </span></code></pre>
 <p>This endpoint refreshes a users&#39; authentication token using their refresh token. Refresh tokens cannot be used for standard requests and have a very long life compared with an authentication token.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://api.doordeck.com/auth/token/refresh</code></p>
+<p><code>POST https://api.doordeck.com/auth/token/refresh</code></p>
 
 <aside class="notice">
 A refresh token should be used in place of an authentication token for this request.
