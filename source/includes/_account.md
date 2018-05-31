@@ -95,7 +95,7 @@ publicKey | Base 64 encoded public key
 authToken | JSON web token to be used for normal requests
 refreshToken | JSON web token to be used for getting new authentication tokens
 
-## Registration
+## Registration (v1)
 
 ```shell
 curl "https://api.doordeck.com/auth/register"
@@ -128,6 +128,55 @@ Parameter | Required | Description
 email | true | Email address to register.
 password | true | Password for access to account.
 displayName | false | User's display name (e.g. their fullname)
+
+<aside class="success">
+A validation email will be disptahced to the user's email address upon successful registration.
+</aside>
+
+## Registration (v2)
+
+```shell
+curl "https://api.doordeck.com/auth/register"
+  -X POST
+  -H "Accept: application/vnd.doordeck.api-v2+json"
+  -H 'content-type: application/json'
+  --data-binary '{"email":"EMAIL","password":"PASSWORD"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "privateKey":"base 64 encoded private key",
+  "publicKey":"base 64 encoded public key",
+  "authToken":"JSON Web Token for authentication",
+  "refreshToken":"JSON Web Token for refreshing authentication credentials"
+}
+```
+
+This endpoint allows users to register for a Doordeck account; it's handling of accounts with a pending invite is 
+different from v1 in that the call will fail with a 409 conflict error if there is a pending invite (unless force is set
+ to true).
+
+### HTTP Request
+
+`POST https://api.doordeck.com/auth/register`
+
+This call must be made with the ```Accept``` header set to ```application/vnd.doordeck.api-v2+json```
+
+### Request Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+email | true | Email address to register.
+password | true | Password for access to account.
+displayName | false | User's display name (e.g. their fullname)
+
+### Query Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+force | false | Boolean flag to indicate if a pending invite should be discarded and a new account created
 
 <aside class="success">
 A validation email will be disptahced to the user's email address upon successful registration.
@@ -195,6 +244,18 @@ Parameter | Required | Description
 --------- | ------- | -----------
 code | true | Verification code from email.
 
+## Reverify Email
+
+```shell
+curl "https://api.doordeck.com/account/email/reverify"
+  -X POST
+  -H "Authorization: Bearer TOKEN"
+```
+
+This endpoint will generate a new email to the logged user with a new verification code to validate their email address.
+
+### HTTP Request
+`POST https://api.doordeck.com/account/email/reverify`
 
 ## Change Password
 

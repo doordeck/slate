@@ -10,6 +10,8 @@ toc_footers:
 
 includes:
   - account
+  - site
+  - tile
   - operations
   - errors
 

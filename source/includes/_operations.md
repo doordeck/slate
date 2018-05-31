@@ -345,6 +345,48 @@ This endpoint retrieves all users associated with a particular lock.
 
 Replace `LOCK_ID` with the appropriate lock ID.
 
+## Get Locks For A User
+```shell
+ curl 'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000'
+```
+
+> Replace `00000000-0000-0000-0000-000000000000` with the user's ID.
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "userId": "5a5e6e70-3c51-11e6-9e57-cf40be3013fb",
+    "email": "michael@doordeck.com",
+    "publicKey": "base 64 encoded public key",
+    "displayName": "Michael Barnwell",
+    "orphan": false,
+    "devices": [
+        {
+            "deviceId": "ba8fb900-4def-11e8-9370-170748b9fca8",
+            "role": "ADMIN"
+        },
+        {
+            "deviceId": "e378ebe0-45f9-11e7-a620-79be7967fabd",
+            "role": "ADMIN"
+        },
+        {
+            "deviceId": "eeb74c90-7c1e-11e7-9823-a9f736dac766",
+            "role": "ADMIN"
+        }
+    ]
+}
+```
+
+This endpoint returns basic user information, including the user's public key and a list of the locks that the user is
+enrolled on, the list will only show locks where the current user is an administrator.
+
+### HTTP Request
+
+`GET https://api.doordeck.com/user/USER_ID/`
+
+Replace `USER_ID` with the appropriate user ID.
+
 ## Update Lock Properties
 
 ```shell
@@ -384,6 +426,33 @@ proximityUnlock | false | Control if the lock can be unlocked via a touch action
 defaultName | false | Set the default name for all users who have not set a custom alias
 permittedAddress | false | A complete list of permitted IP addresses for performing actions on the door (public IP addresses)
 delay | false | A time in milliseconds to delay the UI countdown action, for slow locks (Deprecated) 
+usageRequirements | false | An object containing usage requirements of the lock, see below.
+
+The usage requirements is formed of the following fields
+
+Parameter | Required | Description
+--------- | -------- | -----------
+time | False | List of time requirements, see time requirement definition below.
+location | False | GPS restriction, see location requirement definition below.
+
+The time requirements is formed of a list, each containing the following fields
+
+Parameter | Required | Description
+--------- | -------- | -----------
+start | true | Local time, (HH:mm) describing the start of a permitted time window
+end | true | Local time, (HH:mm) describing the end of a permitted time window
+timezone | true | Timezone, e.g. Europe/London, describing what hours the start and end are valid in
+days | true | List of days the time window applies, e.g. MONDAY, TUESDAY
+
+The location requirements is formed of the following fields
+
+Parameter | Required | Description
+--------- | -------- | -----------
+latitude | true | Latitude of the center point
+longitude | true | Longitude of the center point
+enabled | false | Flag indicating if the location requirement is enabled
+radius | false | Indicates what size the bubble should be where the location is considered matched, defaults to 100m
+accuracy | false | Indicates how accurate the phone's GPS must be to be considered matched, defaults to 200m
 
 ## Pair With New Lock
 
@@ -657,11 +726,93 @@ Parameter | Required | Description
 type | true | Must be `REMOVE_USER`
 users | true | List of user IDs to remove
 
+## Update Secure Settings
+
+```shell
+curl 'https://api.doordeck.com/auth/token/' \
+  -X POST \
+  -H 'content-type: application/json' \
+  --data-binary '{"email":"USERNAME","password":"PASSWORD"}' \
+  | jq -r .privateKey \
+  | base64 --decode \
+  | openssl pkcs8 -nocrypt -inform DER -outform PEM -out privatekey.pem
+
+HEADER='{"alg":"RS256","typ":"JWT"}'
+BODY='{"iss":"USER_ID","sub":"00000000-0000-0000-0000-000000000000","nbf":1473083829,"iat":1473083829,"exp":1473083889,"operation":{"type":"MUTATE_SETTING","unlockDuration":10}}'
+HEADER_B64=`echo -n $HEADER | base64 | sed 's/+/-/g;s/\//_/g;s/=//g'`
+BODY_B64=`echo -n $BODY | base64  | sed 's/+/-/g;s/\//_/g;s/=//g'`
+SIGNATURE_B64=`echo -n $HEADER_B64.$BODY_B64 | openssl sha -sha256 -sign privatekey.pem | base64 | sed 's/+/-/g;s/\//_/g;s/=//g'`
+JWT=`echo -n $HEADER_B64.$BODY_B64.$SIGNATURE_B64`
+
+curl 'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/execute'
+  -X POST
+  -H 'authorization: Bearer TOKEN'
+  -H 'content-type: application/json;charset=UTF-8'
+  --data-binary "$JWT"
+```
+
+> - Replace `00000000-0000-0000-0000-000000000000` with the lock's ID
+> - Replace `USER_ID` with the user's ID (obtained from decoding their auth token)
+> - Replace `11111111-1111-1111-1111-111111111111` with the revoked user's ID,
+> - Replace `USERNAME` and `PASSWORD` with the appropriate credentials
+
+This endpoint allows multiple operations to be performed on locks. Requests to this endpoint must be signed and formed as a JSON web token. 
+This section explains how to change on-lock settings, such as unlock time and open hours.
+
+### HTTP Request
+
+`POST https://api.doordeck.com/device/LOCK_ID/execute`
+
+Replace `LOCK_ID` with the appropriate lock ID.
+
+<aside class="success">
+If a request expires within the next 60 seconds, a 200 is returned upon success, if a request expires in more than 60 seconds, a 202 is returned to indicate the request has been queued for the device.
+</aside>
+
+### Request Parameters
+
+The header is formed of the following fields.
+
+Parameter | Required | Description
+--------- | ------- | -----------
+alg | true | `RS256`, RSA signed with a 256 bit SHA hash
+typ | true | `JWT`, JSON web token
+
+The body is formed of the following fields.
+
+Parameter | Required | Description
+--------- | ------- | -----------
+iss | true | Issuer, this should be the user's ID
+sub | true | Subject, this should be the lock's ID
+nbf | true | Not before, a Unix timestamp indicating the earliest date the request is valid from
+iat | true | Issued at, the current Unix timestamp
+exp | true | Expires, a Unix timestamp indicating when the request should expire, requests to change the lock status should be valid for up to one minute, other requests can have a much longer expiry time
+jti | false (but highly recommended) | User generated, unique ID used for tracking the request status and preventing replay attacks. UUIDs are recommended here.
+operation | true | A JSON object containing the instructions of the lock
+
+The operation object definition is as follows
+
+Parameter | Required | Description
+--------- | ------- | -----------
+type | true | Must be `MUTATE_SETTING`
+unlockDuration | false | Set to an integer number of seconds for the lock to remain unlocked
+unlockBetween | false | Set to unlock between definition below, or null to remove settings
+
+The unlock between object definition is as follows
+
+Parameter | Required | Description
+--------- | -------- | -----------
+start | true | Local time, (HH:mm) describing the start of an unlock between time window
+end | true | Local time, (HH:mm) describing the end of an unlock between time window
+timezone | true | Timezone, e.g. Europe/London, describing what hours the start and end are valid in
+days | true | List of days the time window applies, e.g. MONDAY, TUESDAY
+exceptions | false | List of dates (YYYY-MM-DD) to ignore above settings, useful for holidays
+
 ## Monitor Real-time Lock State
 
 ```shell
 curl "https://api.doordeck.com/device/events?device=00000000-0000-0000-0000-000000000000"
-  -H "Authorization: Bearer REFRESH_TOKEN"
+  -H "Authorization: Bearer TOKEN"
 ```
 
 > Replace `00000000-0000-0000-0000-000000000000` with the lock's ID
@@ -680,3 +831,94 @@ This endpoint is experimental and may change without notice.
 Parameter | Required | Description
 --------- | ------- | -----------
 device | true | Device ID to monitor, multiple can specified as seperate query parameters
+
+## Get Pinned Locks
+
+```shell
+curl "https://api.doordeck.com/device/favourite"
+  -H "Authorization: Bearer TOKEN"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+    {
+        "id": "3cc19730-4603-11e7-a620-79be7967fabd",
+        "name": "Reception",
+        "colour": "#24BD9A",
+        "start": null,
+        "end": null,
+        "role": "USER",
+        "settings": {
+            "unlockTime": 5,
+            "permittedAddresses": [],
+            "defaultName": "Reception",
+            "usageRequirements": {},
+            "unlockBetweenWindow": null,
+            "tiles": [
+                "3cc19730-4603-11e7-a620-79be7967fabd"
+            ]
+        },
+        "state": {
+            "locked": true,
+            "connected": true
+        },
+        "favourite": true
+    },
+    {
+        "id": "ad8fb800-4def-11e8-9370-170748b9fca8",
+        "name": "Web Demo",
+        "colour": "#D93951",
+        "start": null,
+        "end": null,
+        "role": "ADMIN",
+        "settings": {
+            "unlockTime": 7,
+            "permittedAddresses": [],
+            "defaultName": "Web Demo",
+            "usageRequirements": {},
+            "unlockBetweenWindow": null,
+            "tiles": []
+        },
+        "state": {
+            "locked": true,
+            "connected": true
+        },
+        "favourite": true
+    }
+]
+```
+
+The endpoint returns a list of the current user's pinned locks.
+
+### HTTP Request
+`GET https://api.doordeck.com/device/favourite`
+
+## Get Shareable Locks
+
+```shell
+curl "https://api.doordeck.com/device/shareable"
+  -H "Authorization: Bearer TOKEN"
+```
+
+
+> The above command returns JSON structured like this:
+
+```json
+[
+    {
+        "id": "08aa6b81-30cf-11e8-ba42-6986d3c6ca8e",
+        "name": "Demo #1"
+    },
+    {
+        "id": "48dceebb-31cf-11e8-a9fe-6986d3c6ca8e",
+        "name": "Demo #2"
+    }
+]
+```
+
+This endpoint returns the names and IDs of locks where the current user is an administrator.
+
+### HTTP Request
+`GET https://api.doordeck.com/device/shareable`
