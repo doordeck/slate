@@ -12,6 +12,8 @@ Error Code | Meaning
 406 | Not Acceptable -- You requested a format that isn't json
 409 | Conflict - The JWT ID has already been used or there is a database conflict
 410 | Gone -- The resource requested has been removed from our servers
+423 | Locked -- The resource cannot be updated until an unlock operation is performed
+425 | Too Early -- The resource is unavailable until a pending slower operation is completed elsewhere 
 429 | Too Many Requests -- You're requesting too many resources! Slow down!
 500 | Internal Server Error -- We had a problem with our server. Try again later.
 503 | Service Unavailable -- The Doordeck device is offline. Please try again later.

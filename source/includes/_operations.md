@@ -483,7 +483,96 @@ Parameter | Required | Description
 key  | true | Lock's registration key
 name | true | Alias of the lock (default for all users)
 
-## Lock Or Unlock
+## Get A Doordeck User’s Public Key
+
+<aside class="warning">
+This endpoint is only available to users with Doordeck issued auth tokens.
+</aside>
+
+This endpoint allows the retrieval of a user's public key along with their ID.
+
+```shell
+curl 'https://api.doordeck.com/share/invite/USER_EMAIL' \
+  -X POST \
+  -H 'authorization: Bearer TOKEN' \
+  -H 'content-type: application/json' 
+```
+> - Replace `USER_EMAIL` with the user's email
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id":"00000000-0000-0000-0000-000000000000",
+  "publicKey":"base 64 encoded public key"
+}
+```
+
+### HTTP Request
+
+`GET https://api.doordeck.com/share/invite/USER_EMAIL`
+
+Replace `USER_EMAIL` with the user's email
+
+
+## Get A Third-Party User’s Public Key
+
+<aside class="warning">
+This endpoint is only available to users with third-party issued auth tokens, additionally this endpoint is currently
+only available on development and may change without warning.
+</aside>
+
+This endpoint allows retrieval of a user's public key, it provides flexibility to third-party application 
+developers by allowing querying via email, telephone, user identifier (both internal and external) and by complete 
+identity (encrypted).
+
+Queries against this endpoint are restricted by the third-party's user pool, in other words, this call will only return 
+users belonging to the same application as specified in the auth token.
+
+This endpoint accepts a single JSON key (multiple keys cannot be used) which can be one of the following:
+
+| Field | Description |
+| ----- | ----------- | 
+| email | Email address |
+| telephone | E.164 formatted telephone |
+| localKey | Doordeck identifier for a user (UUID) |
+| foreignKey | Third-party application's identifier for a user |
+| identity | Encrypted OpenID token of user |
+
+The first four query keys, ```email```, ```telephone```, ```localKey``` and ```foreignKey``` are read only - these will 
+return a 404 error if the user is not known to Doordeck. 
+
+The remaining query key, ```identity```, is used to specify the full identity of the user who is the subject of the
+query, this will mean the user is created if they don't exist and will always return a response. When using 
+```identity```, the specified OpenID token must be encrypted so it cannot be abused as an authentication token - it 
+should be encrypted using JSON Web Encryption (JWE) using the RSA key Doordeck generates for the particular third-party
+application.
+
+```shell
+curl 'https://api.doordeck.com/directory/query' \
+  -X POST \
+  -H 'authorization: Bearer TOKEN' \
+  -H 'content-type: application/json' \
+  --data-binary '{"email":"USER_EMAIL"}'
+```
+> - Replace `USER_EMAIL` with the user's email
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id":"00000000-0000-0000-0000-000000000000",
+  "publicKey":"base 64 encoded public key"
+}
+```
+
+### HTTP Request
+
+`GET https://api.doordeck.com/share/invite/USER_EMAIL`
+
+Replace `USER_EMAIL` with the user's email
+
+## Unlock
 
 ```shell
 curl 'https://api.doordeck.com/auth/token/' \
@@ -510,7 +599,7 @@ curl 'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/execu
 
 > Replace `00000000-0000-0000-0000-000000000000` with the lock's ID, `USER_ID` with the user's ID (obtained from decoding their auth token), `USERNAME` and `PASSWORD` with the appropriate credentials.
 
-This endpoint allows operations to be performed on a lock, typically this is lock and unlock. Requests to this endpoint must be signed and formed as a JSON web token.
+This endpoint allows a device to be unlocked. Requests to this endpoint must be signed and formed as a JSON web token.
 
 ### HTTP Request
 
@@ -528,7 +617,8 @@ The header is formed of the following fields.
 
 Parameter | Required | Description
 --------- | ------- | -----------
-alg | true | `RS256`, RSA signed with a 256 bit SHA hash
+alg | true | `RS256` (legacy) RSA signed with a 256 bit SHA hash, or EdDSA for ephemeral key signatures
+x5c | false | User's certificate chain, mandatory for EdDSA signatures
 typ | true | `JWT`, JSON web token
 
 The body is formed of the following fields.
@@ -549,37 +639,8 @@ Parameter | Required | Description
 --------- | ------- | -----------
 type | true | Must be `MUTATE_LOCK`
 locked | true | Boolean indicating if the lock should be locked or unlocked
-duration | false | Number of seconds the lock should be unlocked for
 
-
-## Get A User’s Public Key
-
-This endpoint allows the retrieval of a user's public key along with their ID.
-
-```shell
-curl 'https://api.doordeck.com/share/invite/USER_EMAIL' \
-  -X POST \
-  -H 'authorization: Bearer TOKEN' \
-  -H 'content-type: application/json' \
-```
-> - Replace `USER_EMAIL` with the user's email
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id":"00000000-0000-0000-0000-000000000000",
-  "publicKey":"base 64 encoded public key"
-}
-```
-
-### HTTP Request
-
-`GET https://api.doordeck.com/share/invite/USER_EMAIL`
-
-Replace `USER_EMAIL` with the user's email
-
-## Share A Lock
+## Share A Lock 
 
 ```shell
 curl 'https://api.doordeck.com/auth/token/' \
@@ -629,7 +690,8 @@ The header is formed of the following fields.
 
 Parameter | Required | Description
 --------- | ------- | -----------
-alg | true | `RS256`, RSA signed with a 256 bit SHA hash
+alg | true | `RS256` (legacy) RSA signed with a 256 bit SHA hash, or EdDSA for ephemeral key signatures
+x5c | false | User's certificate chain, mandatory for EdDSA signatures
 typ | true | `JWT`, JSON web token
 
 The body is formed of the following fields.
@@ -655,7 +717,7 @@ role | false | Should be either ADMIN or USER
 start | false | Unix timestamp of when the user should be active from, null or unset to start immediately
 end | false | Unix timestamp of when the user should expire, null or unset for never expires
 
-## Revoke Access To A Lock 
+## Revoke Access To A Lock
 
 ```shell
 curl 'https://api.doordeck.com/auth/token/' \
@@ -704,7 +766,8 @@ The header is formed of the following fields.
 
 Parameter | Required | Description
 --------- | ------- | -----------
-alg | true | `RS256`, RSA signed with a 256 bit SHA hash
+alg | true | `RS256` (legacy) RSA signed with a 256 bit SHA hash, or EdDSA for ephemeral key signatures
+x5c | false | User's certificate chain, mandatory for EdDSA signatures
 typ | true | `JWT`, JSON web token
 
 The body is formed of the following fields.
@@ -775,7 +838,8 @@ The header is formed of the following fields.
 
 Parameter | Required | Description
 --------- | ------- | -----------
-alg | true | `RS256`, RSA signed with a 256 bit SHA hash
+alg | true | `RS256` (legacy) RSA signed with a 256 bit SHA hash, or EdDSA for ephemeral key signatures
+x5c | false | User's certificate chain, mandatory for EdDSA signatures
 typ | true | `JWT`, JSON web token
 
 The body is formed of the following fields.
@@ -830,7 +894,7 @@ This endpoint is experimental and may change without notice.
 
 Parameter | Required | Description
 --------- | ------- | -----------
-device | true | Device ID to monitor, multiple can specified as seperate query parameters
+device | true | Device ID to monitor, multiple can specified as separate query parameters
 
 ## Get Pinned Locks
 
