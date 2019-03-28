@@ -1,57 +1,10 @@
-# Authentication
-
-> To authorize, use this code:
-
-```shell
-curl 'https://api.doordeck.com/auth/token/'
-  -X POST
-  -H 'content-type: application/json'
-  --data-binary '{"email":"EMAIL","password":"PASSWORD"}'
-```
-
-> Make sure to replace `USERNAME` and `PASSWORD` with your credentials.
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "privateKey":"base 64 encoded private key",
-  "publicKey":"base 64 encoded public key",
-  "authToken":"JSON Web Token for authentication",
-  "refreshToken":"JSON Web Token for refreshing authentication credentials"
-}
-```
-
-Doordeck uses tokens to permit access to the API. Doordeck expects for the token to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: Bearer TOKEN`
-
-<aside class="notice">
-You must replace <code>TOKEN</code> with your authentication token (the <code>authToken</code> from the login response).
-</aside>
-
-Authentication tokens are JSON web tokens, they can be examined to determine their expiry date, the user's ID. JSON web tokens are split into three sections separated by a `.`, the header, payload and signature - each section can be base64 decoded to read further.
-
-```shell
-echo 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0NzMxNjMwNzUsImlhdCI6MTQ3MzA3NjY3NSwic3ViIjoiNWE1ZjZlODAtM2M1MS0xMWU2LTllNTctY2Y0MGJlMzAxM2ZiIiwic2Vzc2lvbiI6ImZiMmEwMDYwLTczNWYtMTFlNi1iNDg3LTZmMTZmZGE1MzkxNyIsInJlZnJlc2giOmZhbHNlLCJlbWFpbCI6Im1pY2hhZWxAZG9vcmRlY2suY29tIn0.REDCATED' | cut -d. -f2 | base64 -D
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "exp":1473163075,
-  "iat":1473076675,
-  "sub":"5a5f6e80-3c51-11e6-9e57-cf40be3013fb",
-  "session":"fb2a0060-735f-11e6-b487-6f16fda53917",
-  "refresh":false,
-  "email":"michael@doordeck.com"
-}
-```
-
 # Account
 
 ## Login
+
+<aside class="warning">
+This endpoint is only available to Doordeck registered users.
+</aside>
 
 ```shell
 curl 'https://api.doordeck.com/auth/token/'
@@ -184,6 +137,10 @@ A validation email will be disptahced to the user's email address upon successfu
 
 ## Refresh Token
 
+<aside class="warning">
+This endpoint is only available to users with Doordeck issued auth tokens.
+</aside>
+
 ```shell
 curl -X POST "https://api.doordeck.com/auth/token/refresh"
   -H "Authorization: Bearer REFRESH_TOKEN"
@@ -214,6 +171,10 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 
 ## Logout
 
+<aside class="warning">
+This endpoint is only available when the authentication token used specifies a session ID (sid)
+</aside>
+
 ```shell
 curl "https://api.doordeck.com/token/destroy"
   -H "Authorization: Bearer TOKEN"
@@ -223,6 +184,43 @@ This endpoint destroys a session associated with an authentication token and any
 
 ### HTTP Request
 `POST https://api.doordeck.com/token/destroy`
+
+## Register Ephemeral Key
+
+<aside class="warning">
+This endpoint is only available to users with third-party issued auth tokens, additionally this endpoint is currently
+only available on development and may change without warning.
+</aside>
+
+```shell
+curl "https://api.doordeck.com/auth/certificate" \
+  -X POST \
+  -H "Authorization: Bearer TOKEN" \
+  -H 'content-type: application/json' \
+  --data-binary '{"ephemeralKey":"Base64 encoded Ed25519 public key"}' 
+```
+
+> Replace `Base64 encoded Ed25519 public key` with the user's ephemeral key.
+
+> The above command returns JSON structured like this:
+
+```json
+  {
+    "certificateChain": ["List of base64 encoded DER X509 certificates forming a complete certificate chain"],
+    "userId": "Doordeck identifier for the user"
+  }
+```
+
+This endpoint is used to register the ephemeral key for third-party application users', it returns a certificate chain
+with the user's key as the subject of the leaf certificate. 
+
+Only Ed25519 public keys are accepted by this endpoint, they can either be the native 32 byte public key Base 64 
+encoded or specified as a Base 64 DER encoded key as defined in [RFC8410](https://tools.ietf.org/html/rfc8410). 
+
+This endpoint may required a secondary authentication check before producing a certificate chain for the user, it will 
+indicate this by returning a 423 error.
+
+The certificate chain returned should be used in the ```x5c``` field when performing signed requests such as unlocking.
 
 ## Verify Email
 
@@ -246,6 +244,10 @@ code | true | Verification code from email.
 
 ## Reverify Email
 
+<aside class="warning">
+This endpoint is only available to users with Doordeck issued auth tokens.
+</aside>
+
 ```shell
 curl "https://api.doordeck.com/account/email/reverify"
   -X POST
@@ -258,6 +260,10 @@ This endpoint will generate a new email to the logged user with a new verificati
 `POST https://api.doordeck.com/account/email/reverify`
 
 ## Change Password
+
+<aside class="warning">
+This endpoint is only available to users with Doordeck issued auth tokens.
+</aside>
 
 ```shell
 curl "https://api.doordeck.com/account/password"
