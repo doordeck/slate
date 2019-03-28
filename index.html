@@ -220,6 +220,11 @@
       <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#environments" class="toc-h2 toc-link" data-title="Environments">Environments</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
@@ -241,6 +246,9 @@
                   </li>
                   <li>
                     <a href="#logout" class="toc-h2 toc-link" data-title="Logout">Logout</a>
+                  </li>
+                  <li>
+                    <a href="#register-ephemeral-key" class="toc-h2 toc-link" data-title="Register Ephemeral Key">Register Ephemeral Key</a>
                   </li>
                   <li>
                     <a href="#verify-email" class="toc-h2 toc-link" data-title="Verify Email">Verify Email</a>
@@ -318,10 +326,13 @@
                     <a href="#pair-with-new-lock" class="toc-h2 toc-link" data-title="Pair With New Lock">Pair With New Lock</a>
                   </li>
                   <li>
-                    <a href="#lock-or-unlock" class="toc-h2 toc-link" data-title="Lock Or Unlock">Lock Or Unlock</a>
+                    <a href="#get-a-doordeck-user-s-public-key" class="toc-h2 toc-link" data-title="Get A Doordeck User’s Public Key">Get A Doordeck User’s Public Key</a>
                   </li>
                   <li>
-                    <a href="#get-a-user-s-public-key" class="toc-h2 toc-link" data-title="Get A User’s Public Key">Get A User’s Public Key</a>
+                    <a href="#get-a-third-party-user-s-public-key" class="toc-h2 toc-link" data-title="Get A Third-Party User’s Public Key">Get A Third-Party User’s Public Key</a>
+                  </li>
+                  <li>
+                    <a href="#unlock" class="toc-h2 toc-link" data-title="Unlock">Unlock</a>
                   </li>
                   <li>
                     <a href="#share-a-lock" class="toc-h2 toc-link" data-title="Share A Lock">Share A Lock</a>
@@ -344,6 +355,55 @@
               </ul>
           </li>
           <li>
+            <a href="#platform" class="toc-h1 toc-link" data-title="Platform">Platform</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-application" class="toc-h2 toc-link" data-title="Create Application">Create Application</a>
+                  </li>
+                  <li>
+                    <a href="#list-applications" class="toc-h2 toc-link" data-title="List Applications">List Applications</a>
+                  </li>
+                  <li>
+                    <a href="#get-application" class="toc-h2 toc-link" data-title="Get Application">Get Application</a>
+                  </li>
+                  <li>
+                    <a href="#update-application" class="toc-h2 toc-link" data-title="Update Application">Update Application</a>
+                  </li>
+                  <li>
+                    <a href="#delete-application" class="toc-h2 toc-link" data-title="Delete Application">Delete Application</a>
+                  </li>
+                  <li>
+                    <a href="#get-logo-upload-url" class="toc-h2 toc-link" data-title="Get Logo Upload URL">Get Logo Upload URL</a>
+                  </li>
+                  <li>
+                    <a href="#add-auth-key" class="toc-h2 toc-link" data-title="Add Auth Key">Add Auth Key</a>
+                  </li>
+                  <li>
+                    <a href="#add-auth-issuer" class="toc-h2 toc-link" data-title=" Add Auth Issuer"> Add Auth Issuer</a>
+                  </li>
+                  <li>
+                    <a href="#delete-auth-issuer" class="toc-h2 toc-link" data-title="Delete Auth Issuer">Delete Auth Issuer</a>
+                  </li>
+                  <li>
+                    <a href="#add-cors-domain" class="toc-h2 toc-link" data-title=" Add CORS Domain"> Add CORS Domain</a>
+                  </li>
+                  <li>
+                    <a href="#remove-cors-domain" class="toc-h2 toc-link" data-title="Remove CORS Domain">Remove CORS Domain</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#encoding" class="toc-h1 toc-link" data-title="Encoding">Encoding</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#versioning" class="toc-h2 toc-link" data-title="Versioning">Versioning</a>
+                  </li>
+                  <li>
+                    <a href="#certificate-amp-asymmetric-keys" class="toc-h2 toc-link" data-title="Certificate &amp; Asymmetric Keys">Certificate &amp; Asymmetric Keys</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
@@ -356,53 +416,170 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Doordeck API! You can use our API to access Doordeck API endpoints, which can get information on the state of locks, manage access and perform operations.</p>
+<p>Welcome to the Doordeck API! You can use our API to access Doordeck API endpoints, 
+which can get information on the state of locks, manage access and perform operations.</p>
 
-<p>This API documentation is generated using <a href="https://github.com/lord/slate">Slate</a>, if you spot any errors please submit a pull request directly on <a href="https://github.com/doordeck/docs/">Github</a>.</p>
+<p>This API documentation is generated using <a href="https://github.com/lord/slate">Slate</a>, 
+if you spot any errors please submit a pull request directly on <a href="https://github.com/doordeck/docs/">Github</a>.</p>
+
+<p>This API documentation includes details of both endpoints available to Doordeck users (i.e. users who have registered
+on <a href="https://app.doordeck.com">Doordeck</a> directly) and to third-party app developers, some endpoints are only available 
+to one set of users, these are flagged as follows:</p>
+
+<aside class="warning">
+This endpoint is only available to users with Doordeck issued auth tokens.
+</aside>
+<h2 id='environments'>Environments</h2>
+<p>Doordeck operates production, staging and development environments at the following locations:</p>
+
+<ul>
+<li>https://api.doordeck.com</li>
+<li>https://api.staging.doordeck.com</li>
+<li>https://api.dev.doordeck.com</li>
+</ul>
+
+<p>Newer endpoints may only exist in staging or development environments, these will be flagged as such. </p>
 <h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span>
-  -X POST
-  -H <span class="s1">'content-type: application/json'</span>
-  --data-binary <span class="s1">'{"email":"EMAIL","password":"PASSWORD"}'</span>
-</code></pre>
-<blockquote>
-<p>Make sure to replace <code>USERNAME</code> and <code>PASSWORD</code> with your credentials.</p>
-
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"privateKey"</span><span class="p">:</span><span class="s2">"base 64 encoded private key"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"authToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for authentication"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"refreshToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for refreshing authentication credentials"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Doordeck uses tokens to permit access to the API. Doordeck expects for the token to be included in all API requests to the server in a header that looks like the following:</p>
+<p>Doordeck uses tokens to permit access to the API. Doordeck expects for the token to be included in all API requests to 
+the server in a header that looks like the following:</p>
 
 <p><code>Authorization: Bearer TOKEN</code></p>
 
 <aside class="notice">
-You must replace <code>TOKEN</code> with your authentication token (the <code>authToken</code> from the login response).
+You must replace <code>TOKEN</code> with your authentication token.
 </aside>
 
-<p>Authentication tokens are JSON web tokens, they can be examined to determine their expiry date, the user&#39;s ID. JSON web tokens are split into three sections separated by a <code>.</code>, the header, payload and signature - each section can be base64 decoded to read further.</p>
-<pre class="highlight shell tab-shell"><code><span class="nb">echo</span> <span class="s1">'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0NzMxNjMwNzUsImlhdCI6MTQ3MzA3NjY3NSwic3ViIjoiNWE1ZjZlODAtM2M1MS0xMWU2LTllNTctY2Y0MGJlMzAxM2ZiIiwic2Vzc2lvbiI6ImZiMmEwMDYwLTczNWYtMTFlNi1iNDg3LTZmMTZmZGE1MzkxNyIsInJlZnJlc2giOmZhbHNlLCJlbWFpbCI6Im1pY2hhZWxAZG9vcmRlY2suY29tIn0.REDCATED'</span> | cut -d. -f2 | base64 -D
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"exp"</span><span class="p">:</span><span class="mi">1473163075</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"iat"</span><span class="p">:</span><span class="mi">1473076675</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"sub"</span><span class="p">:</span><span class="s2">"5a5f6e80-3c51-11e6-9e57-cf40be3013fb"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"session"</span><span class="p">:</span><span class="s2">"fb2a0060-735f-11e6-b487-6f16fda53917"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"refresh"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"michael@doordeck.com"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h1 id='account'>Account</h1><h2 id='login'>Login</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span>
+<p>Authentication tokens are JSON Web Tokens (JWT) loosely using the OpenID format, they can be examined to determine their
+expiry date, the user&#39;s ID. JSON web tokens are split into three sections separated by a <code>.</code>, the header, payload and
+signature - each section can be BASE64URL decoded to read further.</p>
+
+<p>Doordeck understands the following OpenID fields in the auth token payload:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Mandatory</th>
+<th>Datatype</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sub</td>
+<td>Yes</td>
+<td>String &lt;= 1024 bytes</td>
+<td>Unique identifier for the user</td>
+</tr>
+<tr>
+<td>iss</td>
+<td>Yes</td>
+<td>URI</td>
+<td>URI of application responsible for issuing this token</td>
+</tr>
+<tr>
+<td>exp</td>
+<td>Yes</td>
+<td>Epoch Timestamp</td>
+<td>Timestamp in seconds at when this token will be considered invalid</td>
+</tr>
+<tr>
+<td>iat</td>
+<td>Yes</td>
+<td>Epoch Timestamp</td>
+<td>Timestamp in seconds when this token was issued and the data within loaded</td>
+</tr>
+<tr>
+<td>auth_time</td>
+<td>No</td>
+<td>Epoch Timestamp</td>
+<td>Timestamp in seconds when the user last authenticated</td>
+</tr>
+<tr>
+<td>aud</td>
+<td>Yes</td>
+<td>URI or list of URIs</td>
+<td>Must include https://api.doordeck.com</td>
+</tr>
+<tr>
+<td>sid</td>
+<td>No</td>
+<td>String</td>
+<td>Session identifier</td>
+</tr>
+<tr>
+<td>email</td>
+<td>No</td>
+<td>String</td>
+<td>User&#39;s email address</td>
+</tr>
+<tr>
+<td>email_verified</td>
+<td>No (Defaults to false)</td>
+<td>Boolean</td>
+<td>Flag to specify if the user&#39;s email has been verified</td>
+</tr>
+<tr>
+<td>telephone</td>
+<td>No</td>
+<td><a href="https://www.twilio.com/docs/glossary/what-e164">E.164</a></td>
+<td>User&#39;s phone number</td>
+</tr>
+<tr>
+<td>telephone_verified</td>
+<td>No (Defaults to false)</td>
+<td>Boolean</td>
+<td>Flag to specify if the user&#39;s phone number has been verified</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>No</td>
+<td><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Locale.html">BCP  47</a></td>
+<td>User&#39;s locale (e.g. en-US)</td>
+</tr>
+<tr>
+<td>zoneinfo</td>
+<td>No</td>
+<td><a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">Timezone</a></td>
+<td>Timezone of user, e.g. Europe/London</td>
+</tr>
+<tr>
+<td>name</td>
+<td>No</td>
+<td>String</td>
+<td>User&#39;s full name</td>
+</tr>
+<tr>
+<td>family_name</td>
+<td>No</td>
+<td>String</td>
+<td>User&#39;s family name</td>
+</tr>
+<tr>
+<td>middle_name</td>
+<td>No</td>
+<td>String</td>
+<td>User&#39;s middle name</td>
+</tr>
+<tr>
+<td>given_name</td>
+<td>No</td>
+<td>String</td>
+<td>User&#39;s given name</td>
+</tr>
+<tr>
+<td>picture</td>
+<td>No</td>
+<td>URI</td>
+<td>User&#39;s profile picture</td>
+</tr>
+</tbody></table>
+
+<p>Authentication tokens can be issued directly by Doordeck using the <a href="#login">login</a> endpoint or by third-party 
+application developers using pre-registered asymmetric authentication keys.</p>
+<h1 id='account'>Account</h1><h2 id='login'>Login</h2>
+<aside class="warning">
+This endpoint is only available to Doordeck registered users.
+</aside>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span>
   -X POST
   -H <span class="s1">'content-type: application/json'</span>
   --data-binary <span class="s1">'{"email":"EMAIL","password":"PASSWORD"}'</span>
@@ -576,7 +753,11 @@ different from v1 in that the call will fail with a 409 conflict error if there 
 <aside class="success">
 A validation email will be disptahced to the user's email address upon successful registration.
 </aside>
-<h2 id='refresh-token'>Refresh Token</h2><pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.doordeck.com/auth/token/refresh"</span>
+<h2 id='refresh-token'>Refresh Token</h2>
+<aside class="warning">
+This endpoint is only available to users with Doordeck issued auth tokens.
+</aside>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.doordeck.com/auth/token/refresh"</span>
   -H <span class="s2">"Authorization: Bearer REFRESH_TOKEN"</span>
 </code></pre>
 <blockquote>
@@ -598,12 +779,47 @@ A refresh token should be used in place of an authentication token for this requ
 <aside class="notice">
 The <code>refreshToken</code> field is optionally returned, if a new refresh token should be stored, otherwise it will not be present.
 </aside>
-<h2 id='logout'>Logout</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/token/destroy"</span>
+<h2 id='logout'>Logout</h2>
+<aside class="warning">
+This endpoint is only available when the authentication token used specifies a session ID (sid)
+</aside>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/token/destroy"</span>
   -H <span class="s2">"Authorization: Bearer TOKEN"</span>
 </code></pre>
 <p>This endpoint destroys a session associated with an authentication token and any associated refresh token.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>POST https://api.doordeck.com/token/destroy</code></p>
+<h2 id='register-ephemeral-key'>Register Ephemeral Key</h2>
+<aside class="warning">
+This endpoint is only available to users with third-party issued auth tokens, additionally this endpoint is currently
+only available on development and may change without warning.
+</aside>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/certificate"</span> <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer TOKEN"</span> <span class="se">\</span>
+  -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  --data-binary <span class="s1">'{"ephemeralKey":"Base64 encoded Ed25519 public key"}'</span> 
+</code></pre>
+<blockquote>
+<p>Replace <code>Base64 encoded Ed25519 public key</code> with the user&#39;s ephemeral key.</p>
+
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"certificateChain"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"List of base64 encoded DER X509 certificates forming a complete certificate chain"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doordeck identifier for the user"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint is used to register the ephemeral key for third-party application users&#39;, it returns a certificate chain
+with the user&#39;s key as the subject of the leaf certificate. </p>
+
+<p>Only Ed25519 public keys are accepted by this endpoint, they can either be the native 32 byte public key Base 64 
+encoded or specified as a Base 64 DER encoded key as defined in <a href="https://tools.ietf.org/html/rfc8410">RFC8410</a>. </p>
+
+<p>This endpoint may required a secondary authentication check before producing a certificate chain for the user, it will 
+indicate this by returning a 423 error.</p>
+
+<p>The certificate chain returned should be used in the <code>x5c</code> field when performing signed requests such as unlocking.</p>
 <h2 id='verify-email'>Verify Email</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/account/email/verify?code=CODE"</span>
   -X PUT
 </code></pre>
@@ -628,14 +844,22 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 <td>Verification code from email.</td>
 </tr>
 </tbody></table>
-<h2 id='reverify-email'>Reverify Email</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/account/email/reverify"</span>
+<h2 id='reverify-email'>Reverify Email</h2>
+<aside class="warning">
+This endpoint is only available to users with Doordeck issued auth tokens.
+</aside>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/account/email/reverify"</span>
   -X POST
   -H <span class="s2">"Authorization: Bearer TOKEN"</span>
 </code></pre>
 <p>This endpoint will generate a new email to the logged user with a new verification code to validate their email address.</p>
 <h3 id='http-request-7'>HTTP Request</h3>
 <p><code>POST https://api.doordeck.com/account/email/reverify</code></p>
-<h2 id='change-password'>Change Password</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/account/password"</span>
+<h2 id='change-password'>Change Password</h2>
+<aside class="warning">
+This endpoint is only available to users with Doordeck issued auth tokens.
+</aside>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/account/password"</span>
   -H <span class="s2">"Authorization: Bearer TOKEN"</span>
   -X POST
   -H <span class="s1">'content-type: application/json'</span>
@@ -1490,7 +1714,105 @@ Upon successful registration of a lock, a HTTP 202 is returned along with the lo
 <td>Alias of the lock (default for all users)</td>
 </tr>
 </tbody></table>
-<h2 id='lock-or-unlock'>Lock Or Unlock</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span> <span class="se">\</span>
+<h2 id='get-a-doordeck-user-s-public-key'>Get A Doordeck User’s Public Key</h2>
+<aside class="warning">
+This endpoint is only available to users with Doordeck issued auth tokens.
+</aside>
+
+<p>This endpoint allows the retrieval of a user&#39;s public key along with their ID.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/share/invite/USER_EMAIL'</span> <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -H <span class="s1">'authorization: Bearer TOKEN'</span> <span class="se">\</span>
+  -H <span class="s1">'content-type: application/json'</span> 
+</code></pre>
+<blockquote>
+<ul>
+<li>Replace <code>USER_EMAIL</code> with the user&#39;s email</li>
+</ul>
+
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-10'>HTTP Request</h3>
+<p><code>GET https://api.doordeck.com/share/invite/USER_EMAIL</code></p>
+
+<p>Replace <code>USER_EMAIL</code> with the user&#39;s email</p>
+<h2 id='get-a-third-party-user-s-public-key'>Get A Third-Party User’s Public Key</h2>
+<aside class="warning">
+This endpoint is only available to users with third-party issued auth tokens, additionally this endpoint is currently
+only available on development and may change without warning.
+</aside>
+
+<p>This endpoint allows retrieval of a user&#39;s public key, it provides flexibility to third-party application 
+developers by allowing querying via email, telephone, user identifier (both internal and external) and by complete 
+identity (encrypted).</p>
+
+<p>Queries against this endpoint are restricted by the third-party&#39;s user pool, in other words, this call will only return 
+users belonging to the same application as specified in the auth token.</p>
+
+<p>This endpoint accepts a single JSON key (multiple keys cannot be used) which can be one of the following:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>Email address</td>
+</tr>
+<tr>
+<td>telephone</td>
+<td>E.164 formatted telephone</td>
+</tr>
+<tr>
+<td>localKey</td>
+<td>Doordeck identifier for a user (UUID)</td>
+</tr>
+<tr>
+<td>foreignKey</td>
+<td>Third-party application&#39;s identifier for a user</td>
+</tr>
+<tr>
+<td>identity</td>
+<td>Encrypted OpenID token of user</td>
+</tr>
+</tbody></table>
+
+<p>The first four query keys, <code>email</code>, <code>telephone</code>, <code>localKey</code> and <code>foreignKey</code> are read only - these will 
+return a 404 error if the user is not known to Doordeck. </p>
+
+<p>The remaining query key, <code>identity</code>, is used to specify the full identity of the user who is the subject of the
+query, this will mean the user is created if they don&#39;t exist and will always return a response. When using 
+<code>identity</code>, the specified OpenID token must be encrypted so it cannot be abused as an authentication token - it 
+should be encrypted using JSON Web Encryption (JWE) using the RSA key Doordeck generates for the particular third-party
+application.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/directory/query'</span> <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -H <span class="s1">'authorization: Bearer TOKEN'</span> <span class="se">\</span>
+  -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  --data-binary <span class="s1">'{"email":"USER_EMAIL"}'</span>
+</code></pre>
+<blockquote>
+<ul>
+<li>Replace <code>USER_EMAIL</code> with the user&#39;s email</li>
+</ul>
+
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-11'>HTTP Request</h3>
+<p><code>GET https://api.doordeck.com/share/invite/USER_EMAIL</code></p>
+
+<p>Replace <code>USER_EMAIL</code> with the user&#39;s email</p>
+<h2 id='unlock'>Unlock</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   --data-binary <span class="s1">'{"email":"USERNAME","password":"PASSWORD"}'</span> <span class="se">\</span>
@@ -1515,8 +1837,8 @@ curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-0
 <p>Replace <code>00000000-0000-0000-0000-000000000000</code> with the lock&#39;s ID, <code>USER_ID</code> with the user&#39;s ID (obtained from decoding their auth token), <code>USERNAME</code> and <code>PASSWORD</code> with the appropriate credentials.</p>
 </blockquote>
 
-<p>This endpoint allows operations to be performed on a lock, typically this is lock and unlock. Requests to this endpoint must be signed and formed as a JSON web token.</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<p>This endpoint allows a device to be unlocked. Requests to this endpoint must be signed and formed as a JSON web token.</p>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>POST https://api.doordeck.com/device/LOCK_ID/execute</code></p>
 
 <p>Replace <code>LOCK_ID</code> with the appropriate lock ID.</p>
@@ -1537,7 +1859,12 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <tr>
 <td>alg</td>
 <td>true</td>
-<td><code>RS256</code>, RSA signed with a 256 bit SHA hash</td>
+<td><code>RS256</code> (legacy) RSA signed with a 256 bit SHA hash, or EdDSA for ephemeral key signatures</td>
+</tr>
+<tr>
+<td>x5c</td>
+<td>false</td>
+<td>User&#39;s certificate chain, mandatory for EdDSA signatures</td>
 </tr>
 <tr>
 <td>typ</td>
@@ -1611,34 +1938,7 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <td>true</td>
 <td>Boolean indicating if the lock should be locked or unlocked</td>
 </tr>
-<tr>
-<td>duration</td>
-<td>false</td>
-<td>Number of seconds the lock should be unlocked for</td>
-</tr>
 </tbody></table>
-<h2 id='get-a-user-s-public-key'>Get A User’s Public Key</h2>
-<p>This endpoint allows the retrieval of a user&#39;s public key along with their ID.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/share/invite/USER_EMAIL'</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -H <span class="s1">'authorization: Bearer TOKEN'</span> <span class="se">\</span>
-  -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-</code></pre>
-<blockquote>
-<ul>
-<li>Replace <code>USER_EMAIL</code> with the user&#39;s email</li>
-</ul>
-
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-11'>HTTP Request</h3>
-<p><code>GET https://api.doordeck.com/share/invite/USER_EMAIL</code></p>
-
-<p>Replace <code>USER_EMAIL</code> with the user&#39;s email</p>
 <h2 id='share-a-lock'>Share A Lock</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -1672,7 +1972,7 @@ curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-0
 </blockquote>
 
 <p>This endpoint allows operations to be performed on a lock, such as lock, unlock, add/remove user. Requests to this endpoint must be signed and formed as a JSON web token.</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>POST https://api.doordeck.com/device/LOCK_ID/execute</code></p>
 
 <p>Replace <code>LOCK_ID</code> with the appropriate lock ID.</p>
@@ -1693,7 +1993,12 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <tr>
 <td>alg</td>
 <td>true</td>
-<td><code>RS256</code>, RSA signed with a 256 bit SHA hash</td>
+<td><code>RS256</code> (legacy) RSA signed with a 256 bit SHA hash, or EdDSA for ephemeral key signatures</td>
+</tr>
+<tr>
+<td>x5c</td>
+<td>false</td>
+<td>User&#39;s certificate chain, mandatory for EdDSA signatures</td>
 </tr>
 <tr>
 <td>typ</td>
@@ -1820,7 +2125,7 @@ curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-0
 
 <p>This endpoint allows multiple operations to be performed on locks. Requests to this endpoint must be signed and formed as a JSON web token. 
 This section explains how to revoke access to a lock, this can also be used to delete a lock from the current users account.</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>POST https://api.doordeck.com/device/LOCK_ID/execute</code></p>
 
 <p>Replace <code>LOCK_ID</code> with the appropriate lock ID.</p>
@@ -1841,7 +2146,12 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <tr>
 <td>alg</td>
 <td>true</td>
-<td><code>RS256</code>, RSA signed with a 256 bit SHA hash</td>
+<td><code>RS256</code> (legacy) RSA signed with a 256 bit SHA hash, or EdDSA for ephemeral key signatures</td>
+</tr>
+<tr>
+<td>x5c</td>
+<td>false</td>
+<td>User&#39;s certificate chain, mandatory for EdDSA signatures</td>
 </tr>
 <tr>
 <td>typ</td>
@@ -1948,7 +2258,7 @@ curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-0
 
 <p>This endpoint allows multiple operations to be performed on locks. Requests to this endpoint must be signed and formed as a JSON web token. 
 This section explains how to change on-lock settings, such as unlock time and open hours.</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>POST https://api.doordeck.com/device/LOCK_ID/execute</code></p>
 
 <p>Replace <code>LOCK_ID</code> with the appropriate lock ID.</p>
@@ -1969,7 +2279,12 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <tr>
 <td>alg</td>
 <td>true</td>
-<td><code>RS256</code>, RSA signed with a 256 bit SHA hash</td>
+<td><code>RS256</code> (legacy) RSA signed with a 256 bit SHA hash, or EdDSA for ephemeral key signatures</td>
+</tr>
+<tr>
+<td>x5c</td>
+<td>false</td>
+<td>User&#39;s certificate chain, mandatory for EdDSA signatures</td>
 </tr>
 <tr>
 <td>typ</td>
@@ -2097,7 +2412,7 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <aside class="notice">
 This endpoint is experimental and may change without notice.
 </aside>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>GET https://api.doordeck.com/device/events?device=00000000-0000-0000-0000-000000000000</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
@@ -2110,7 +2425,7 @@ This endpoint is experimental and may change without notice.
 <tr>
 <td>device</td>
 <td>true</td>
-<td>Device ID to monitor, multiple can specified as seperate query parameters</td>
+<td>Device ID to monitor, multiple can specified as separate query parameters</td>
 </tr>
 </tbody></table>
 <h2 id='get-pinned-locks'>Get Pinned Locks</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/device/favourite"</span>
@@ -2167,7 +2482,7 @@ This endpoint is experimental and may change without notice.
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>The endpoint returns a list of the current user&#39;s pinned locks.</p>
-<h3 id='http-request-16'>HTTP Request</h3>
+<h3 id='http-request-17'>HTTP Request</h3>
 <p><code>GET https://api.doordeck.com/device/favourite</code></p>
 <h2 id='get-shareable-locks'>Get Shareable Locks</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/device/shareable"</span>
   -H <span class="s2">"Authorization: Bearer TOKEN"</span>
@@ -2187,9 +2502,276 @@ This endpoint is experimental and may change without notice.
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>This endpoint returns the names and IDs of locks where the current user is an administrator.</p>
-<h3 id='http-request-17'>HTTP Request</h3>
+<h3 id='http-request-18'>HTTP Request</h3>
 <p><code>GET https://api.doordeck.com/device/shareable</code></p>
-<h1 id='errors'>Errors</h1>
+<h1 id='platform'>Platform</h1>
+<aside class="warning">
+All of the platform endpoints are only available to users with Doordeck issued auth tokens. Platform endpoints are 
+currently available in staging and development enivronments and are subject to change without notice.
+</aside>
+<h2 id='create-application'>Create Application</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/platform/application'</span>
+  -X POST
+  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
+  -H <span class="s1">'content-type: application/json'</span>
+  --data-binary <span class="s1">'{"name":"My Amazing App","companyName":"My amazing company","mailingAddress":"My address"}'</span>
+</code></pre>
+<p>This endpoint allows the creation of an application; an application is how user&#39;s are divided between third-parties 
+within Doordeck and define certain branding, UI and authentication elements. </p>
+
+<p>The user creating the application will automatically be assigned as the owner.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://api.doordeck.com/platform/application</code></p>
+<h3 id='request-parameters'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>true</td>
+<td>Application&#39;s name</td>
+</tr>
+<tr>
+<td>companyName</td>
+<td>true</td>
+<td>Company&#39;s registered name, e.g. Doordeck Limited</td>
+</tr>
+<tr>
+<td>mailingAddress</td>
+<td>true</td>
+<td>Company&#39;s registered address, e.g. IDEALondon, 69 Wilson Street, LONDON, EC2A 2BB</td>
+</tr>
+<tr>
+<td>privacyPolicy</td>
+<td>false</td>
+<td>URI to the application&#39;s privacy policy, must start with https://</td>
+</tr>
+<tr>
+<td>supportContact</td>
+<td>false</td>
+<td>URI to application&#39;s support contact, can start with https:// or mailto://</td>
+</tr>
+<tr>
+<td>appLink</td>
+<td>false</td>
+<td>URI for deep linking into the application directly</td>
+</tr>
+<tr>
+<td>emailPreferences</td>
+<td>false</td>
+<td>See email preference definition below</td>
+</tr>
+<tr>
+<td>logoUrl</td>
+<td>false</td>
+<td>URI to application&#39;s logo, must be hosted on https://cdn.doordeck.com/</td>
+</tr>
+</tbody></table>
+
+<p>The email preferences object is formed of the following fields</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>senderEmail</td>
+<td>false (defaults to info@doordeck.com)</td>
+<td>Email address to use when sending emails to users&#39;</td>
+</tr>
+<tr>
+<td>senderName</td>
+<td>false (defaults to Doordeck)</td>
+<td>Email name to use when emailing users&#39;</td>
+</tr>
+<tr>
+<td>primaryColour</td>
+<td>false (defaults to #00283C)</td>
+<td>Primary colouring for email</td>
+</tr>
+<tr>
+<td>secondaryColour</td>
+<td>false (defaults to #45BDD1)</td>
+<td>Secondary colouring for email</td>
+</tr>
+<tr>
+<td>callToAction</td>
+<td>false</td>
+<td>See call to action definition</td>
+</tr>
+</tbody></table>
+
+<p>The call to action is formed of the following fields</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>actionTarget</td>
+<td>true</td>
+<td>URI to direct user&#39;s to when clicking CTA</td>
+</tr>
+<tr>
+<td>headline</td>
+<td>true</td>
+<td>Textual description for CTA, e.g. &quot;Use the Doordeck App to make unlocking a breeze!&quot;</td>
+</tr>
+<tr>
+<td>actionText</td>
+<td>true</td>
+<td>Text used for the CTA button, e.g. &quot;Download now!&quot;</td>
+</tr>
+</tbody></table>
+<h2 id='list-applications'>List Applications</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/platform/application'</span> <span class="se">\</span>
+  -X GET <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre>
+<p>Lists all application&#39;s owned by the current user</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://api.doordeck.com/platform/application</code></p>
+<h2 id='get-application'>Get Application</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/platform/application/APPLICATION_ID'</span> <span class="se">\</span>
+  -X GET <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre>
+<blockquote>
+<p>Replace <code>APPLICATION_ID</code> with the application ID.</p>
+</blockquote>
+
+<p>Get&#39;s the application specified by application ID.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://api.doordeck.com/platform/application/APPLICATION_ID</code></p>
+<h2 id='update-application'>Update Application</h2>
+<p>Updates any of the fields defined in the initial <a href="#create-application">create application</a> request.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST https://api.doordeck.com/platform/application/APPLICATION_ID</code></p>
+<h2 id='delete-application'>Delete Application</h2>
+<p>Delete&#39;s the application, this is irreversible! </p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE https://api.doordeck.com/platform/application/APPLICATION_ID</code></p>
+<h2 id='get-logo-upload-url'>Get Logo Upload URL</h2>
+<p>Gets a pre-signed URL ready for uploading the application logo to.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>POST https://api.doordeck.com/platform/application/APPLICATION_ID/logo</code></p>
+<h3 id='request-parameters-2'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>contentType</td>
+<td>true</td>
+<td>Content-type of the logo, e.g. image/png</td>
+</tr>
+</tbody></table>
+<h2 id='add-auth-key'>Add Auth Key</h2>
+<p>Adds a new auth key to the permitted auth keys for user&#39;s of this application, can be RSA, EC or Ed25519.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>POST https://api.doordeck.com/platform/application/APPLICATION_ID/key</code></p>
+<h3 id='request-parameters-3'>Request Parameters</h3>
+<p>Key should be in <a href="https://mkjwk.org">JSON Web Key format (JWK)</a>, key must have a unique key ID (<code>kid</code>) field.</p>
+<h2 id='add-auth-issuer'> Add Auth Issuer</h2>
+<p>Adds a new auth issuer which must be unique across all applications, it should be a URI controller by the application 
+itself, e.g. https://myapp.com - it must match the <code>iss</code> field in all auth tokens generated by the third-party
+application.</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>POST https://api.doordeck.com/platform/application/APPLICATION_ID/issuer</code></p>
+<h3 id='request-parameters-4'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>url</td>
+<td>true</td>
+<td>Issuer</td>
+</tr>
+</tbody></table>
+<h2 id='delete-auth-issuer'>Delete Auth Issuer</h2>
+<p>Deletes an auth issuer.</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>DELETE https://api.doordeck.com/platform/application/APPLICATION_ID/issuer</code></p>
+<h3 id='request-parameters-5'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>url</td>
+<td>true</td>
+<td>Issuer</td>
+</tr>
+</tbody></table>
+<h2 id='add-cors-domain'> Add CORS Domain</h2>
+<p>Adds a domain to the list of permitted CORS domains to allow webapps to call Doordeck APIs directly.</p>
+<h3 id='http-request-10'>HTTP Request</h3>
+<p><code>POST https://api.doordeck.com/platform/application/APPLICATION_ID/cors</code></p>
+<h3 id='request-parameters-6'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>url</td>
+<td>true</td>
+<td>CORS Domain</td>
+</tr>
+</tbody></table>
+<h2 id='remove-cors-domain'>Remove CORS Domain</h2>
+<p>Remove CORS domain.</p>
+<h3 id='http-request-11'>HTTP Request</h3>
+<p><code>DELETE https://api.doordeck.com/platform/application/APPLICATION_ID/cors</code></p>
+<h3 id='request-parameters-7'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>url</td>
+<td>true</td>
+<td>CORS Domain</td>
+</tr>
+</tbody></table>
+<h1 id='encoding'>Encoding</h1><h2 id='versioning'>Versioning</h2>
+<p>All Doordeck endpoints use JSON as their primary encoding scheme and respond to clients sending an 
+<code>Accept: application/json header</code>, when a newer endpoints are available, clients should specify 
+<code>Accept: application/vnd.doordeck.api-v2+json</code> (replacing v2 with v3, etc).</p>
+<h2 id='certificate-amp-asymmetric-keys'>Certificate &amp; Asymmetric Keys</h2>
+<p>Where certificates or keys are specified, these are in a BASE64 encoded 
+<a href="https://en.wikipedia.org/wiki/X.690#DER_encoding">DER</a> format - DER is a binary encoding using ASN.1 and is commonly 
+understood by most cryptographic libraries. </p>
+
+<p>BASE64 encoded DER strings are very similar to PEM encoded values and can be converted by adding the appropriate 
+<a href="https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail">PEM</a> header and footer and by adding a newline character every 64 
+characters, e.g. </p>
+<pre class="highlight plaintext"><code>-----BEGIN PUBLIC KEY-----
+BASE64 DER PUBLIC KEY
+-----END PUBLIC KEY-----
+</code></pre><h1 id='errors'>Errors</h1>
 <p>The Doordeck API uses the following error codes:</p>
 
 <table><thead>
@@ -2229,6 +2811,14 @@ This endpoint is experimental and may change without notice.
 <tr>
 <td>410</td>
 <td>Gone -- The resource requested has been removed from our servers</td>
+</tr>
+<tr>
+<td>423</td>
+<td>Locked -- The resource cannot be updated until an unlock operation is performed</td>
+</tr>
+<tr>
+<td>425</td>
+<td>Too Early -- The resource is unavailable until a pending slower operation is completed elsewhere</td>
 </tr>
 <tr>
 <td>429</td>
