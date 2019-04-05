@@ -1,6 +1,6 @@
 # Account
 
-## Login
+## Login (v1)
 
 <aside class="warning">
 This endpoint is only available to Doordeck registered users.
@@ -45,6 +45,53 @@ Parameter | Description
 --------- | -----------
 privateKey | PKCS8 encoded private key wrapped in base 64 encoding to be JSON friendly
 publicKey | Base 64 encoded public key
+authToken | JSON web token to be used for normal requests
+refreshToken | JSON web token to be used for getting new authentication tokens
+
+## Login (v2)
+
+<aside class="warning">
+This endpoint is only available to Doordeck registered users and currently only available in development.
+</aside>
+
+```shell
+curl 'https://api.doordeck.com/auth/token/'
+  -X POST
+  -H "Accept: application/vnd.doordeck.api-v2+json"
+  -H 'content-type: application/json'
+  --data-binary '{"email":"EMAIL","password":"PASSWORD"}'
+```
+
+> Make sure to replace `USERNAME` and `PASSWORD` with your credentials.
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "authToken":"JSON Web Token for authentication",
+  "refreshToken":"JSON Web Token for refreshing authentication credentials"
+}
+```
+
+This endpoint lets user's attempt to login.
+
+### HTTP Request
+
+`POST https://api.doordeck.com/auth/token`
+
+This call must be made with the ```Accept``` header set to ```application/vnd.doordeck.api-v2+json```
+
+### Request Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+email | true | User's email address
+password | true | User's password
+
+### Response
+
+Parameter | Description
+--------- | -----------
 authToken | JSON web token to be used for normal requests
 refreshToken | JSON web token to be used for getting new authentication tokens
 
@@ -135,6 +182,59 @@ force | false | Boolean flag to indicate if a pending invite should be discarded
 A validation email will be disptahced to the user's email address upon successful registration.
 </aside>
 
+## Registration (v3)
+
+<aside class="warning">
+This endpoint is currently only available on development and may change without warning.
+</aside>
+
+```shell
+curl "https://api.doordeck.com/auth/register"
+  -X POST
+  -H "Accept: application/vnd.doordeck.api-v3+json"
+  -H 'content-type: application/json'
+  --data-binary '{"email":"EMAIL","password":"PASSWORD"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "authToken":"JSON Web Token for authentication",
+  "refreshToken":"JSON Web Token for refreshing authentication credentials"
+}
+```
+
+This endpoint allows users to register for a Doordeck account; the call will fail with a 409 conflict error if there is 
+a pending invite (unless force is set to true).
+
+This call differs from v2 by removing the privateKey and publicKey fields in favour of the ephemeral key registration
+endpoints.
+
+### HTTP Request
+
+`POST https://api.doordeck.com/auth/register`
+
+This call must be made with the ```Accept``` header set to ```application/vnd.doordeck.api-v3+json```
+
+### Request Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+email | true | Email address to register.
+password | true | Password for access to account.
+displayName | false | User's display name (e.g. their fullname)
+
+### Query Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+force | false | Boolean flag to indicate if a pending invite should be discarded and a new account created
+
+<aside class="success">
+A validation email will be disptahced to the user's email address upon successful registration.
+</aside>
+
 ## Refresh Token
 
 <aside class="warning">
@@ -188,8 +288,7 @@ This endpoint destroys a session associated with an authentication token and any
 ## Register Ephemeral Key
 
 <aside class="warning">
-This endpoint is only available to users with third-party issued auth tokens, additionally this endpoint is currently
-only available on development and may change without warning.
+This endpoint is currently only available on development and may change without warning.
 </aside>
 
 ```shell
@@ -221,6 +320,91 @@ This endpoint may required a secondary authentication check before producing a c
 indicate this by returning a 423 error.
 
 The certificate chain returned should be used in the ```x5c``` field when performing signed requests such as unlocking.
+
+### HTTP Request
+`POST https://api.doordeck.com/auth/certificate`
+
+### Request Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+ephemeralKey | true | Base64 encoded ephemeral Ed25519 key
+
+## Register Ephemeral Key With Secondary Authentication
+
+<aside class="warning">
+This endpoint is currently only available on development and may change without warning.
+</aside>
+
+```shell
+curl "https://api.doordeck.com/auth/certificate/verify" \
+  -X POST \
+  -H "Authorization: Bearer TOKEN" \
+  -H 'content-type: application/json' \
+  --data-binary '{"ephemeralKey":"Base64 encoded Ed25519 public key"}' 
+```
+
+> Replace `Base64 encoded Ed25519 public key` with the user's ephemeral key.
+
+> The above command returns a HTTP 204
+
+This endpoint is used to register ephemeral keys for users, it will start a secondary authentication flow using email, 
+SMS, telephone or WhatsApp - the service will pick the most appropriate method based on the contents of the provided
+auth token or it can be specified as a query parameter.
+
+### HTTP Request
+`POST https://api.doordeck.com/auth/certificate/verify`
+
+### Request Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+ephemeralKey | true | Base64 encoded ephemeral Ed25519 key
+
+### Query Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+method | false | One of EMAIL, TELEPHONE, SMS, WHATSAPP
+
+## Verify Ephemeral Key Registration
+
+<aside class="warning">
+This endpoint is currently only available on development and may change without warning.
+</aside>
+
+
+```shell
+curl "https://api.doordeck.com/auth/certificate/check" \
+  -X POST \
+  -H "Authorization: Bearer TOKEN" \
+  -H 'content-type: application/json' \
+  --data-binary '{"verificationSignature":"Base64 encoded Ed25519 signature of the authentication code"}' 
+```
+
+> Replace `Base64 encoded Ed25519 signature of the authentication code` with a signature computed on the authentication
+code using the ephemeral key.
+
+> The above command returns JSON structured like this:
+
+```json
+  {
+    "certificateChain": ["List of base64 encoded DER X509 certificates forming a complete certificate chain"],
+    "userId": "Doordeck identifier for the user"
+  }
+```
+
+This endpoint is used to check the verification code sent to a use, it requires the ephemeral key sign the verification
+code so that Doordeck is sure the same ephemeral key is used.
+
+### HTTP Request
+`POST https://api.doordeck.com/auth/certificate/check`
+
+### Request Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+verificationSignature | true | Base64 encoded signature of the verification code with the ephemeral key
 
 ## Verify Email
 
