@@ -2053,9 +2053,43 @@ application.</p>
   </span><span class="s2">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-11'>HTTP Request</h3>
-<p><code>GET https://api.doordeck.com/share/invite/USER_EMAIL</code></p>
+<p><code>POST https://api.doordeck.com/directory/query</code></p>
+<h3 id='request-parameters-3'>Request Parameters</h3>
+<p>The request body must have one and only one of the following fields.</p>
 
-<p>Replace <code>USER_EMAIL</code> with the user&#39;s email</p>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>false</td>
+<td>Email address</td>
+</tr>
+<tr>
+<td>telephone</td>
+<td>false</td>
+<td>E.164 formatted telephone</td>
+</tr>
+<tr>
+<td>localKey</td>
+<td>false</td>
+<td>Doordeck identifier for a user (UUID)</td>
+</tr>
+<tr>
+<td>foreignKey</td>
+<td>false</td>
+<td>Third-party application&#39;s identifier for a user</td>
+</tr>
+<tr>
+<td>identity</td>
+<td>false</td>
+<td>Encrypted OpenID token of user</td>
+</tr>
+</tbody></table>
 <h2 id='unlock'>Unlock</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -2090,7 +2124,7 @@ curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-0
 <aside class="success">
 If a request expires within the next 60 seconds, a 200 is returned upon success, if a request expires in more than 60 seconds, a 202 is returned to indicate the request has been queued for the device.
 </aside>
-<h3 id='request-parameters-3'>Request Parameters</h3>
+<h3 id='request-parameters-4'>Request Parameters</h3>
 <p>The header is formed of the following fields.</p>
 
 <table><thead>
@@ -2224,7 +2258,7 @@ curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-0
 <aside class="success">
 If a request expires within the next 60 seconds, a 200 is returned upon success, if a request expires in more than 60 seconds, a 202 is returned to indicate the request has been queued for the device.
 </aside>
-<h3 id='request-parameters-4'>Request Parameters</h3>
+<h3 id='request-parameters-5'>Request Parameters</h3>
 <p>The header is formed of the following fields.</p>
 
 <table><thead>
@@ -2377,7 +2411,7 @@ This section explains how to revoke access to a lock, this can also be used to d
 <aside class="success">
 If a request expires within the next 60 seconds, a 200 is returned upon success, if a request expires in more than 60 seconds, a 202 is returned to indicate the request has been queued for the device.
 </aside>
-<h3 id='request-parameters-5'>Request Parameters</h3>
+<h3 id='request-parameters-6'>Request Parameters</h3>
 <p>The header is formed of the following fields.</p>
 
 <table><thead>
@@ -2510,7 +2544,7 @@ This section explains how to change on-lock settings, such as unlock time and op
 <aside class="success">
 If a request expires within the next 60 seconds, a 200 is returned upon success, if a request expires in more than 60 seconds, a 202 is returned to indicate the request has been queued for the device.
 </aside>
-<h3 id='request-parameters-6'>Request Parameters</h3>
+<h3 id='request-parameters-7'>Request Parameters</h3>
 <p>The header is formed of the following fields.</p>
 
 <table><thead>
