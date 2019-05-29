@@ -568,9 +568,19 @@ curl 'https://api.doordeck.com/directory/query' \
 
 ### HTTP Request
 
-`GET https://api.doordeck.com/share/invite/USER_EMAIL`
+`POST https://api.doordeck.com/directory/query`
 
-Replace `USER_EMAIL` with the user's email
+### Request Parameters
+
+The request body must have one and only one of the following fields.
+
+Parameter | Required | Description
+--------- | ------- | -----------
+email | false | Email address 
+telephone	| false | E.164 formatted telephone
+localKey | false | Doordeck identifier for a user (UUID)
+foreignKey | false | Third-party application's identifier for a user
+identity | false | Encrypted OpenID token of user
 
 ## Unlock
 
