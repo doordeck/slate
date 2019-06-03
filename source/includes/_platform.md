@@ -1,8 +1,7 @@
 # Platform
 
 <aside class="warning">
-All of the platform endpoints are only available to users with Doordeck issued auth tokens. Platform endpoints are 
-currently available in staging and development enivronments and are subject to change without notice.
+All of the platform endpoints are only available to users with Doordeck issued auth tokens.
 </aside>
 
 ## Create Application

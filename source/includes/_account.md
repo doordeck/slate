@@ -51,7 +51,7 @@ refreshToken | JSON web token to be used for getting new authentication tokens
 ## Login (v2)
 
 <aside class="warning">
-This endpoint is only available to Doordeck registered users and currently only available in development.
+This endpoint is only available to Doordeck registered users.
 </aside>
 
 ```shell
@@ -184,10 +184,6 @@ A validation email will be disptahced to the user's email address upon successfu
 
 ## Registration (v3)
 
-<aside class="warning">
-This endpoint is currently only available on development and may change without warning.
-</aside>
-
 ```shell
 curl "https://api.doordeck.com/auth/register"
   -X POST
@@ -287,10 +283,6 @@ This endpoint destroys a session associated with an authentication token and any
 
 ## Register Ephemeral Key
 
-<aside class="warning">
-This endpoint is currently only available on development and may change without warning.
-</aside>
-
 ```shell
 curl "https://api.doordeck.com/auth/certificate" \
   -X POST \
@@ -332,10 +324,6 @@ ephemeralKey | true | Base64 encoded ephemeral Ed25519 key
 
 ## Register Ephemeral Key With Secondary Authentication
 
-<aside class="warning">
-This endpoint is currently only available on development and may change without warning.
-</aside>
-
 ```shell
 curl "https://api.doordeck.com/auth/certificate/verify" \
   -X POST \
@@ -368,11 +356,6 @@ Parameter | Required | Description
 method | false | One of EMAIL, TELEPHONE, SMS, WHATSAPP
 
 ## Verify Ephemeral Key Registration
-
-<aside class="warning">
-This endpoint is currently only available on development and may change without warning.
-</aside>
-
 
 ```shell
 curl "https://api.doordeck.com/auth/certificate/check" \
