@@ -656,7 +656,7 @@ This endpoint is only available to Doordeck registered users.
 </tbody></table>
 <h2 id='login-v2'>Login (v2)</h2>
 <aside class="warning">
-This endpoint is only available to Doordeck registered users and currently only available in development.
+This endpoint is only available to Doordeck registered users.
 </aside>
 <pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span>
   -X POST
@@ -825,11 +825,7 @@ different from v1 in that the call will fail with a 409 conflict error if there 
 <aside class="success">
 A validation email will be disptahced to the user's email address upon successful registration.
 </aside>
-<h2 id='registration-v3'>Registration (v3)</h2>
-<aside class="warning">
-This endpoint is currently only available on development and may change without warning.
-</aside>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/register"</span>
+<h2 id='registration-v3'>Registration (v3)</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/register"</span>
   -X POST
   -H <span class="s2">"Accept: application/vnd.doordeck.api-v3+json"</span>
   -H <span class="s1">'content-type: application/json'</span>
@@ -930,11 +926,7 @@ This endpoint is only available when the authentication token used specifies a s
 <p>This endpoint destroys a session associated with an authentication token and any associated refresh token.</p>
 <h3 id='http-request-7'>HTTP Request</h3>
 <p><code>POST https://api.doordeck.com/token/destroy</code></p>
-<h2 id='register-ephemeral-key'>Register Ephemeral Key</h2>
-<aside class="warning">
-This endpoint is currently only available on development and may change without warning.
-</aside>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/certificate"</span> <span class="se">\</span>
+<h2 id='register-ephemeral-key'>Register Ephemeral Key</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/certificate"</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer TOKEN"</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -976,11 +968,7 @@ indicate this by returning a 423 error.</p>
 <td>Base64 encoded ephemeral Ed25519 key</td>
 </tr>
 </tbody></table>
-<h2 id='register-ephemeral-key-with-secondary-authentication'>Register Ephemeral Key With Secondary Authentication</h2>
-<aside class="warning">
-This endpoint is currently only available on development and may change without warning.
-</aside>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/certificate/verify"</span> <span class="se">\</span>
+<h2 id='register-ephemeral-key-with-secondary-authentication'>Register Ephemeral Key With Secondary Authentication</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/certificate/verify"</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer TOKEN"</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -1025,11 +1013,7 @@ auth token or it can be specified as a query parameter.</p>
 <td>One of EMAIL, TELEPHONE, SMS, WHATSAPP</td>
 </tr>
 </tbody></table>
-<h2 id='verify-ephemeral-key-registration'>Verify Ephemeral Key Registration</h2>
-<aside class="warning">
-This endpoint is currently only available on development and may change without warning.
-</aside>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/certificate/check"</span> <span class="se">\</span>
+<h2 id='verify-ephemeral-key-registration'>Verify Ephemeral Key Registration</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/certificate/check"</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer TOKEN"</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -1986,8 +1970,7 @@ This endpoint is only available to users with Doordeck issued auth tokens.
 <p>Replace <code>USER_EMAIL</code> with the user&#39;s email</p>
 <h2 id='get-a-third-party-user-s-public-key'>Get A Third-Party User’s Public Key</h2>
 <aside class="warning">
-This endpoint is only available to users with third-party issued auth tokens, additionally this endpoint is currently
-only available on development and may change without warning.
+This endpoint is only available to users with third-party issued auth tokens.
 </aside>
 
 <p>This endpoint allows retrieval of a user&#39;s public key, it provides flexibility to third-party application 
@@ -2784,8 +2767,7 @@ This endpoint is experimental and may change without notice.
 <p><code>GET https://api.doordeck.com/device/shareable</code></p>
 <h1 id='platform'>Platform</h1>
 <aside class="warning">
-All of the platform endpoints are only available to users with Doordeck issued auth tokens. Platform endpoints are 
-currently available in staging and development enivronments and are subject to change without notice.
+All of the platform endpoints are only available to users with Doordeck issued auth tokens.
 </aside>
 <h2 id='create-application'>Create Application</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/platform/application'</span>
   -X POST
