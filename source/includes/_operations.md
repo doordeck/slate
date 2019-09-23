@@ -510,7 +510,7 @@ curl 'https://api.doordeck.com/share/invite/USER_EMAIL' \
 
 ### HTTP Request
 
-`GET https://api.doordeck.com/share/invite/USER_EMAIL`
+`POST https://api.doordeck.com/share/invite/USER_EMAIL`
 
 Replace `USER_EMAIL` with the user's email
 
