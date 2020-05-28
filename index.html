@@ -920,12 +920,12 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 <aside class="warning">
 This endpoint is only available when the authentication token used specifies a session ID (sid)
 </aside>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/token/destroy"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/token/destroy"</span>
   -H <span class="s2">"Authorization: Bearer TOKEN"</span>
 </code></pre>
 <p>This endpoint destroys a session associated with an authentication token and any associated refresh token.</p>
 <h3 id='http-request-7'>HTTP Request</h3>
-<p><code>POST https://api.doordeck.com/token/destroy</code></p>
+<p><code>POST https://api.doordeck.com/auth/token/destroy</code></p>
 <h2 id='register-ephemeral-key'>Register Ephemeral Key</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/certificate"</span> <span class="se">\</span>
   -X POST <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer TOKEN"</span> <span class="se">\</span>
