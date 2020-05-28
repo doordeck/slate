@@ -272,14 +272,14 @@ This endpoint is only available when the authentication token used specifies a s
 </aside>
 
 ```shell
-curl "https://api.doordeck.com/token/destroy"
+curl "https://api.doordeck.com/auth/token/destroy"
   -H "Authorization: Bearer TOKEN"
 ```
 
 This endpoint destroys a session associated with an authentication token and any associated refresh token.
 
 ### HTTP Request
-`POST https://api.doordeck.com/token/destroy`
+`POST https://api.doordeck.com/auth/token/destroy`
 
 ## Register Ephemeral Key
 
