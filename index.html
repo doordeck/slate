@@ -42,7 +42,7 @@
 .highlight .cs {
   color: #75715e;
 }
-.highlight .c, .highlight .cd {
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
   color: #75715e;
 }
 .highlight .err {
@@ -126,7 +126,7 @@
 .highlight .s1 {
   color: #e6db74;
 }
-.highlight .s {
+.highlight .s, .highlight .sa, .highlight .dl {
   color: #e6db74;
 }
 .highlight .na {
@@ -141,16 +141,13 @@
 .highlight .ne {
   color: #a6e22e;
 }
-.highlight .nf {
+.highlight .nf, .highlight .fm {
   color: #a6e22e;
 }
 .highlight .vc {
   color: #ffffff;
 }
 .highlight .nn {
-  color: #ffffff;
-}
-.highlight .nl {
   color: #ffffff;
 }
 .highlight .ni {
@@ -165,7 +162,7 @@
 .highlight .vi {
   color: #ffffff;
 }
-.highlight .nv {
+.highlight .nv, .highlight .vm {
   color: #ffffff;
 }
 .highlight .w {
@@ -176,6 +173,9 @@
 }
 .highlight .n, .highlight .py, .highlight .nx {
   color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
 }
 .highlight .ow {
   color: #f92672;
@@ -196,20 +196,20 @@
   color: #f92672;
 }
     </style>
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all.js"></script>
+    <link href="stylesheets/screen-0a7c4629.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-c427a123.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-c5541673.js"></script>
   </head>
 
   <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="images/navbar.png" alt="Navbar" />
+        <img src="images/navbar-cad8cdcb.png" alt="Navbar" />
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo.svg" class="logo" alt="Logo" />
+      <img src="images/logo-5009be8a.svg" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
         </div>
@@ -591,23 +591,23 @@ application developers using pre-registered asymmetric authentication keys.</p>
 <aside class="warning">
 This endpoint is only available to Doordeck registered users.
 </aside>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span>
-  -X POST
-  -H <span class="s1">'content-type: application/json'</span>
-  --data-binary <span class="s1">'{"email":"EMAIL","password":"PASSWORD"}'</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span>
+  <span class="nt">-X</span> POST
+  <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span>
+  <span class="nt">--data-binary</span> <span class="s1">'{"email":"EMAIL","password":"PASSWORD"}'</span>
+</code></pre></div>
 <blockquote>
 <p>Make sure to replace <code>USERNAME</code> and <code>PASSWORD</code> with your credentials.</p>
 
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"privateKey"</span><span class="p">:</span><span class="s2">"base 64 encoded private key"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"authToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for authentication"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"refreshToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for refreshing authentication credentials"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"privateKey"</span><span class="p">:</span><span class="s2">"base 64 encoded private key"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"authToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for authentication"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"refreshToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for refreshing authentication credentials"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This endpoint lets user&#39;s attempt to login.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://api.doordeck.com/auth/token</code></p>
@@ -658,22 +658,22 @@ This endpoint is only available to Doordeck registered users.
 <aside class="warning">
 This endpoint is only available to Doordeck registered users.
 </aside>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span>
-  -X POST
-  -H <span class="s2">"Accept: application/vnd.doordeck.api-v2+json"</span>
-  -H <span class="s1">'content-type: application/json'</span>
-  --data-binary <span class="s1">'{"email":"EMAIL","password":"PASSWORD"}'</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span>
+  <span class="nt">-X</span> POST
+  <span class="nt">-H</span> <span class="s2">"Accept: application/vnd.doordeck.api-v2+json"</span>
+  <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span>
+  <span class="nt">--data-binary</span> <span class="s1">'{"email":"EMAIL","password":"PASSWORD"}'</span>
+</code></pre></div>
 <blockquote>
 <p>Make sure to replace <code>USERNAME</code> and <code>PASSWORD</code> with your credentials.</p>
 
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"authToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for authentication"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"refreshToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for refreshing authentication credentials"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"authToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for authentication"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"refreshToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for refreshing authentication credentials"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This endpoint lets user&#39;s attempt to login.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST https://api.doordeck.com/auth/token</code></p>
@@ -714,21 +714,21 @@ This endpoint is only available to Doordeck registered users.
 <td>JSON web token to be used for getting new authentication tokens</td>
 </tr>
 </tbody></table>
-<h2 id='registration-v1'>Registration (v1)</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/register"</span>
-  -X POST
-  -H <span class="s1">'content-type: application/json'</span>
-  --data-binary <span class="s1">'{"email":"EMAIL","password":"PASSWORD"}'</span>
-</code></pre>
+<h2 id='registration-v1'>Registration (v1)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/register"</span>
+  <span class="nt">-X</span> POST
+  <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span>
+  <span class="nt">--data-binary</span> <span class="s1">'{"email":"EMAIL","password":"PASSWORD"}'</span>
+</code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"privateKey"</span><span class="p">:</span><span class="s2">"base 64 encoded private key"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"authToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for authentication"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"refreshToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for refreshing authentication credentials"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"privateKey"</span><span class="p">:</span><span class="s2">"base 64 encoded private key"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"authToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for authentication"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"refreshToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for refreshing authentication credentials"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This endpoint allows users to register for a Doordeck account.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>POST https://api.doordeck.com/auth/register</code></p>
@@ -760,22 +760,22 @@ This endpoint is only available to Doordeck registered users.
 <aside class="success">
 A validation email will be disptahced to the user's email address upon successful registration.
 </aside>
-<h2 id='registration-v2'>Registration (v2)</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/register"</span>
-  -X POST
-  -H <span class="s2">"Accept: application/vnd.doordeck.api-v2+json"</span>
-  -H <span class="s1">'content-type: application/json'</span>
-  --data-binary <span class="s1">'{"email":"EMAIL","password":"PASSWORD"}'</span>
-</code></pre>
+<h2 id='registration-v2'>Registration (v2)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/register"</span>
+  <span class="nt">-X</span> POST
+  <span class="nt">-H</span> <span class="s2">"Accept: application/vnd.doordeck.api-v2+json"</span>
+  <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span>
+  <span class="nt">--data-binary</span> <span class="s1">'{"email":"EMAIL","password":"PASSWORD"}'</span>
+</code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"privateKey"</span><span class="p">:</span><span class="s2">"base 64 encoded private key"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"authToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for authentication"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"refreshToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for refreshing authentication credentials"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"privateKey"</span><span class="p">:</span><span class="s2">"base 64 encoded private key"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"authToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for authentication"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"refreshToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for refreshing authentication credentials"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This endpoint allows users to register for a Doordeck account; it&#39;s handling of accounts with a pending invite is 
 different from v1 in that the call will fail with a 409 conflict error if there is a pending invite (unless force is set
  to true).</p>
@@ -825,20 +825,20 @@ different from v1 in that the call will fail with a 409 conflict error if there 
 <aside class="success">
 A validation email will be disptahced to the user's email address upon successful registration.
 </aside>
-<h2 id='registration-v3'>Registration (v3)</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/register"</span>
-  -X POST
-  -H <span class="s2">"Accept: application/vnd.doordeck.api-v3+json"</span>
-  -H <span class="s1">'content-type: application/json'</span>
-  --data-binary <span class="s1">'{"email":"EMAIL","password":"PASSWORD"}'</span>
-</code></pre>
+<h2 id='registration-v3'>Registration (v3)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/register"</span>
+  <span class="nt">-X</span> POST
+  <span class="nt">-H</span> <span class="s2">"Accept: application/vnd.doordeck.api-v3+json"</span>
+  <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span>
+  <span class="nt">--data-binary</span> <span class="s1">'{"email":"EMAIL","password":"PASSWORD"}'</span>
+</code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"authToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for authentication"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"refreshToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for refreshing authentication credentials"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"authToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for authentication"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"refreshToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for refreshing authentication credentials"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This endpoint allows users to register for a Doordeck account; the call will fail with a 409 conflict error if there is 
 a pending invite (unless force is set to true).</p>
 
@@ -894,17 +894,17 @@ A validation email will be disptahced to the user's email address upon successfu
 <aside class="warning">
 This endpoint is only available to users with Doordeck issued auth tokens.
 </aside>
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.doordeck.com/auth/token/refresh"</span>
-  -H <span class="s2">"Authorization: Bearer REFRESH_TOKEN"</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://api.doordeck.com/auth/token/refresh"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer REFRESH_TOKEN"</span>
+</code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"authToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for authentication"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"refreshToken"</span><span class="p">:</span><span class="s2">"(Optional) JSON Web Token for refreshing authentication credentials"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"authToken"</span><span class="p">:</span><span class="s2">"JSON Web Token for authentication"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"refreshToken"</span><span class="p">:</span><span class="s2">"(Optional) JSON Web Token for refreshing authentication credentials"</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This endpoint refreshes a users&#39; authentication token using their refresh token. Refresh tokens cannot be used for standard requests and have a very long life compared with an authentication token.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
 <p><code>POST https://api.doordeck.com/auth/token/refresh</code></p>
@@ -920,28 +920,28 @@ The <code>refreshToken</code> field is optionally returned, if a new refresh tok
 <aside class="warning">
 This endpoint is only available when the authentication token used specifies a session ID (sid)
 </aside>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/token/destroy"</span>
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/token/destroy"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre></div>
 <p>This endpoint destroys a session associated with an authentication token and any associated refresh token.</p>
 <h3 id='http-request-7'>HTTP Request</h3>
 <p><code>POST https://api.doordeck.com/auth/token/destroy</code></p>
-<h2 id='register-ephemeral-key'>Register Ephemeral Key</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/certificate"</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span> <span class="se">\</span>
-  -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data-binary <span class="s1">'{"ephemeralKey":"Base64 encoded Ed25519 public key"}'</span> 
-</code></pre>
+<h2 id='register-ephemeral-key'>Register Ephemeral Key</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/certificate"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--data-binary</span> <span class="s1">'{"ephemeralKey":"Base64 encoded Ed25519 public key"}'</span> 
+</code></pre></div>
 <blockquote>
 <p>Replace <code>Base64 encoded Ed25519 public key</code> with the user&#39;s ephemeral key.</p>
 
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"certificateChain"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"List of base64 encoded DER X509 certificates forming a complete certificate chain"</span><span class="p">],</span><span class="w">
-    </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doordeck identifier for the user"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"certificateChain"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"List of base64 encoded DER X509 certificates forming a complete certificate chain"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doordeck identifier for the user"</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This endpoint is used to register the ephemeral key for third-party application users&#39;, it returns a certificate chain
 with the user&#39;s key as the subject of the leaf certificate. </p>
 
@@ -968,12 +968,12 @@ indicate this by returning a 423 error.</p>
 <td>Base64 encoded ephemeral Ed25519 key</td>
 </tr>
 </tbody></table>
-<h2 id='register-ephemeral-key-with-secondary-authentication'>Register Ephemeral Key With Secondary Authentication</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/certificate/verify"</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span> <span class="se">\</span>
-  -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data-binary <span class="s1">'{"ephemeralKey":"Base64 encoded Ed25519 public key"}'</span> 
-</code></pre>
+<h2 id='register-ephemeral-key-with-secondary-authentication'>Register Ephemeral Key With Secondary Authentication</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/certificate/verify"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--data-binary</span> <span class="s1">'{"ephemeralKey":"Base64 encoded Ed25519 public key"}'</span> 
+</code></pre></div>
 <blockquote>
 <p>Replace <code>Base64 encoded Ed25519 public key</code> with the user&#39;s ephemeral key.</p>
 
@@ -1013,23 +1013,23 @@ auth token or it can be specified as a query parameter.</p>
 <td>One of EMAIL, TELEPHONE, SMS, WHATSAPP</td>
 </tr>
 </tbody></table>
-<h2 id='verify-ephemeral-key-registration'>Verify Ephemeral Key Registration</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/certificate/check"</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span> <span class="se">\</span>
-  -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data-binary <span class="s1">'{"verificationSignature":"Base64 encoded Ed25519 signature of the authentication code"}'</span> 
-</code></pre>
+<h2 id='verify-ephemeral-key-registration'>Verify Ephemeral Key Registration</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/auth/certificate/check"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--data-binary</span> <span class="s1">'{"verificationSignature":"Base64 encoded Ed25519 signature of the authentication code"}'</span> 
+</code></pre></div>
 <blockquote>
 <p>Replace <code>Base64 encoded Ed25519 signature of the authentication code</code> with a signature computed on the authentication
 code using the ephemeral key.</p>
 
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"certificateChain"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"List of base64 encoded DER X509 certificates forming a complete certificate chain"</span><span class="p">],</span><span class="w">
-    </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doordeck identifier for the user"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"certificateChain"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"List of base64 encoded DER X509 certificates forming a complete certificate chain"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doordeck identifier for the user"</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This endpoint is used to check the verification code sent to a use, it requires the ephemeral key sign the verification
 code so that Doordeck is sure the same ephemeral key is used.</p>
 <h3 id='http-request-10'>HTTP Request</h3>
@@ -1048,9 +1048,9 @@ code so that Doordeck is sure the same ephemeral key is used.</p>
 <td>Base64 encoded signature of the verification code with the ephemeral key</td>
 </tr>
 </tbody></table>
-<h2 id='verify-email'>Verify Email</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/account/email/verify?code=CODE"</span>
-  -X PUT
-</code></pre>
+<h2 id='verify-email'>Verify Email</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/account/email/verify?code=CODE"</span>
+  <span class="nt">-X</span> PUT
+</code></pre></div>
 <blockquote>
 <p>Replace <code>CODE</code> with the verification code from the email.</p>
 </blockquote>
@@ -1076,10 +1076,10 @@ code so that Doordeck is sure the same ephemeral key is used.</p>
 <aside class="warning">
 This endpoint is only available to users with Doordeck issued auth tokens.
 </aside>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/account/email/reverify"</span>
-  -X POST
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/account/email/reverify"</span>
+  <span class="nt">-X</span> POST
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre></div>
 <p>This endpoint will generate a new email to the logged user with a new verification code to validate their email address.</p>
 <h3 id='http-request-12'>HTTP Request</h3>
 <p><code>POST https://api.doordeck.com/account/email/reverify</code></p>
@@ -1087,12 +1087,12 @@ This endpoint is only available to users with Doordeck issued auth tokens.
 <aside class="warning">
 This endpoint is only available to users with Doordeck issued auth tokens.
 </aside>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/account/password"</span>
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
-  -X POST
-  -H <span class="s1">'content-type: application/json'</span>
-  --data-binary <span class="s1">'{"oldPassword":"OLD_PASSWORD","newPassword":"NEW_PASSWORD"}'</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/account/password"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span>
+  <span class="nt">-X</span> POST
+  <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span>
+  <span class="nt">--data-binary</span> <span class="s1">'{"oldPassword":"OLD_PASSWORD","newPassword":"NEW_PASSWORD"}'</span>
+</code></pre></div>
 <blockquote>
 <p>Replace <code>OLD_PASSWORD</code> with the users&#39; current password and <code>NEW_PASSWORD</code> with their desired password.</p>
 </blockquote>
@@ -1119,28 +1119,28 @@ This endpoint is only available to users with Doordeck issued auth tokens.
 <td>User&#39;s desired new password.</td>
 </tr>
 </tbody></table>
-<h2 id='get-user-details'>Get User Details</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/account"</span>
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
-</code></pre>
+<h2 id='get-user-details'>Get User Details</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/account"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User's public key"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User's email address"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User's display name"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"emailVerified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="kc">false</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User's public key"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User's email address"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User's display name"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"emailVerified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="kc">false</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This endpoint returns information about the currently logged in user</p>
 <h3 id='http-request-14'>HTTP Request</h3>
 <p><code>GET https://api.doordeck.com/account</code></p>
-<h2 id='update-user-details'>Update User Details</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/account"</span>
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
-  -X POST
-  -H <span class="s1">'content-type: application/json'</span>
-  --data-binary <span class="s1">'{"displayName":"NEW_DISPLAY_NAME"}'</span>
-</code></pre>
+<h2 id='update-user-details'>Update User Details</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/account"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span>
+  <span class="nt">-X</span> POST
+  <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span>
+  <span class="nt">--data-binary</span> <span class="s1">'{"displayName":"NEW_DISPLAY_NAME"}'</span>
+</code></pre></div>
 <blockquote>
 <p>Replace <code>NEW_DISPLAY_NAME</code> with the new display name to use</p>
 </blockquote>
@@ -1162,131 +1162,131 @@ This endpoint is only available to users with Doordeck issued auth tokens.
 <td>User&#39;s desired display name</td>
 </tr>
 </tbody></table>
-<h1 id='sites'>Sites</h1><h2 id='list-sites'>List Sites</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/site/'</span>
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
-</code></pre>
+<h1 id='sites'>Sites</h1><h2 id='list-sites'>List Sites</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/site/'</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b188b578-0035-11e8-ba89-0ed5f89f718b"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IDEALondon"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"colour"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#666666"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.084819</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">51.521966</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"radius"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mf">1516709124.659</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="mf">1516709124.659</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b188b578-0035-11e8-ba89-0ed5f89f718b"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IDEALondon"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"colour"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#666666"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.084819</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">51.521966</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"radius"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="mf">1516709124.659</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="mf">1516709124.659</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7659e430-4a28-11e8-bf0b-bffab372a82e"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"colour"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#7AD651"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"radius"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="mf">1524839827.955</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="mf">1524839827.955</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7659e430-4a28-11e8-bf0b-bffab372a82e"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"colour"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#7AD651"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"radius"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="mf">1524839827.955</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="mf">1524839827.955</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This endpoint lists all of the sites a user has access to.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://api.doordeck.com/site/</code></p>
-<h2 id='get-locks-for-site'>Get Locks For Site</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/site/00000000-0000-0000-0000-000000000000/device/'</span>
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
-</code></pre>
+<h2 id='get-locks-for-site'>Get Locks For Site</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/site/00000000-0000-0000-0000-000000000000/device/'</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre></div>
 <blockquote>
 <p>Replace <code>00000000-0000-0000-0000-000000000000</code> with the site&#39;s ID.</p>
 
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08aa7b70-30cf-11e8-ba42-6986d3c6ca8e"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo #1"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"colour"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#1F5468"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMIN"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"unlockTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"permittedAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-            </span><span class="s2">"defaultName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo #1"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"usageRequirements"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-            </span><span class="s2">"unlockBetweenWindow"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"tiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08aa7b70-30cf-11e8-ba42-6986d3c6ca8e"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo #1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"colour"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#1F5468"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMIN"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"unlockTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"permittedAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="nl">"defaultName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo #1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"usageRequirements"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+            </span><span class="nl">"unlockBetweenWindow"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="s2">"403031a2-7869-4408-9f38-c71ae51b652b"</span><span class="w">
             </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"connected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"connected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"favourite"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="nl">"favourite"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49b45c50-31da-11e8-8e0f-170748b9fca8"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo #2"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"colour"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#55678C"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMIN"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"unlockTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"permittedAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-            </span><span class="s2">"defaultName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo #2"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"usageRequirements"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-            </span><span class="s2">"unlockBetweenWindow"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"tiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49b45c50-31da-11e8-8e0f-170748b9fca8"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo #2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"colour"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#55678C"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMIN"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"unlockTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"permittedAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="nl">"defaultName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo #2"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"usageRequirements"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+            </span><span class="nl">"unlockBetweenWindow"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"connected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"connected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"favourite"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="nl">"favourite"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This endpoint lists all of the locks in a particular site that the user has access to.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://api.doordeck.com/site/SITE_ID/device/</code></p>
 
 <p>Replace <code>SITE_ID</code> with the appropriate site ID.</p>
-<h2 id='get-users-for-a-site'>Get Users For A Site</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/site/00000000-0000-0000-0000-000000000000/user/'</span>
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
-</code></pre>
+<h2 id='get-users-for-a-site'>Get Users For A Site</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/site/00000000-0000-0000-0000-000000000000/user/'</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre></div>
 <blockquote>
 <p>Replace <code>00000000-0000-0000-0000-000000000000</code> with the site&#39;s ID.</p>
 
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b2b9930-3a7e-11e8-940e-bffab372a82e"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"michael@doordeck.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"orphan"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b2b9930-3a7e-11e8-940e-bffab372a82e"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"michael@doordeck.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"orphan"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f07d3ea0-593e-11e8-8257-bffab372a82e"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@doordeck.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"orphan"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f07d3ea0-593e-11e8-8257-bffab372a82e"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@doordeck.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"orphan"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This endpoint lists all users in the selected site, the results are filtered to ensure only locks the current user is an
 administrator of will return user information.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://api.doordeck.com/site/SITE_ID/user/</code></p>
 
 <p>Replace <code>SITE_ID</code> with the appropriate site ID.</p>
-<h1 id='tiles'>Tiles</h1><h2 id='get-lock-belonging-to-tile'>Get Lock Belonging To Tile</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/tile/00000000-0000-0000-0000-000000000000/'</span>
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
-</code></pre>
+<h1 id='tiles'>Tiles</h1><h2 id='get-lock-belonging-to-tile'>Get Lock Belonging To Tile</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/tile/00000000-0000-0000-0000-000000000000/'</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre></div>
 <blockquote>
 <p>Replace <code>00000000-0000-0000-0000-000000000000</code> with the tile ID.</p>
 
@@ -1299,10 +1299,10 @@ the lock</p>
 <p><code>GET https://api.doordeck.com/tile/TILE_ID/</code></p>
 
 <p>Replace <code>TILE_ID</code> with the appropriate tile ID.</p>
-<h2 id='associate-tile-with-lock'>Associate Tile With Lock</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/tile/00000000-0000-0000-0000-000000000001'</span>
-  -X PUT
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
-</code></pre>
+<h2 id='associate-tile-with-lock'>Associate Tile With Lock</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/tile/00000000-0000-0000-0000-000000000001'</span>
+  <span class="nt">-X</span> PUT
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre></div>
 <blockquote>
 <p>Replace <code>00000000-0000-0000-0000-000000000000</code> with the device ID.</p>
 
@@ -1315,10 +1315,10 @@ associated to any other locks.</p>
 <p><code>PUT https://api.doordeck.com/device/DEVICE_ID/tile/TILE_ID/</code></p>
 
 <p>Replace <code>TILE_ID</code> with the appropriate tile ID and <code>DEVICE_ID</code> with the appropriate device ID.</p>
-<h2 id='disassociate-tile-from-lock'>Disassociate Tile From Lock</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/tile/00000000-0000-0000-0000-000000000001'</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
-</code></pre>
+<h2 id='disassociate-tile-from-lock'>Disassociate Tile From Lock</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/tile/00000000-0000-0000-0000-000000000001'</span>
+  <span class="nt">-X</span> DELETE
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre></div>
 <blockquote>
 <p>Replace <code>00000000-0000-0000-0000-000000000000</code> with the device ID.</p>
 
@@ -1330,158 +1330,158 @@ associated to any other locks.</p>
 <p><code>DELETE https://api.doordeck.com/device/DEVICE_ID/tile/TILE_ID/</code></p>
 
 <p>Replace <code>TILE_ID</code> with the appropriate tile ID and <code>DEVICE_ID</code> with the appropriate device ID.</p>
-<h1 id='lock-operations'>Lock Operations</h1><h2 id='get-all-locks'>Get All Locks</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device'</span>
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
-</code></pre>
+<h1 id='lock-operations'>Lock Operations</h1><h2 id='get-all-locks'>Get All Locks</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device'</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"lastOperation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494786493</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"colour"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#57355D"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMIN"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> 
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastOperation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494786493</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"colour"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#57355D"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMIN"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> 
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"txBeaconRssi"</span><span class="p">:</span><span class="w"> </span><span class="mi">-45</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"rxBeaconRssi"</span><span class="p">:</span><span class="w"> </span><span class="mi">-80</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"unlockTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"proximityUnlock"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"permittedAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-        </span><span class="s2">"defaultName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"usageRequirements"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-        </span><span class="s2">"delay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="nl">"txBeaconRssi"</span><span class="p">:</span><span class="w"> </span><span class="mi">-45</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"rxBeaconRssi"</span><span class="p">:</span><span class="w"> </span><span class="mi">-80</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"unlockTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"proximityUnlock"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"permittedAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"defaultName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"usageRequirements"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="nl">"delay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
       </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"state"</span><span class="p">:</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"locked"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"connected"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"duration"</span><span class="p">:</span><span class="mi">10</span><span class="w">
+        </span><span class="nl">"locked"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"connected"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"duration"</span><span class="p">:</span><span class="mi">10</span><span class="w">
       </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"favourite"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"unlockTime"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"unlockForever"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+    </span><span class="nl">"favourite"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unlockTime"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unlockForever"</span><span class="p">:</span><span class="kc">false</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Office"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"lastOperation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494786333</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"colour"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#FFAACC"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USER"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> 
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Office"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastOperation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494786333</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"colour"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#FFAACC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USER"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> 
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"txBeaconRssi"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"rxBeaconRssi"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"unlockTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"proximityUnlock"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"permittedAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="nl">"txBeaconRssi"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"rxBeaconRssi"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"unlockTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"proximityUnlock"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"permittedAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="s2">"33.44.55.66"</span><span class="w">
         </span><span class="p">],</span><span class="w">
-        </span><span class="s2">"defaultName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Super office"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"usageRequirements"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-        </span><span class="s2">"delay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"unlockBetweenWindow"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08:00"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14:35"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Europe/London"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="nl">"defaultName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Super office"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"usageRequirements"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="nl">"delay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"unlockBetweenWindow"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14:35"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Europe/London"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="s2">"WEDNESDAY"</span><span class="w">
           </span><span class="p">],</span><span class="w">
-          </span><span class="s2">"exceptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="nl">"exceptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"state"</span><span class="p">:</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"locked"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"connected"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"duration"</span><span class="p">:</span><span class="mi">5</span><span class="w">
+        </span><span class="nl">"locked"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"connected"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"duration"</span><span class="p">:</span><span class="mi">5</span><span class="w">
       </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"favourite"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"unlockTime"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"unlockForever"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"start"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"end"</span><span class="p">:</span><span class="kc">null</span><span class="w">
+    </span><span class="nl">"favourite"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unlockTime"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unlockForever"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"start"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"end"</span><span class="p">:</span><span class="kc">null</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This endpoint retrieves all locks a user has access to.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://api.doordeck.com/device</code></p>
-<h2 id='get-a-single-lock'>Get A Single Lock</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000'</span>
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
-</code></pre>
+<h2 id='get-a-single-lock'>Get A Single Lock</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000'</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre></div>
 <blockquote>
 <p>Replace <code>00000000-0000-0000-0000-000000000000</code> with the lock&#39;s ID.</p>
 
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"lastOperation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494786493</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"colour"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#57355D"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMIN"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"txBeaconRssi"</span><span class="p">:</span><span class="w"> </span><span class="mi">-45</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"rxBeaconRssi"</span><span class="p">:</span><span class="w"> </span><span class="mi">-80</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"unlockTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"proximityUnlock"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"permittedAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="s2">"defaultName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"usageRequirements"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-    </span><span class="s2">"delay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"unlockBetweenWindow"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08:00"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14:35"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Europe/London"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lastOperation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494786493</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"colour"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#57355D"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMIN"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"txBeaconRssi"</span><span class="p">:</span><span class="w"> </span><span class="mi">-45</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rxBeaconRssi"</span><span class="p">:</span><span class="w"> </span><span class="mi">-80</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unlockTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"proximityUnlock"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"permittedAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"defaultName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"usageRequirements"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"delay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unlockBetweenWindow"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14:35"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Europe/London"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"WEDNESDAY"</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"exceptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="nl">"exceptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"connected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"connected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"favourite"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"unlockTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"unlockForever"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"start"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"end"</span><span class="p">:</span><span class="kc">null</span><span class="w">
+  </span><span class="nl">"favourite"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"unlockTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"unlockForever"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"start"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"end"</span><span class="p">:</span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This endpoint retrieves information about a specific lock, its usage is preferred over the list lock call for performance reasons.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://api.doordeck.com/device/LOCK_ID</code></p>
 
 <p>Replace <code>LOCK_ID</code> with the appropriate lock ID.</p>
-<h2 id='get-lock-audit-trail-v1'>Get Lock Audit Trail (v1)</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/log'</span>
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
-</code></pre>
+<h2 id='get-lock-audit-trail-v1'>Get Lock Audit Trail (v1)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/log'</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre></div>
 <blockquote>
 <p>Replace <code>00000000-0000-0000-0000-000000000000</code> with the lock&#39;s ID.</p>
 
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mf">1473061669.000000000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"DOOR_LOCK"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"user"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"Door locked"</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="mf">1473061669.000000000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"DOOR_LOCK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="s2">"Door locked"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mf">1473061664.000000000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"DOOR_UNLOCK"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"user"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"Door unlocked"</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="mf">1473061664.000000000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"DOOR_UNLOCK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="s2">"Door unlocked"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This endpoint retrieves all log events associated with a particular lock.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://api.doordeck.com/device/LOCK_ID/log</code></p>
@@ -1525,42 +1525,42 @@ associated to any other locks.</p>
 <td>Lock has disconected from Doordeck platform</td>
 </tr>
 </tbody></table>
-<h2 id='get-lock-audit-trail-v2'>Get Lock Audit Trail (v2)</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/log'</span>
-  -H <span class="s2">"Accept: application/vnd.doordeck.api-v2+json"</span>
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
-</code></pre>
+<h2 id='get-lock-audit-trail-v2'>Get Lock Audit Trail (v2)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/log'</span>
+  <span class="nt">-H</span> <span class="s2">"Accept: application/vnd.doordeck.api-v2+json"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre></div>
 <blockquote>
 <p>Replace <code>00000000-0000-0000-0000-000000000000</code> with the lock&#39;s ID.</p>
 
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494267549</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOOR_LOCK"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Door locked"</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494267549</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOOR_LOCK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Door locked"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494267539</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOOR_UNLOCK"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Door unlocked"</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494267539</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOOR_UNLOCK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Door unlocked"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494267534</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOOR_UNLOCK"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info@doordeck.com"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doordeck User"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Door unlocked"</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494267534</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOOR_UNLOCK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info@doordeck.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doordeck User"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Door unlocked"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This endpoint retrieves all log events associated with a particular lock, it includes additional details over v1.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET https://api.doordeck.com/device/LOCK_ID/log</code></p>
@@ -1622,118 +1622,118 @@ associated to any other locks.</p>
 <td>An administrator was demoted to a user</td>
 </tr>
 </tbody></table>
-<h2 id='get-audit-for-a-user'>Get Audit For A User</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/user/00000000-0000-0000-0000-000000000000/log'</span>
-  -H <span class="s2">"Accept: application/vnd.doordeck.api-v2+json"</span>
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
-</code></pre>
+<h2 id='get-audit-for-a-user'>Get Audit For A User</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/user/00000000-0000-0000-0000-000000000000/log'</span>
+  <span class="nt">-H</span> <span class="s2">"Accept: application/vnd.doordeck.api-v2+json"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre></div>
 <blockquote>
 <p>Replace <code>00000000-0000-0000-0000-000000000000</code> with the user&#39;s ID.</p>
 
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509481411</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOCK_SHARED"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000002"</span><span class="w">
+    </span><span class="nl">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509481411</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOCK_SHARED"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000002"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000003"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info@doordeck.com"</span><span class="w">
+    </span><span class="nl">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000003"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info@doordeck.com"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"rejected"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="nl">"rejected"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509035275</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOOR_UNLOCK"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000002"</span><span class="w">
+    </span><span class="nl">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509035275</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOOR_UNLOCK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000002"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"rejected"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="nl">"rejected"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This endpoint retrieves all log events associated with a particular user, it uses the same events as listed in the v2 audit trail endpoint.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET https://api.doordeck.com/user/LOCK_ID/log</code></p>
 
 <p>Replace <code>LOCK_ID</code> with the appropriate lock ID.</p>
-<h2 id='get-users-for-a-lock'>Get Users For A Lock</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/users'</span>
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
-</code></pre>
+<h2 id='get-users-for-a-lock'>Get Users For A Lock</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/users'</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre></div>
 <blockquote>
 <p>Replace <code>00000000-0000-0000-0000-000000000000</code> with the lock&#39;s ID.</p>
 
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"developer@doordeck.com.com"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base 64 encoded public key"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Developer"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"orphan"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USER"</span><span class="w">
+    </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"developer@doordeck.com.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base 64 encoded public key"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Developer"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orphan"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USER"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"administrator@doordeck.com"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base 64 encoded public key"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Administrator"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"orphan"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMIN"</span><span class="w">
+    </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"administrator@doordeck.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base 64 encoded public key"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Administrator"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orphan"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMIN"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This endpoint retrieves all users associated with a particular lock.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET https://api.doordeck.com/device/LOCK_ID/users</code></p>
 
 <p>Replace <code>LOCK_ID</code> with the appropriate lock ID.</p>
-<h2 id='get-locks-for-a-user'>Get Locks For A User</h2><pre class="highlight shell tab-shell"><code> curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000'</span>
-</code></pre>
+<h2 id='get-locks-for-a-user'>Get Locks For A User</h2><div class="highlight"><pre class="highlight shell tab-shell"><code> curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000'</span>
+</code></pre></div>
 <blockquote>
 <p>Replace <code>00000000-0000-0000-0000-000000000000</code> with the user&#39;s ID.</p>
 
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a5e6e70-3c51-11e6-9e57-cf40be3013fb"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"michael@doordeck.com"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base 64 encoded public key"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Michael Barnwell"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"orphan"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"devices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a5e6e70-3c51-11e6-9e57-cf40be3013fb"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"michael@doordeck.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base 64 encoded public key"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Michael Barnwell"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orphan"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"devices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ba8fb900-4def-11e8-9370-170748b9fca8"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMIN"</span><span class="w">
+            </span><span class="nl">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ba8fb900-4def-11e8-9370-170748b9fca8"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMIN"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e378ebe0-45f9-11e7-a620-79be7967fabd"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMIN"</span><span class="w">
+            </span><span class="nl">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e378ebe0-45f9-11e7-a620-79be7967fabd"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMIN"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eeb74c90-7c1e-11e7-9823-a9f736dac766"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMIN"</span><span class="w">
+            </span><span class="nl">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eeb74c90-7c1e-11e7-9823-a9f736dac766"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMIN"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This endpoint returns basic user information, including the user&#39;s public key and a list of the locks that the user is
 enrolled on, the list will only show locks where the current user is an administrator.</p>
 <h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET https://api.doordeck.com/user/USER_ID/</code></p>
 
 <p>Replace <code>USER_ID</code> with the appropriate user ID.</p>
-<h2 id='update-lock-properties'>Update Lock Properties</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000'</span>
-  -X PUT
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
-  -H <span class="s1">'content-type: application/json'</span>
-  --data-binary <span class="s1">'{"name":"Home","favourite":false,"colour":"#ffggaa"}'</span>
-</code></pre>
+<h2 id='update-lock-properties'>Update Lock Properties</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000'</span>
+  <span class="nt">-X</span> PUT
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span>
+  <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span>
+  <span class="nt">--data-binary</span> <span class="s1">'{"name":"Home","favourite":false,"colour":"#ffggaa"}'</span>
+</code></pre></div>
 <blockquote>
 <p>Replace <code>00000000-0000-0000-0000-000000000000</code> with the lock&#39;s ID.</p>
 </blockquote>
@@ -1906,12 +1906,12 @@ enrolled on, the list will only show locks where the current user is an administ
 <td>Indicates how accurate the phone&#39;s GPS must be to be considered matched, defaults to 200m</td>
 </tr>
 </tbody></table>
-<h2 id='pair-with-new-lock'>Pair With New Lock</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device'</span>
-  -X POST
-  -H <span class="s1">'Authorization: Bearer TOKEN'</span>
-  -H <span class="s1">'content-type: application/json'</span>
-  --data-binary <span class="s1">'{"key":"KEY","name":"My lock"}'</span>
-</code></pre>
+<h2 id='pair-with-new-lock'>Pair With New Lock</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device'</span>
+  <span class="nt">-X</span> POST
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer TOKEN'</span>
+  <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span>
+  <span class="nt">--data-binary</span> <span class="s1">'{"key":"KEY","name":"My lock"}'</span>
+</code></pre></div>
 <blockquote>
 <p>Replace <code>KEY</code> with the lock&#39;s registration key</p>
 </blockquote>
@@ -1948,11 +1948,11 @@ This endpoint is only available to users with Doordeck issued auth tokens.
 </aside>
 
 <p>This endpoint allows the retrieval of a user&#39;s public key along with their ID.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/share/invite/USER_EMAIL'</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -H <span class="s1">'authorization: Bearer TOKEN'</span> <span class="se">\</span>
-  -H <span class="s1">'content-type: application/json'</span> 
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/share/invite/USER_EMAIL'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'authorization: Bearer TOKEN'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> 
+</code></pre></div>
 <blockquote>
 <ul>
 <li>Replace <code>USER_EMAIL</code> with the user&#39;s email</li>
@@ -1960,11 +1960,11 @@ This endpoint is only available to users with Doordeck issued auth tokens.
 
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-10'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-10'>HTTP Request</h3>
 <p><code>POST https://api.doordeck.com/share/invite/USER_EMAIL</code></p>
 
 <p>Replace <code>USER_EMAIL</code> with the user&#39;s email</p>
@@ -2018,12 +2018,12 @@ query, this will mean the user is created if they don&#39;t exist and will alway
 <code>identity</code>, the specified OpenID token must be encrypted so it cannot be abused as an authentication token - it 
 should be encrypted using JSON Web Encryption (JWE) using the RSA key Doordeck generates for the particular third-party
 application.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/directory/query'</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -H <span class="s1">'authorization: Bearer TOKEN'</span> <span class="se">\</span>
-  -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data-binary <span class="s1">'{"email":"USER_EMAIL"}'</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/directory/query'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'authorization: Bearer TOKEN'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--data-binary</span> <span class="s1">'{"email":"USER_EMAIL"}'</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li>Replace <code>USER_EMAIL</code> with the user&#39;s email</li>
@@ -2031,11 +2031,11 @@ application.</p>
 
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"publicKey"</span><span class="p">:</span><span class="s2">"base 64 encoded public key"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-11'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-11'>HTTP Request</h3>
 <p><code>POST https://api.doordeck.com/directory/query</code></p>
 <h3 id='request-parameters-3'>Request Parameters</h3>
 <p>The request body must have one and only one of the following fields.</p>
@@ -2073,27 +2073,27 @@ application.</p>
 <td>Encrypted OpenID token of user</td>
 </tr>
 </tbody></table>
-<h2 id='unlock'>Unlock</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data-binary <span class="s1">'{"email":"USERNAME","password":"PASSWORD"}'</span> <span class="se">\</span>
-  | jq -r .privateKey <span class="se">\</span>
-  | base64 --decode <span class="se">\</span>
-  | openssl pkcs8 -nocrypt -inform DER -outform PEM -out privatekey.pem
+<h2 id='unlock'>Unlock</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--data-binary</span> <span class="s1">'{"email":"USERNAME","password":"PASSWORD"}'</span> <span class="se">\</span>
+  | jq <span class="nt">-r</span> .privateKey <span class="se">\</span>
+  | <span class="nb">base64</span> <span class="nt">--decode</span> <span class="se">\</span>
+  | openssl pkcs8 <span class="nt">-nocrypt</span> <span class="nt">-inform</span> DER <span class="nt">-outform</span> PEM <span class="nt">-out</span> privatekey.pem
 
 <span class="nv">HEADER</span><span class="o">=</span><span class="s1">'{"alg":"RS256","typ":"JWT"}'</span>
 <span class="nv">BODY</span><span class="o">=</span><span class="s1">'{"iss":"USER_ID","sub":"00000000-0000-0000-0000-000000000000","nbf":1473083829,"iat":1473083829,"exp":1473083889,"operation":{"type":"MUTATE_LOCK","locked":false,"duration":5}}'</span>
-<span class="nv">HEADER_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER</span> | base64 | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
-<span class="nv">BODY_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$BODY</span> | base64  | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
-<span class="nv">SIGNATURE_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER_B64</span>.<span class="nv">$BODY_B64</span> | openssl sha -sha256 -sign privatekey.pem | base64 | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
-<span class="nv">JWT</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER_B64</span>.<span class="nv">$BODY_B64</span>.<span class="nv">$SIGNATURE_B64</span><span class="sb">`</span>
+<span class="nv">HEADER_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nt">-n</span> <span class="nv">$HEADER</span> | <span class="nb">base64</span> | <span class="nb">sed</span> <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
+<span class="nv">BODY_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nt">-n</span> <span class="nv">$BODY</span> | <span class="nb">base64</span>  | <span class="nb">sed</span> <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
+<span class="nv">SIGNATURE_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nt">-n</span> <span class="nv">$HEADER_B64</span>.<span class="nv">$BODY_B64</span> | openssl sha <span class="nt">-sha256</span> <span class="nt">-sign</span> privatekey.pem | <span class="nb">base64</span> | <span class="nb">sed</span> <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
+<span class="nv">JWT</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nt">-n</span> <span class="nv">$HEADER_B64</span>.<span class="nv">$BODY_B64</span>.<span class="nv">$SIGNATURE_B64</span><span class="sb">`</span>
 
 curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/execute'</span>
-  -X POST
-  -H <span class="s1">'authorization: Bearer TOKEN'</span>
-  -H <span class="s1">'content-type: application/json;charset=UTF-8'</span>
-  --data-binary <span class="s2">"</span><span class="nv">$JWT</span><span class="s2">"</span>
-</code></pre>
+  <span class="nt">-X</span> POST
+  <span class="nt">-H</span> <span class="s1">'authorization: Bearer TOKEN'</span>
+  <span class="nt">-H</span> <span class="s1">'content-type: application/json;charset=UTF-8'</span>
+  <span class="nt">--data-binary</span> <span class="s2">"</span><span class="nv">$JWT</span><span class="s2">"</span>
+</code></pre></div>
 <blockquote>
 <p>Replace <code>00000000-0000-0000-0000-000000000000</code> with the lock&#39;s ID, <code>USER_ID</code> with the user&#39;s ID (obtained from decoding their auth token), <code>USERNAME</code> and <code>PASSWORD</code> with the appropriate credentials.</p>
 </blockquote>
@@ -2200,27 +2200,27 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <td>Boolean indicating if the lock should be locked or unlocked</td>
 </tr>
 </tbody></table>
-<h2 id='share-a-lock'>Share A Lock</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data-binary <span class="s1">'{"email":"USERNAME","password":"PASSWORD"}'</span> <span class="se">\</span>
-  | jq -r .privateKey <span class="se">\</span>
-  | base64 --decode <span class="se">\</span>
-  | openssl pkcs8 -nocrypt -inform DER -outform PEM -out privatekey.pem
+<h2 id='share-a-lock'>Share A Lock</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--data-binary</span> <span class="s1">'{"email":"USERNAME","password":"PASSWORD"}'</span> <span class="se">\</span>
+  | jq <span class="nt">-r</span> .privateKey <span class="se">\</span>
+  | <span class="nb">base64</span> <span class="nt">--decode</span> <span class="se">\</span>
+  | openssl pkcs8 <span class="nt">-nocrypt</span> <span class="nt">-inform</span> DER <span class="nt">-outform</span> PEM <span class="nt">-out</span> privatekey.pem
 
 <span class="nv">HEADER</span><span class="o">=</span><span class="s1">'{"alg":"RS256","typ":"JWT"}'</span>
 <span class="nv">BODY</span><span class="o">=</span><span class="s1">'{"iss":"USER_ID","sub":"00000000-0000-0000-0000-000000000000","nbf":1473083829,"iat":1473083829,"exp":1473083889,"operation":{"type":"ADD_USER","publicKey":PUBLIC_KEY,"user":"11111111-1111-1111-1111-111111111111","role":"USER","start":START_TIME,"end":END_TIME}}'</span>
-<span class="nv">HEADER_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER</span> | base64 | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
-<span class="nv">BODY_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$BODY</span> | base64  | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
-<span class="nv">SIGNATURE_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER_B64</span>.<span class="nv">$BODY_B64</span> | openssl sha -sha256 -sign privatekey.pem | base64 | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
-<span class="nv">JWT</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER_B64</span>.<span class="nv">$BODY_B64</span>.<span class="nv">$SIGNATURE_B64</span><span class="sb">`</span>
+<span class="nv">HEADER_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nt">-n</span> <span class="nv">$HEADER</span> | <span class="nb">base64</span> | <span class="nb">sed</span> <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
+<span class="nv">BODY_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nt">-n</span> <span class="nv">$BODY</span> | <span class="nb">base64</span>  | <span class="nb">sed</span> <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
+<span class="nv">SIGNATURE_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nt">-n</span> <span class="nv">$HEADER_B64</span>.<span class="nv">$BODY_B64</span> | openssl sha <span class="nt">-sha256</span> <span class="nt">-sign</span> privatekey.pem | <span class="nb">base64</span> | <span class="nb">sed</span> <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
+<span class="nv">JWT</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nt">-n</span> <span class="nv">$HEADER_B64</span>.<span class="nv">$BODY_B64</span>.<span class="nv">$SIGNATURE_B64</span><span class="sb">`</span>
 
 curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/execute'</span>
-  -X POST
-  -H <span class="s1">'authorization: Bearer TOKEN'</span>
-  -H <span class="s1">'content-type: application/json;charset=UTF-8'</span>
-  --data-binary <span class="s2">"</span><span class="nv">$JWT</span><span class="s2">"</span>
-</code></pre>
+  <span class="nt">-X</span> POST
+  <span class="nt">-H</span> <span class="s1">'authorization: Bearer TOKEN'</span>
+  <span class="nt">-H</span> <span class="s1">'content-type: application/json;charset=UTF-8'</span>
+  <span class="nt">--data-binary</span> <span class="s2">"</span><span class="nv">$JWT</span><span class="s2">"</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li>Replace <code>00000000-0000-0000-0000-000000000000</code> with the lock&#39;s ID</li>
@@ -2354,27 +2354,27 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <td>Unix timestamp of when the user should expire, null or unset for never expires</td>
 </tr>
 </tbody></table>
-<h2 id='revoke-access-to-a-lock'>Revoke Access To A Lock</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data-binary <span class="s1">'{"email":"USERNAME","password":"PASSWORD"}'</span> <span class="se">\</span>
-  | jq -r .privateKey <span class="se">\</span>
-  | base64 --decode <span class="se">\</span>
-  | openssl pkcs8 -nocrypt -inform DER -outform PEM -out privatekey.pem
+<h2 id='revoke-access-to-a-lock'>Revoke Access To A Lock</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--data-binary</span> <span class="s1">'{"email":"USERNAME","password":"PASSWORD"}'</span> <span class="se">\</span>
+  | jq <span class="nt">-r</span> .privateKey <span class="se">\</span>
+  | <span class="nb">base64</span> <span class="nt">--decode</span> <span class="se">\</span>
+  | openssl pkcs8 <span class="nt">-nocrypt</span> <span class="nt">-inform</span> DER <span class="nt">-outform</span> PEM <span class="nt">-out</span> privatekey.pem
 
 <span class="nv">HEADER</span><span class="o">=</span><span class="s1">'{"alg":"RS256","typ":"JWT"}'</span>
 <span class="nv">BODY</span><span class="o">=</span><span class="s1">'{"iss":"USER_ID","sub":"00000000-0000-0000-0000-000000000000","nbf":1473083829,"iat":1473083829,"exp":1473083889,"operation":{"type":"REMOVE_USER","users":["11111111-1111-1111-1111-111111111111"]}}'</span>
-<span class="nv">HEADER_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER</span> | base64 | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
-<span class="nv">BODY_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$BODY</span> | base64  | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
-<span class="nv">SIGNATURE_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER_B64</span>.<span class="nv">$BODY_B64</span> | openssl sha -sha256 -sign privatekey.pem | base64 | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
-<span class="nv">JWT</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER_B64</span>.<span class="nv">$BODY_B64</span>.<span class="nv">$SIGNATURE_B64</span><span class="sb">`</span>
+<span class="nv">HEADER_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nt">-n</span> <span class="nv">$HEADER</span> | <span class="nb">base64</span> | <span class="nb">sed</span> <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
+<span class="nv">BODY_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nt">-n</span> <span class="nv">$BODY</span> | <span class="nb">base64</span>  | <span class="nb">sed</span> <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
+<span class="nv">SIGNATURE_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nt">-n</span> <span class="nv">$HEADER_B64</span>.<span class="nv">$BODY_B64</span> | openssl sha <span class="nt">-sha256</span> <span class="nt">-sign</span> privatekey.pem | <span class="nb">base64</span> | <span class="nb">sed</span> <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
+<span class="nv">JWT</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nt">-n</span> <span class="nv">$HEADER_B64</span>.<span class="nv">$BODY_B64</span>.<span class="nv">$SIGNATURE_B64</span><span class="sb">`</span>
 
 curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/execute'</span>
-  -X POST
-  -H <span class="s1">'authorization: Bearer TOKEN'</span>
-  -H <span class="s1">'content-type: application/json;charset=UTF-8'</span>
-  --data-binary <span class="s2">"</span><span class="nv">$JWT</span><span class="s2">"</span>
-</code></pre>
+  <span class="nt">-X</span> POST
+  <span class="nt">-H</span> <span class="s1">'authorization: Bearer TOKEN'</span>
+  <span class="nt">-H</span> <span class="s1">'content-type: application/json;charset=UTF-8'</span>
+  <span class="nt">--data-binary</span> <span class="s2">"</span><span class="nv">$JWT</span><span class="s2">"</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li>Replace <code>00000000-0000-0000-0000-000000000000</code> with the lock&#39;s ID</li>
@@ -2487,27 +2487,27 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <td>List of user IDs to remove</td>
 </tr>
 </tbody></table>
-<h2 id='update-secure-settings'>Update Secure Settings</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data-binary <span class="s1">'{"email":"USERNAME","password":"PASSWORD"}'</span> <span class="se">\</span>
-  | jq -r .privateKey <span class="se">\</span>
-  | base64 --decode <span class="se">\</span>
-  | openssl pkcs8 -nocrypt -inform DER -outform PEM -out privatekey.pem
+<h2 id='update-secure-settings'>Update Secure Settings</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/auth/token/'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--data-binary</span> <span class="s1">'{"email":"USERNAME","password":"PASSWORD"}'</span> <span class="se">\</span>
+  | jq <span class="nt">-r</span> .privateKey <span class="se">\</span>
+  | <span class="nb">base64</span> <span class="nt">--decode</span> <span class="se">\</span>
+  | openssl pkcs8 <span class="nt">-nocrypt</span> <span class="nt">-inform</span> DER <span class="nt">-outform</span> PEM <span class="nt">-out</span> privatekey.pem
 
 <span class="nv">HEADER</span><span class="o">=</span><span class="s1">'{"alg":"RS256","typ":"JWT"}'</span>
 <span class="nv">BODY</span><span class="o">=</span><span class="s1">'{"iss":"USER_ID","sub":"00000000-0000-0000-0000-000000000000","nbf":1473083829,"iat":1473083829,"exp":1473083889,"operation":{"type":"MUTATE_SETTING","unlockDuration":10}}'</span>
-<span class="nv">HEADER_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER</span> | base64 | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
-<span class="nv">BODY_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$BODY</span> | base64  | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
-<span class="nv">SIGNATURE_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER_B64</span>.<span class="nv">$BODY_B64</span> | openssl sha -sha256 -sign privatekey.pem | base64 | sed <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
-<span class="nv">JWT</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -n <span class="nv">$HEADER_B64</span>.<span class="nv">$BODY_B64</span>.<span class="nv">$SIGNATURE_B64</span><span class="sb">`</span>
+<span class="nv">HEADER_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nt">-n</span> <span class="nv">$HEADER</span> | <span class="nb">base64</span> | <span class="nb">sed</span> <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
+<span class="nv">BODY_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nt">-n</span> <span class="nv">$BODY</span> | <span class="nb">base64</span>  | <span class="nb">sed</span> <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
+<span class="nv">SIGNATURE_B64</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nt">-n</span> <span class="nv">$HEADER_B64</span>.<span class="nv">$BODY_B64</span> | openssl sha <span class="nt">-sha256</span> <span class="nt">-sign</span> privatekey.pem | <span class="nb">base64</span> | <span class="nb">sed</span> <span class="s1">'s/+/-/g;s/\//_/g;s/=//g'</span><span class="sb">`</span>
+<span class="nv">JWT</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nt">-n</span> <span class="nv">$HEADER_B64</span>.<span class="nv">$BODY_B64</span>.<span class="nv">$SIGNATURE_B64</span><span class="sb">`</span>
 
 curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/execute'</span>
-  -X POST
-  -H <span class="s1">'authorization: Bearer TOKEN'</span>
-  -H <span class="s1">'content-type: application/json;charset=UTF-8'</span>
-  --data-binary <span class="s2">"</span><span class="nv">$JWT</span><span class="s2">"</span>
-</code></pre>
+  <span class="nt">-X</span> POST
+  <span class="nt">-H</span> <span class="s1">'authorization: Bearer TOKEN'</span>
+  <span class="nt">-H</span> <span class="s1">'content-type: application/json;charset=UTF-8'</span>
+  <span class="nt">--data-binary</span> <span class="s2">"</span><span class="nv">$JWT</span><span class="s2">"</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li>Replace <code>00000000-0000-0000-0000-000000000000</code> with the lock&#39;s ID</li>
@@ -2661,9 +2661,9 @@ If a request expires within the next 60 seconds, a 200 is returned upon success,
 <td>List of dates (YYYY-MM-DD) to ignore above settings, useful for holidays</td>
 </tr>
 </tbody></table>
-<h2 id='monitor-real-time-lock-state'>Monitor Real-time Lock State</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/device/events?device=00000000-0000-0000-0000-000000000000"</span>
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
-</code></pre>
+<h2 id='monitor-real-time-lock-state'>Monitor Real-time Lock State</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/device/events?device=00000000-0000-0000-0000-000000000000"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre></div>
 <blockquote>
 <p>Replace <code>00000000-0000-0000-0000-000000000000</code> with the lock&#39;s ID</p>
 </blockquote>
@@ -2689,79 +2689,79 @@ This endpoint is experimental and may change without notice.
 <td>Device ID to monitor, multiple can specified as separate query parameters</td>
 </tr>
 </tbody></table>
-<h2 id='get-pinned-locks'>Get Pinned Locks</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/device/favourite"</span>
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
-</code></pre>
+<h2 id='get-pinned-locks'>Get Pinned Locks</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/device/favourite"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3cc19730-4603-11e7-a620-79be7967fabd"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reception"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"colour"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#24BD9A"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USER"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"unlockTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"permittedAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-            </span><span class="s2">"defaultName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reception"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"usageRequirements"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-            </span><span class="s2">"unlockBetweenWindow"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"tiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3cc19730-4603-11e7-a620-79be7967fabd"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reception"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"colour"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#24BD9A"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USER"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"unlockTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"permittedAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="nl">"defaultName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reception"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"usageRequirements"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+            </span><span class="nl">"unlockBetweenWindow"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="s2">"3cc19730-4603-11e7-a620-79be7967fabd"</span><span class="w">
             </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"connected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"connected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"favourite"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="nl">"favourite"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ad8fb800-4def-11e8-9370-170748b9fca8"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Web Demo"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"colour"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#D93951"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMIN"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"unlockTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"permittedAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-            </span><span class="s2">"defaultName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Web Demo"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"usageRequirements"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-            </span><span class="s2">"unlockBetweenWindow"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"tiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ad8fb800-4def-11e8-9370-170748b9fca8"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Web Demo"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"colour"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#D93951"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMIN"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"unlockTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"permittedAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="nl">"defaultName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Web Demo"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"usageRequirements"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+            </span><span class="nl">"unlockBetweenWindow"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"connected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"connected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"favourite"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="nl">"favourite"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>The endpoint returns a list of the current user&#39;s pinned locks.</p>
 <h3 id='http-request-17'>HTTP Request</h3>
 <p><code>GET https://api.doordeck.com/device/favourite</code></p>
-<h2 id='get-shareable-locks'>Get Shareable Locks</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/device/shareable"</span>
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
-</code></pre>
+<h2 id='get-shareable-locks'>Get Shareable Locks</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.doordeck.com/device/shareable"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08aa6b81-30cf-11e8-ba42-6986d3c6ca8e"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo #1"</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08aa6b81-30cf-11e8-ba42-6986d3c6ca8e"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo #1"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48dceebb-31cf-11e8-a9fe-6986d3c6ca8e"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo #2"</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48dceebb-31cf-11e8-a9fe-6986d3c6ca8e"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo #2"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This endpoint returns the names and IDs of locks where the current user is an administrator.</p>
 <h3 id='http-request-18'>HTTP Request</h3>
 <p><code>GET https://api.doordeck.com/device/shareable</code></p>
@@ -2769,12 +2769,12 @@ This endpoint is experimental and may change without notice.
 <aside class="warning">
 All of the platform endpoints are only available to users with Doordeck issued auth tokens.
 </aside>
-<h2 id='create-application'>Create Application</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/platform/application'</span>
-  -X POST
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
-  -H <span class="s1">'content-type: application/json'</span>
-  --data-binary <span class="s1">'{"name":"My Amazing App","companyName":"My amazing company","mailingAddress":"My address"}'</span>
-</code></pre>
+<h2 id='create-application'>Create Application</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/platform/application'</span>
+  <span class="nt">-X</span> POST
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span>
+  <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span>
+  <span class="nt">--data-binary</span> <span class="s1">'{"name":"My Amazing App","companyName":"My amazing company","mailingAddress":"My address"}'</span>
+</code></pre></div>
 <p>This endpoint allows the creation of an application; an application is how user&#39;s are divided between third-parties 
 within Doordeck and define certain branding, UI and authentication elements. </p>
 
@@ -2892,17 +2892,17 @@ within Doordeck and define certain branding, UI and authentication elements. </p
 <td>Text used for the CTA button, e.g. &quot;Download now!&quot;</td>
 </tr>
 </tbody></table>
-<h2 id='list-applications'>List Applications</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/platform/application'</span> <span class="se">\</span>
-  -X GET <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
-</code></pre>
+<h2 id='list-applications'>List Applications</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/platform/application'</span> <span class="se">\</span>
+  <span class="nt">-X</span> GET <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre></div>
 <p>Lists all application&#39;s owned by the current user</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://api.doordeck.com/platform/application</code></p>
-<h2 id='get-application'>Get Application</h2><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/platform/application/APPLICATION_ID'</span> <span class="se">\</span>
-  -X GET <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer TOKEN"</span>
-</code></pre>
+<h2 id='get-application'>Get Application</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/platform/application/APPLICATION_ID'</span> <span class="se">\</span>
+  <span class="nt">-X</span> GET <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span>
+</code></pre></div>
 <blockquote>
 <p>Replace <code>APPLICATION_ID</code> with the application ID.</p>
 </blockquote>
@@ -3028,10 +3028,10 @@ understood by most cryptographic libraries. </p>
 <p>BASE64 encoded DER strings are very similar to PEM encoded values and can be converted by adding the appropriate 
 <a href="https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail">PEM</a> header and footer and by adding a newline character every 64 
 characters, e.g. </p>
-<pre class="highlight plaintext"><code>-----BEGIN PUBLIC KEY-----
+<div class="highlight"><pre class="highlight plaintext"><code>-----BEGIN PUBLIC KEY-----
 BASE64 DER PUBLIC KEY
 -----END PUBLIC KEY-----
-</code></pre><h1 id='errors'>Errors</h1>
+</code></pre></div><h1 id='errors'>Errors</h1>
 <p>The Doordeck API uses the following error codes:</p>
 
 <table><thead>
