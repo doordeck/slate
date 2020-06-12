@@ -514,14 +514,19 @@ curl 'https://api.doordeck.com/share/invite/USER_EMAIL' \
 
 Replace `USER_EMAIL` with the user's email
 
+### Query Parameters
 
-## Get A Third-Party User’s Public Key
+Parameter | Required | Description
+--------- | -------- | -----------
+visitor   | false    | Defaults to false, set to true to direct the visitor to a purely web based experience.
 
-This endpoint allows retrieval of a user's public key, it provides flexibility to third-party application 
+## Get A User’s Public Key
+
+This endpoint allows retrieval of a user's public key, it provides additional flexibility to third-party application 
 developers by allowing querying via email, telephone, user identifier (both internal and external) and by complete 
 identity (encrypted).
 
-Queries against this endpoint are restricted by the third-party's user pool, in other words, this call will only return 
+Queries against this endpoint are filtered by the third-party's user pool, in other words, this call will only return 
 users belonging to the same application as specified in the auth token.
 
 This endpoint accepts a single JSON key (multiple keys cannot be used) which can be one of the following:
