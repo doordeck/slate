@@ -517,10 +517,6 @@ Replace `USER_EMAIL` with the user's email
 
 ## Get A Third-Party User’s Public Key
 
-<aside class="warning">
-This endpoint is only available to users with third-party issued auth tokens.
-</aside>
-
 This endpoint allows retrieval of a user's public key, it provides flexibility to third-party application 
 developers by allowing querying via email, telephone, user identifier (both internal and external) and by complete 
 identity (encrypted).
