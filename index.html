@@ -341,7 +341,7 @@
                     <a href="#get-a-doordeck-user-s-public-key" class="toc-h2 toc-link" data-title="Get A Doordeck User’s Public Key">Get A Doordeck User’s Public Key</a>
                   </li>
                   <li>
-                    <a href="#get-a-third-party-user-s-public-key" class="toc-h2 toc-link" data-title="Get A Third-Party User’s Public Key">Get A Third-Party User’s Public Key</a>
+                    <a href="#get-a-user-s-public-key" class="toc-h2 toc-link" data-title="Get A User’s Public Key">Get A User’s Public Key</a>
                   </li>
                   <li>
                     <a href="#unlock" class="toc-h2 toc-link" data-title="Unlock">Unlock</a>
@@ -1968,12 +1968,26 @@ This endpoint is only available to users with Doordeck issued auth tokens.
 <p><code>POST https://api.doordeck.com/share/invite/USER_EMAIL</code></p>
 
 <p>Replace <code>USER_EMAIL</code> with the user&#39;s email</p>
-<h2 id='get-a-third-party-user-s-public-key'>Get A Third-Party User’s Public Key</h2>
-<p>This endpoint allows retrieval of a user&#39;s public key, it provides flexibility to third-party application 
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>visitor</td>
+<td>false</td>
+<td>Defaults to false, set to true to direct the visitor to a purely web based experience.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-user-s-public-key'>Get A User’s Public Key</h2>
+<p>This endpoint allows retrieval of a user&#39;s public key, it provides additional flexibility to third-party application 
 developers by allowing querying via email, telephone, user identifier (both internal and external) and by complete 
 identity (encrypted).</p>
 
-<p>Queries against this endpoint are restricted by the third-party&#39;s user pool, in other words, this call will only return 
+<p>Queries against this endpoint are filtered by the third-party&#39;s user pool, in other words, this call will only return 
 users belonging to the same application as specified in the auth token.</p>
 
 <p>This endpoint accepts a single JSON key (multiple keys cannot be used) which can be one of the following:</p>
@@ -2671,7 +2685,7 @@ This endpoint is experimental and may change without notice.
 </aside>
 <h3 id='http-request-16'>HTTP Request</h3>
 <p><code>GET https://api.doordeck.com/device/events?device=00000000-0000-0000-0000-000000000000</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
