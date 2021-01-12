@@ -1525,12 +1525,14 @@ associated to any other locks.</p>
 <td>Lock has disconected from Doordeck platform</td>
 </tr>
 </tbody></table>
-<h2 id='get-lock-audit-trail-v2'>Get Lock Audit Trail (v2)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/log'</span>
+<h2 id='get-lock-audit-trail-v2'>Get Lock Audit Trail (v2)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/log?start=0000&amp;end=0000'</span>
   <span class="nt">-H</span> <span class="s2">"Accept: application/vnd.doordeck.api-v2+json"</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span>
 </code></pre></div>
 <blockquote>
 <p>Replace <code>00000000-0000-0000-0000-000000000000</code> with the lock&#39;s ID.</p>
+
+<p>Replace <code>start=0000</code> &amp; <code>end=0000</code> with Epoch date range, e.g. start=1593558000&amp;end=1610495999</p>
 
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
@@ -1563,7 +1565,7 @@ associated to any other locks.</p>
 </span></code></pre></div>
 <p>This endpoint retrieves all log events associated with a particular lock, it includes additional details over v1.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET https://api.doordeck.com/device/LOCK_ID/log</code></p>
+<p><code>GET https://api.doordeck.com/device/LOCK_ID/log?start=0000&amp;end=0000</code></p>
 
 <p>Replace <code>LOCK_ID</code> with the appropriate lock ID.</p>
 
@@ -1622,12 +1624,14 @@ associated to any other locks.</p>
 <td>An administrator was demoted to a user</td>
 </tr>
 </tbody></table>
-<h2 id='get-audit-for-a-user'>Get Audit For A User</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/user/00000000-0000-0000-0000-000000000000/log'</span>
+<h2 id='get-audit-for-a-user'>Get Audit For A User</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/user/00000000-0000-0000-0000-000000000000/log?start=0000&amp;end=0000'</span>
   <span class="nt">-H</span> <span class="s2">"Accept: application/vnd.doordeck.api-v2+json"</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer TOKEN"</span>
 </code></pre></div>
 <blockquote>
 <p>Replace <code>00000000-0000-0000-0000-000000000000</code> with the user&#39;s ID.</p>
+
+<p>Replace <code>start=0000</code> &amp; <code>end=0000</code> with Epoch date range, e.g. start=1593558000&amp;end=1610495999</p>
 
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
@@ -1658,7 +1662,7 @@ associated to any other locks.</p>
 </span></code></pre></div>
 <p>This endpoint retrieves all log events associated with a particular user, it uses the same events as listed in the v2 audit trail endpoint.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET https://api.doordeck.com/user/LOCK_ID/log</code></p>
+<p><code>GET https://api.doordeck.com/user/LOCK_ID/log?start=0000&amp;end=0000</code></p>
 
 <p>Replace <code>LOCK_ID</code> with the appropriate lock ID.</p>
 <h2 id='get-users-for-a-lock'>Get Users For A Lock</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/users'</span>
