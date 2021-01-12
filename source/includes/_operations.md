@@ -196,11 +196,13 @@ DEVICE_DISCONNECTED | Lock has disconected from Doordeck platform
 ## Get Lock Audit Trail (v2)
 
 ```shell
-curl 'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/log'
+curl 'https://api.doordeck.com/device/00000000-0000-0000-0000-000000000000/log?start=0000&end=0000'
   -H "Accept: application/vnd.doordeck.api-v2+json"
   -H "Authorization: Bearer TOKEN"
 ```
 > Replace `00000000-0000-0000-0000-000000000000` with the lock's ID.
+
+> Replace `start=0000` & `end=0000` with Epoch date range, e.g. start=1593558000&end=1610495999
 
 > The above command returns JSON structured like this:
 
@@ -237,7 +239,7 @@ This endpoint retrieves all log events associated with a particular lock, it inc
 
 ### HTTP Request
 
-`GET https://api.doordeck.com/device/LOCK_ID/log`
+`GET https://api.doordeck.com/device/LOCK_ID/log?start=0000&end=0000`
 
 Replace `LOCK_ID` with the appropriate lock ID.
 
@@ -263,11 +265,13 @@ USER_DEMOTED | An administrator was demoted to a user
 ## Get Audit For A User 
 
 ```shell
-curl 'https://api.doordeck.com/user/00000000-0000-0000-0000-000000000000/log'
+curl 'https://api.doordeck.com/user/00000000-0000-0000-0000-000000000000/log?start=0000&end=0000'
   -H "Accept: application/vnd.doordeck.api-v2+json"
   -H "Authorization: Bearer TOKEN"
 ```
 > Replace `00000000-0000-0000-0000-000000000000` with the user's ID.
+
+> Replace `start=0000` & `end=0000` with Epoch date range, e.g. start=1593558000&end=1610495999
 
 > The above command returns JSON structured like this:
 
@@ -302,7 +306,7 @@ This endpoint retrieves all log events associated with a particular user, it use
 
 ### HTTP Request
 
-`GET https://api.doordeck.com/user/LOCK_ID/log`
+`GET https://api.doordeck.com/user/LOCK_ID/log?start=0000&end=0000`
 
 Replace `LOCK_ID` with the appropriate lock ID.
 
